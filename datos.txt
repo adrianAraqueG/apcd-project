@@ -1,0 +1,75 @@
+CONDICIONES GENERALES DE LA TAREA Y DEL PERSONAL
+    1 ¿El personal entiende las normas y prácticas de los procedimientos a seguir?
+    2 ¿Se han lavado y/o desinfectado los EPPs, equipos de alturas, herramientas y materiales a utilizar?
+    3 ¿El personal que va desarrollar los trabajos, antes de iniciar cada una de las actividades, ha realizado el respectivo lavado de manos con agua y jabón o gel antibacterial?
+    4 ¿Cada trabajador a realizado el reporte de condiciones de salud en productividad?
+    5 ¿El personal que va a desarrollar los trabajos ha recibido el entrenamiento y se encuentra certificado para realizar la actividad?
+    6 ¿Cada trabajador tiene Certificado de examen médico ocupacional vigente y se encuentra apto para realizar la labor?
+    7 ¿Tienen la EPS, ARL, AFP al día?
+    8 ¿El personal cuenta con el equipo de protección definido para la tarea y para acceder al sitio?
+    9 ¿El personal que va a realizar la labor conoce el procedimiento de emergencia y rescate?
+    10 ¿Se cuenta con las hojas de seguridad del producto a usar?
+    ¿Son óptimas las condiciones de salud de la cuadrilla para realizar la actividad?
+    ¿El tiempo de sueño ha sido el suficiente para realizar la labor?
+    ¿Han consumido bebidas alcohólicas o sustancias alucinógenas en las últimas 24 horas?
+    ¿Se le ha tomado al trabajador la toma de temperatura diaria?
+HERRAMIENTAS Y EQUPOS
+    1 Pinzas
+    2 Pelacables
+    3 Alicates
+    4 Corta Frio
+    5 Destornillador
+    6 Martillo
+    7 Ponchadora
+    8 Taladro
+    9 Dynatel
+    10 Geómetro
+    11 Megger
+    12 Fusionadora
+    13 Bocina
+    14 [OTRO]
+MEDIDAS DE CONTROL
+    1 Demarcar y señalar el área de trabajo
+    2 Uso de equipo de protección de caídas
+    3 Capacitación y entrenamiento adecuado
+    4 Instalar puntos de anclaje con resistencias de 5000lb
+    5 Empleo de sistemas de acceso como escaleras
+    6 Empleo de sistemas de acceso como plataformas
+    7 Efectuar conexión a tierra de equipos
+    8 Equipos y herramientas en buen estado
+    9 Realizar medición de la concentración de gases
+    10 Mantenimiento preventido y correctivo de equipos
+    11 Realización de pausas activas
+    12 Medidas de prevención y/o contención de gases
+    13 Medidas higiénicas y atmosféricas
+    14 Aplicación de procedimientos de trabajo seguro
+    15 Ventilación natural permanente
+    16 Separar y disponer residuos
+    17 Uso de elementos de protección personal EPP 
+    18 Disponer de las hojas de seguridad de los productos
+    19 Disponer de sistemas de comunicación
+    20 Disponer de equipos de extinción del fuego
+    21 Notificar a entidades de socorro retiro de panales
+    22 Autocuidado
+    23 Inspección vehicular o de moto
+    24 Reporte de Actos y Consecuencias inseguros
+    25 Detener actividad
+    26 Alinear cámaras telefónicas
+    27 Solicitar apoyo de área HSEQ
+    28 [OTRO]
+ESCALERAS
+    1 Estado General 
+    2 Presencia de Grasa o Suciedad
+    3 Escalones
+    4 Peldaños
+    5 Abrazaderas
+    6 Tornillos
+    7 Cuerda de extención
+    8 Cuerda para vientos
+    9 Polea
+    10 Zapatas
+    11 Arrastradores
+    12 Seguros
+    13 Etiquetas
+    14 Apoya postes
+    15 [OBSERVACIONES]
