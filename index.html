@@ -6,635 +6,664 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APCD - PWA</title>
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bt/bootstrap.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
 </head>
 <body>
     
-    <div class="main">
-        <div class="container">
-            <h1>ANÁLISIS PREOPERACIONAL DE CUMPLIMIENTO DIARIO</h1>
+    <div class="container-fluid bg-light">
+        <!-- DATOS GENEREALES -->
+        <div class="container bg-white">
+            <h1 class="text-wrap mb-5 text-align-center">ANÁLISIS PREOPERACIONAL DE CUMPLIMIENTO DIARIO</h1>
             
-            <h3>DATOS GENERALES DE CUADRILLA</h3>
-            <form id="c_general" class="form-txt">
-                <input type="date" name="fecha" id="fecha">
+            
+            <form id="c_general" class="form-txt mb-5" class="form-control">
+                <h3 class="text-wrap fs-5">DATOS GENERALES DE CUADRILLA</h3>
+                <input type="date" name="fecha" class="form-control mb-2">
     
-                <input type="text" name="ciudad" placeholder="Ciudad" id="ciudad">
+                <input type="text" name="ciudad" placeholder="Ciudad" class="form-control mb-2">
     
-                <input type="text" name="departamento" placeholder="Departamento" id="departamento">
+                <input type="text" name="departamento" placeholder="Departamento" class="form-control mb-2">
             </form>
 
 
 
-            <h3>CONDICIONES GENERALES DE LA TAREA Y DEL PERSONAL</h3>
-            <div class="markall">
-                <h4>SI</h4>
-                <input type="radio" value="si"  name="c-g-ma">
-                <h4>NO</h4>
-                <input type="radio" value="no" name="c-g-ma">
-                <h4>NA</h4>
-                <input type="radio" value="na" name="c-g-ma">
+            <h3 class="text-wrap fs-5">CONDICIONES GENERALES DE LA TAREA Y DEL PERSONAL</h3>
+            <div class="d-flex mb-0">
+                <div class="d-flex flex-row p-2">
+                    <h4 class="fs-6">SI</h4>
+                    <input type="radio" value="si"  name="c-g-ma" class="form-check-input mt-1 ms-1">
+                </div>
+                <div class="d-flex flex-row p-2">
+                    <h4 class="fs-6">NO</h4>
+                    <input type="radio" value="no" name="c-g-ma" class="form-check-input mt-1 ms-1">
+                </div>
+                <div class="d-flex flex-row p-2">
+                    <h4 class="fs-6">NA</h4>
+                    <input type="radio" value="na" name="c-g-ma" class="form-check-input mt-1 ms-1">  
+                </div>
             </div>
-            <table class="form-table">
-                <tr>
-                    <th>No.</th>
-                    <th>Condición</th>
-                    <th>Si</th>
-                    <th>No</th>
-                    <th>N.A</th>
-                    <th>Observaciones</th>
-                </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>¿El personal entiende las normas y prácticas de los procedimientos a seguir?</td>
-                    <td>
-                        <input type="radio" name="c-g-1" value="si">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-1" value="no">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-1" value="na">
-                    </td>
-                    <td>
-                        <input type="text" name="c-g-1-obs" id="" placeholder="Agregar">
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>¿Se han lavado y/o desinfectado los EPPs, equipos de alturas, herramientas y materiales a utilizar?</td>
-                    <td>
-                        <input type="radio" name="c-g-2" value="si">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-2" value="no">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-2" value="na">
-                    </td>
-                    <td>
-                        <input type="text" name="c-g-2-obs" id="" placeholder="Agregar">
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>¿El personal que va desarrollar los trabajos, antes de iniciar cada una de las actividades, ha realizado el respectivo lavado de manos con agua y jabón o gel antibacterial?</td>
-                    <td>
-                        <input type="radio" name="c-g-3" value="si">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-3" value="no">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-3" value="na">
-                    </td>
-                    <td>
-                        <input type="text" name="c-g-3-obs" id="" placeholder="Agregar">
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>¿Cada trabajador a realizado el reporte de condiciones de salud en productividad?</td>
-                    <td>
-                        <input type="radio" name="c-g-4" value="si">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-4" value="no">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-4" value="na">
-                    </td>
-                    <td>
-                        <input type="text" name="c-g-4-obs" id="" placeholder="Agregar">
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>¿El personal que va a desarrollar los trabajos ha recibido el entrenamiento y se encuentra certificado para realizar la actividad?</td>
-                    <td>
-                        <input type="radio" name="c-g-5" value="si">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-5" value="no">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-5" value="na">
-                    </td>
-                    <td>
-                        <input type="text" name="c-g-5-obs" id="" placeholder="Agregar">
-                    </td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>¿Cada trabajador tiene Certificado de examen médico ocupacional vigente y se encuentra apto para realizar la labor?</td>
-                    <td>
-                        <input type="radio" name="c-g-6" value="si">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-6" value="no">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-6" value="na">
-                    </td>
-                    <td>
-                        <input type="text" name="c-g-6-obs" id="" placeholder="Agregar">
-                    </td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>¿Tienen la EPS, ARL, AFP al día?</td>
-                    <td>
-                        <input type="radio" name="c-g-7" value="si">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-7" value="no">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-7" value="na">
-                    </td>
-                    <td>
-                        <input type="text" name="c-g-7-obs" id="" placeholder="Agregar">
-                    </td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>¿El personal cuenta con el equipo de protección definido para la tarea y para acceder al sitio?</td>
-                    <td>
-                        <input type="radio" name="c-g-8" value="si">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-8" value="no">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-8" value="na">
-                    </td>
-                    <td>
-                        <input type="text" name="c-g-8-obs" id="" placeholder="Agregar">
-                    </td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>¿El personal que va a realizar la labor conoce el procedimiento de emergencia y rescate?</td>
-                    <td>
-                        <input type="radio" name="c-g-9" value="si">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-9" value="no">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-9" value="na">
-                    </td>
-                    <td>
-                        <input type="text" name="c-g-9-obs" id="" placeholder="Agregar">
-                    </td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>¿Se cuenta con las hojas de seguridad del producto a usar?</td>
-                    <td>
-                        <input type="radio" name="c-g-10" value="si">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-10" value="no">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-10" value="na">
-                    </td>
-                    <td>
-                        <input type="text" name="c-g-10-obs" id="" placeholder="Agregar">
-                    </td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>¿Son óptimas las condiciones de salud de la cuadrilla para realizar la actividad?</td>
-                    <td>
-                        <input type="radio" name="c-g-11" value="si">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-11" value="no">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-11" value="na">
-                    </td>
-                    <td>
-                        <input type="text" name="c-g-11-obs" id="" placeholder="Agregar">
-                    </td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>¿El tiempo de sueño ha sido el suficiente para realizar la labor?</td>
-                    <td>
-                        <input type="radio" name="c-g-12" value="si">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-12" value="no">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-12" value="na">
-                    </td>
-                    <td>
-                        <input type="text" name="c-g-12-obs" id="" placeholder="Agregar">
-                    </td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td>¿Han consumido bebidas alcohólicas o sustancias alucinógenas en las últimas 24 horas?</td>
-                    <td>
-                        <input type="radio" name="c-g-13" value="si">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-13" value="no">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-13" value="na">
-                    </td>
-                    <td>
-                        <input type="text" name="c-g-13-obs" id="" placeholder="Agregar">
-                    </td>
-                </tr>
-                <tr>
-                    <td>14</td>
-                    <td>¿Se le ha tomado al trabajador la toma de temperatura diaria?</td>
-                    <td>
-                        <input type="radio" name="c-g-14" value="si">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-14" value="no">
-                    </td>
-                    <td>
-                        <input type="radio" name="c-g-14" value="na">
-                    </td>
-                    <td>
-                        <input type="text" name="c-g-14-obs" id="" placeholder="Agregar">
-                    </td>
-                </tr>
-            </table>
-
-            <h3>MEDIDAS DE CONTROL</h3>
-            <div class="markall">
-                <h4>Marcar todas</h4>
-                <input type="checkbox" name="m-c-ma">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered mb-5">
+                    <tr>
+                        <th class="no">No.</th>
+                        <th>Condición</th>
+                        <th class="input">Si</th>
+                        <th class="input">No</th>
+                        <th class="input">N.A</th>
+                        <th class="agregar">Observaciones</th>
+                    </tr>
+    
+                    <tr>
+                        <td>1</td>
+                        <td>¿El personal entiende las normas y prácticas de los procedimientos a seguir?</td>
+                        <td>
+                            <input type="radio" name="c-g-1" value="si" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-1" value="no" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-1" value="na" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="text" name="c-g-1-obs" placeholder="Agregar" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>¿Se han lavado y/o desinfectado los EPPs, equipos de alturas, herramientas y materiales a utilizar?</td>
+                        <td>
+                            <input type="radio" name="c-g-2" value="si" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-2" value="no" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-2" value="na" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="text" name="c-g-2-obs" placeholder="Agregar" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>¿El personal que va desarrollar los trabajos, antes de iniciar cada una de las actividades, ha realizado el respectivo lavado de manos con agua y jabón o gel antibacterial?</td>
+                        <td>
+                            <input type="radio" name="c-g-3" value="si" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-3" value="no" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-3" value="na" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="text" name="c-g-3-obs" placeholder="Agregar" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>¿Cada trabajador a realizado el reporte de condiciones de salud en productividad?</td>
+                        <td>
+                            <input type="radio" name="c-g-4" value="si" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-4" value="no" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-4" value="na" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="text" name="c-g-4-obs" placeholder="Agregar" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>¿El personal que va a desarrollar los trabajos ha recibido el entrenamiento y se encuentra certificado para realizar la actividad?</td>
+                        <td>
+                            <input type="radio" name="c-g-5" value="si" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-5" value="no" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-5" value="na" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="text" name="c-g-5-obs" placeholder="Agregar" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>¿Cada trabajador tiene Certificado de examen médico ocupacional vigente y se encuentra apto para realizar la labor?</td>
+                        <td>
+                            <input type="radio" name="c-g-6" value="si" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-6" value="no" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-6" value="na" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="text" name="c-g-6-obs" placeholder="Agregar" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>¿Tienen la EPS, ARL, AFP al día?</td>
+                        <td>
+                            <input type="radio" name="c-g-7" value="si" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-7" value="no" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-7" value="na" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="text" name="c-g-7-obs" placeholder="Agregar" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>¿El personal cuenta con el equipo de protección definido para la tarea y para acceder al sitio?</td>
+                        <td>
+                            <input type="radio" name="c-g-8" value="si" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-8" value="no" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-8" value="na" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="text" name="c-g-8-obs" placeholder="Agregar" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>¿El personal que va a realizar la labor conoce el procedimiento de emergencia y rescate?</td>
+                        <td>
+                            <input type="radio" name="c-g-9" value="si" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-9" value="no" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-9" value="na" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="text" name="c-g-9-obs" placeholder="Agregar" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>¿Se cuenta con las hojas de seguridad del producto a usar?</td>
+                        <td>
+                            <input type="radio" name="c-g-10" value="si" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-10" value="no" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-10" value="na" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="text" name="c-g-10-obs" placeholder="Agregar" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>¿Son óptimas las condiciones de salud de la cuadrilla para realizar la actividad?</td>
+                        <td>
+                            <input type="radio" name="c-g-11" value="si" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-11" value="no" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-11" value="na" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="text" name="c-g-11-obs" placeholder="Agregar" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>¿El tiempo de sueño ha sido el suficiente para realizar la labor?</td>
+                        <td>
+                            <input type="radio" name="c-g-12" value="si" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-12" value="no" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-12" value="na" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="text" name="c-g-12-obs" placeholder="Agregar" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>¿Han consumido bebidas alcohólicas o sustancias alucinógenas en las últimas 24 horas?</td>
+                        <td>
+                            <input type="radio" name="c-g-13" value="si" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-13" value="no" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-13" value="na" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="text" name="c-g-13-obs" placeholder="Agregar" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>¿Se le ha tomado al trabajador la toma de temperatura diaria?</td>
+                        <td>
+                            <input type="radio" name="c-g-14" value="si" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-14" value="no" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="radio" name="c-g-14" value="na" class="form-check-input fs-5 mt-2">
+                        </td>
+                        <td>
+                            <input type="text" name="c-g-14-obs" placeholder="Agregar" class="form-control">
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <table class="form-table">
-                <tr>
-                    <th>No.</th>
-                    <th>Condición</th>
-                    <th>X</th>
-                </tr>
 
-                <tr>
-                    <td>1</td>
-                    <td>Demarcar y señalar el área de trabajo</td>
-                    <td><input type="checkbox" name="m-c-1"></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Uso de equipo de protección de caídas</td>
-                    <td><input type="checkbox" name="m-c-2"></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Capacitación y entrenamiento adecuado</td>
-                    <td><input type="checkbox" name="m-c-3"></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Instalar puntos de anclaje con resistencias de 5000lb</td>
-                    <td><input type="checkbox" name="m-c-4"></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Empleo de sistemas de acceso como escaleras</td>
-                    <td><input type="checkbox" name="m-c-5"></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Empleo de sistemas de acceso como plataformas</td>
-                    <td><input type="checkbox" name="m-c-6"></td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Efectuar conexión a tierra de equipos</td>
-                    <td><input type="checkbox" name="m-c-7"></td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Equipos y herramientas en buen estado</td>
-                    <td><input type="checkbox" name="m-c-8"></td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Realizar medición de la concentración de gases</td>
-                    <td><input type="checkbox" name="m-c-9"></td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>Mantenimiento preventido y correctivo de equipos</td>
-                    <td><input type="checkbox" name="m-c-10"></td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>Realización de pausas activas</td>
-                    <td><input type="checkbox" name="m-c-11"></td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>Medidas de prevención y/o contención de gases</td>
-                    <td><input type="checkbox" name="m-c-12"></td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td>Medidas higiénicas y atmosféricas</td>
-                    <td><input type="checkbox" name="m-c-13"></td>
-                </tr>
-                <tr>
-                    <td>14</td>
-                    <td>Aplicación de procedimientos de trabajo seguro</td>
-                    <td><input type="checkbox" name="m-c-14"></td>
-                </tr>
-                <tr>
-                    <td>15</td>
-                    <td>Ventilación natural permanente</td>
-                    <td><input type="checkbox" name="m-c-15"></td>
-                </tr>
-                <tr>
-                    <td>16</td>
-                    <td>Separar y disponer residuos</td>
-                    <td><input type="checkbox" name="m-c-16"></td>
-                </tr>
-                <tr>
-                    <td>17</td>
-                    <td>Uso de elementos de protección personal EPP </td>
-                    <td><input type="checkbox" name="m-c-17"></td>
-                </tr>
-                <tr>
-                    <td>18</td>
-                    <td>Disponer de las hojas de seguridad de los productos</td>
-                    <td><input type="checkbox" name="m-c-18"></td>
-                </tr>
-                <tr>
-                    <td>19</td>
-                    <td>Disponer de equipos de extinción del fuego</td>
-                    <td><input type="checkbox" name="m-c-19"></td>
-                </tr>
-                <tr>
-                    <td>20</td>
-                    <td>Disponer de sistemas de comunicación</td>
-                    <td><input type="checkbox" name="m-c-20"></td>
-                </tr>
-                <tr>
-                    <td>21</td>
-                    <td>Notificar a entidades de socorro retiro de panales</td>
-                    <td><input type="checkbox" name="m-c-21"></td>
-                </tr>
-                <tr>
-                    <td>22</td>
-                    <td>Autocuidado</td>
-                    <td><input type="checkbox" name="m-c-22"></td>
-                </tr>
-                <tr>
-                    <td>23</td>
-                    <td>Inspección vehicular o de moto</td>
-                    <td><input type="checkbox" name="m-c-23"></td>
-                </tr>
-                <tr>
-                    <td>24</td>
-                    <td>Reporte de Actos y Consecuencias inseguros</td>
-                    <td><input type="checkbox" name="m-c-24"></td>
-                </tr>
-                <tr>
-                    <td>25</td>
-                    <td>Detener actividad</td>
-                    <td><input type="checkbox" name="m-c-25"></td>
-                </tr>
-                <tr>
-                    <td>26</td>
-                    <td>Alinear cámaras telefónicas</td>
-                    <td><input type="checkbox" name="m-c-26"></td>
-                </tr>
-                <tr>
-                    <td>27</td>
-                    <td>Solicitar apoyo de área HSEQ</td>
-                    <td><input type="checkbox" name="m-c-27"></td>
-                </tr>
-                <tr>
-                    <td>28</td>
-                    <td>[OTRO]</td>
-                    <td><input type="text" name="m-c-28" placeholder="Agregar..."></td>
-                </tr>
-                
-            </table>
-
-            <h3>HERRAMIENTAS Y EQUIPOS</h3>
-            <div class="markall">
-                <h4>Marcar todas</h4>
-                <input type="checkbox" name="h-e-ma">
+            <h3 class="text-wrap fs-5">MEDIDAS DE CONTROL</h3>
+            <div class="d-flex mb-0">
+                <div class="d-flex flex-row p-2">
+                    <h4 class="fs-6">Marcar todas</h4>
+                    <input class="form-check-input mt-1 ms-1" type="checkbox" name="m-c-ma">
+                </div>
             </div>
-            <table class="form-table">
-                <tr>
-                    <th>No.</th>
-                    <th>Herramienta o Equipo</th>
-                    <th>X</th>
-                </tr>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered mb-5">
+                    <tr>
+                        <th class="no">No.</th>
+                        <th>Condición</th>
+                        <th class="agregar">X</th>
+                    </tr>
+    
+                    <tr>
+                        <td>1</td>
+                        <td>Demarcar y señalar el área de trabajo</td>
+                        <td><input type="checkbox" name="m-c-1" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Uso de equipo de protección de caídas</td>
+                        <td><input type="checkbox" name="m-c-2" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Capacitación y entrenamiento adecuado</td>
+                        <td><input type="checkbox" name="m-c-3" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Instalar puntos de anclaje con resistencias de 5000lb</td>
+                        <td><input type="checkbox" name="m-c-4" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Empleo de sistemas de acceso como escaleras</td>
+                        <td><input type="checkbox" name="m-c-5" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Empleo de sistemas de acceso como plataformas</td>
+                        <td><input type="checkbox" name="m-c-6" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Efectuar conexión a tierra de equipos</td>
+                        <td><input type="checkbox" name="m-c-7" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Equipos y herramientas en buen estado</td>
+                        <td><input type="checkbox" name="m-c-8" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Realizar medición de la concentración de gases</td>
+                        <td><input type="checkbox" name="m-c-9" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Mantenimiento preventido y correctivo de equipos</td>
+                        <td><input type="checkbox" name="m-c-10" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Realización de pausas activas</td>
+                        <td><input type="checkbox" name="m-c-11" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Medidas de prevención y/o contención de gases</td>
+                        <td><input type="checkbox" name="m-c-12" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Medidas higiénicas y atmosféricas</td>
+                        <td><input type="checkbox" name="m-c-13" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>Aplicación de procedimientos de trabajo seguro</td>
+                        <td><input type="checkbox" name="m-c-14" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>Ventilación natural permanente</td>
+                        <td><input type="checkbox" name="m-c-15" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>Separar y disponer residuos</td>
+                        <td><input type="checkbox" name="m-c-16" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>Uso de elementos de protección personal EPP </td>
+                        <td><input type="checkbox" name="m-c-17" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>Disponer de las hojas de seguridad de los productos</td>
+                        <td><input type="checkbox" name="m-c-18" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>Disponer de equipos de extinción del fuego</td>
+                        <td><input type="checkbox" name="m-c-19" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>Disponer de sistemas de comunicación</td>
+                        <td><input type="checkbox" name="m-c-20" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>Notificar a entidades de socorro retiro de panales</td>
+                        <td><input type="checkbox" name="m-c-21" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td>Autocuidado</td>
+                        <td><input type="checkbox" name="m-c-22" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td>Inspección vehicular o de moto</td>
+                        <td><input type="checkbox" name="m-c-23" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>Reporte de Actos y Consecuencias inseguros</td>
+                        <td><input type="checkbox" name="m-c-24" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>Detener actividad</td>
+                        <td><input type="checkbox" name="m-c-25" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td>Alinear cámaras telefónicas</td>
+                        <td><input type="checkbox" name="m-c-26" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td>Solicitar apoyo de área HSEQ</td>
+                        <td><input type="checkbox" name="m-c-27" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>28</td>
+                        <td>[ OTRO ]</td>
+                        <td><input type="text" name="m-c-28" placeholder="Agregar..." class="form-control"></td>
+                    </tr>
+                    
+                </table>
+            </div>
 
-                <tr>
-                    <td>1</td>
-                    <td>Pinzas</td>
-                    <td><input type="checkbox" name="h-e-1"></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Pelacables</td>
-                    <td><input type="checkbox" name="h-e-2"></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Alicates</td>
-                    <td><input type="checkbox" name="h-e-3"></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Corta Frio</td>
-                    <td><input type="checkbox" name="h-e-4"></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Destornillador</td>
-                    <td><input type="checkbox" name="h-e-5"></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Martillo</td>
-                    <td><input type="checkbox" name="h-e-6"></td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Ponchadora</td>
-                    <td><input type="checkbox" name="h-e-7"></td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Taladro</td>
-                    <td><input type="checkbox" name="h-e-8"></td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Dynatel</td>
-                    <td><input type="checkbox" name="h-e-9"></td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>Geómetro</td>
-                    <td><input type="checkbox" name="h-e-10"></td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>Megger</td>
-                    <td><input type="checkbox" name="h-e-11"></td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>Fusionadora</td>
-                    <td><input type="checkbox" name="h-e-12"></td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td>Bocina</td>
-                    <td><input type="checkbox" name="h-e-13"></td>
-                </tr>
-                <tr>
-                    <td>14</td>
-                    <td>[OTRO]</td>
-                    <td><input type="text" name="" placeholder="Agregar..."></td>
-                </tr>
-            </table>
+            <h3 class="text-wrap fs-5">HERRAMIENTAS Y EQUIPOS</h3>
+            <div class="d-flex mb-0">
+                <div class="d-flex flex-row p-2">
+                    <h4 class="fs-6">Marcar todas</h4>
+                    <input type="checkbox" name="h-e-ma" class="form-check-input mt-1 ms-1">
+                </div>  
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered mb-5">
+                    <tr>
+                        <th class="no">No.</th>
+                        <th>Herramienta o Equipo</th>
+                        <th class="agregar">X</th>
+                    </tr>
+    
+                    <tr>
+                        <td>1</td>
+                        <td>Pinzas</td>
+                        <td><input type="checkbox" name="h-e-1" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Pelacables</td>
+                        <td><input type="checkbox" name="h-e-2" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Alicates</td>
+                        <td><input type="checkbox" name="h-e-3" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Corta Frio</td>
+                        <td><input type="checkbox" name="h-e-4" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Destornillador</td>
+                        <td><input type="checkbox" name="h-e-5" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Martillo</td>
+                        <td><input type="checkbox" name="h-e-6" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Ponchadora</td>
+                        <td><input type="checkbox" name="h-e-7" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Taladro</td>
+                        <td><input type="checkbox" name="h-e-8" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Dynatel</td>
+                        <td><input type="checkbox" name="h-e-9" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Geómetro</td>
+                        <td><input type="checkbox" name="h-e-10" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Megger</td>
+                        <td><input type="checkbox" name="h-e-11" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Fusionadora</td>
+                        <td><input type="checkbox" name="h-e-12" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Bocina</td>
+                        <td><input type="checkbox" name="h-e-13" class="form-check-input mt-1 ms-1"></td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>[ OTRO ]</td>
+                        <td><input type="text" name="" placeholder="Agregar..." class="form-control"></td>
+                    </tr>
+                </table>
+            </div>
 
-            <h3>ESCALERAS</h3>
-            <table class="form-table">
-                <tr>
-                    <th>No.</th>
-                    <th>Condición</th>
-                    <th>DOBLE EXTENSIÓN (F1)</th>
-                    <th>DOBLE EXTENSIÓN (F2)</th>
-                    <th>TIJERA (ALUMINIO)</th>
-                    <th>ARTICULADA / TELESCÓPICA</th>
-                </tr>
+            <h3 class="text-wrap fs-5">ESCALERAS</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>No.</th>
+                        <th>Condición</th>
+                        <th>DOBLE EXTENSIÓN (F1)</th>
+                        <th>DOBLE EXTENSIÓN (F2)</th>
+                        <th>TIJERA (ALUMINIO)</th>
+                        <th>ARTICULADA / TELESCÓPICA</th>
+                    </tr>
+    
+                    <tr>
+                        <td>1</td>
+                        <td>Estado General</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Presencia de Grasa o Suciedad</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Escalones</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Peldaños</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Abrazaderas</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Tornillos</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Cuerda de extención</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Cuerda para vientos</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Polea</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Zapatas</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Arrastradores</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Seguros</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Etiquetas</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>Apoya postes</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
 
-                <tr>
-                    <td>1</td>
-                    <td>Estado General</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Presencia de Grasa o Suciedad</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Escalones</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Peldaños</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Abrazaderas</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Tornillos</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Cuerda de extención</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Cuerda para vientos</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Polea</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>Zapatas</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>Arrastradores</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>Seguros</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td>Etiquetas</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>14</td>
-                    <td>Apoya postes</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
 
-
-    <script src="js/app.js" type="text/javascript"></script>
+        <!-- ÓRDENES DE TRABAJO -->
+        <div class="container">
+            <h2>ÓRDENES DE TRABAJO</h2>
+        </div>
+    </div> 
+    <script src="js/app.js" type="module"></script>
+    <script src="js/bt/bootstrap.js" type="text/javascript"></script>
 </body>
 </html>
