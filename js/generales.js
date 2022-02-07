@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 /** APCD - JS 
  * 
  * 
 */
 
 export { datos };
+=======
+/** EXPORTS */
+export {datos} 
+
+
+>>>>>>> edb3bd4f4c2440ed14212e816cc19643f0331587
 
 /**--------------------------------------------------------|
  * --------------------- ARRAYS GLOBALES ------------------|
@@ -14,15 +21,21 @@ export { datos };
     ciudad: '',
     departamento: ''
 }
+<<<<<<< HEAD
 
 const ordenTrabajo = [];
 
+=======
+>>>>>>> edb3bd4f4c2440ed14212e816cc19643f0331587
 let condicionesGenerales = [];
 let medidasDeControl = [];
 let herramientasEquipos = [];
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> edb3bd4f4c2440ed14212e816cc19643f0331587
 const datos = new Array();
 datos['generales'] = datosGenerales;
 datos['condicionesGenerales'] = condicionesGenerales;
@@ -43,19 +56,31 @@ document.addEventListener('DOMContentLoaded', () =>{
         datosGenerales.ciudad = e.target.value;
 
         datos['generales'] = datosGenerales;
+<<<<<<< HEAD
         // console.log(datos);
+=======
+        console.log(datos);
+>>>>>>> edb3bd4f4c2440ed14212e816cc19643f0331587
     });
     fechaInput.addEventListener('input', e =>{
         datosGenerales.fecha = e.target.value;
 
         datos['generales'] = datosGenerales;
+<<<<<<< HEAD
         // console.log(datos);
+=======
+        console.log(datos);
+>>>>>>> edb3bd4f4c2440ed14212e816cc19643f0331587
     });
     departamentoInput.addEventListener('input', e =>{
         datosGenerales.departamento = e.target.value;
 
         datos['generales'] = datosGenerales;
+<<<<<<< HEAD
         // console.log(datos);
+=======
+        console.log(datos);
+>>>>>>> edb3bd4f4c2440ed14212e816cc19643f0331587
     });
 });
 
@@ -126,7 +151,11 @@ markallHE.addEventListener('change', marcarTodasHE);
 
 for(let i = 1; i <= 13; i++){
     let inputHE = document.querySelector(`input[name="h-e-${i}"]`);
+<<<<<<< HEAD
     //console.log(inputHE);
+=======
+    console.log(inputHE);
+>>>>>>> edb3bd4f4c2440ed14212e816cc19643f0331587
 
     let def = false;
     herramientasEquipos[i] = def;
