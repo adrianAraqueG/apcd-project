@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () =>{
         datosGenerales.ciudad = e.target.value;
 
         datos['generales'] = datosGenerales;
-        // console.log(datos);
+        console.log(datos);
     });
     fechaInput.addEventListener('input', e =>{
         datosGenerales.fecha = e.target.value;

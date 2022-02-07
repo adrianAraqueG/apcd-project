@@ -1,0 +1,2 @@
+BUGS A ARREGLAR
+ 1 - En versión móvil los placeholders e íconos del input fecha no aparecen
