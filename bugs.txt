@@ -3,3 +3,6 @@ BUGS A ARREGLAR
 
 MEJORAS AL ASPECTO
  1 - Mejorar el aspecto y alineación de los checkbox y radios en las tablas *** SIN SOLUCIONAR ***
+ 2 - Agregar membretes de la compañía *** SIN SOLUCIONAR ***
+ 3 - Mejorar aspecto de las tablas en General *** SIN SOLUCIONAR ***
+ 4 - Ajustar width de los modals *** SIN SOLUCIONAR ***
