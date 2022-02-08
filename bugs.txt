@@ -1,2 +1,5 @@
 BUGS A ARREGLAR
- 1 - En versión móvil los placeholders e íconos del input fecha no aparecen
+ 1 - En versión móvil los placeholders e íconos del input fecha no aparecen *** SIN SOLUCIONAR ***
+
+MEJORAS AL ASPECTO
+ 1 - Mejorar el aspecto y alineación de los checkbox y radios en las tablas *** SIN SOLUCIONAR ***

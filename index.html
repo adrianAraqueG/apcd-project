@@ -659,21 +659,304 @@
 
             <!-- ÓRDENES DE TRABAJO -->
             <h2 class="fs-3 mt-4 fw-bold">ÓRDENES DE TRABAJO</h2>
-            <div class="container-fluid mt-3" id="ordenesCont">
+            <div class="container-fluid mt-3" id="ordenes">
 
                 <div class="card mt-4">
                     <h5 class="card-header bg-primary text-light">Orden N#: <b>312686546</b></h5>
                     <div class="card-body">
+
                       <p class="card-text">Hora Inicial: <b>15:45</b> <br> Hora Final: <b>17:58</b></p>
-                      <a href="#" class="btn btn-primary">Ver y Editar</a>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary mb-2 mt-3" data-bs-toggle="modal" data-bs-target="#editOrdenModal">
+                            Ver y Editar
+                        </button>
+
                     </div>
                 </div>
 
             </div>
 
             <div class="d-grid gap-2">
-                <button class="btn btn-success mt-4 mb-3" type="button">Agregar Orden</button>
-              </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary mb-2 mt-3" data-bs-toggle="modal" data-bs-target="#addOrdenModal">
+                    Agregar Orden
+                </button>
+                
+                <!-- Modal Agregar -->
+                <div class="modal fade" id="addOrdenModal" tabindex="-1" aria-labelledby="addOrdenModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addOrdenModalLabel">Agregar Nueva Orden</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+
+                            <div class="modal-body">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="nOrden" placeholder="name@example.com">
+                                    <label for="nOrden">Número de Orden</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="time" class="form-control" id="hiOrden" placeholder="hora inicial">
+                                    <label for="hiOrden">Hora Inicial</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="time" class="form-control" id="hfOrden" placeholder="hora final">
+                                    <label for="hfOrden">Hora Final</label>
+                                </div>
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary">Crear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Modal Editar -->
+                <div class="modal fade" id="editOrdenModal" tabindex="-1" aria-labelledby="editOrdenModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editOrdenModalLabel">Editar Orden</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+
+                            <div class="modal-body">
+
+
+                                <!-- Info General -->
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="nOrden" placeholder="name@example.com">
+                                    <label for="nOrden">Número de Orden</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="time" class="form-control" id="hiOrden" placeholder="Hora Inicial">
+                                    <label for="hiOrden">Hora Inicial</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="time" class="form-control" id="hfOrden" placeholder="Hora Final">
+                                    <label for="hfOrden">Hora Final</label>
+                                </div>
+
+
+
+                                <!-- CONDICIONES ESPECÍFICAS -->
+                                <h3 class="text-wrap fs-5 fw-bold">CONDICIONES ESPECÍFICIAS DE LA TAREA</h3>
+                                <div class="d-flex mb-0">
+                                    <div class="d-flex flex-row p-2">
+                                        <h4 class="fs-6">Marcar todas</h4>
+                                        <input class="form-check-input mt-1 ms-1" type="checkbox" name="c-e-ma">
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered mb-5">
+                                        <tr>
+                                            <th class="no">No.</th>
+                                            <th>Condición</th>
+                                            <th class="input">X</th>
+                                        </tr>
+                        
+                                        <tr>
+                                            <td>1</td>
+                                            <td>¿Las condiciones climáticas son favorables para el desarrollo de la actividad?</td>
+                                            <td><input type="checkbox" name="c-e-1" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>¿Se realiza la reunión de análisis de riesgos y se comunica las medidas de control  a todos los trabajadores?</td>
+                                            <td><input type="checkbox" name="c-e-2" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>¿Todos los trabajadores autorizados conocen las medidas de precaución establecidas en la evaluación de riesgos?</td>
+                                            <td><input type="checkbox" name="c-e-3" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>¿Se ha instalado señalización preventiva que delimite el área de trabajo cinta, conos, señales, etc. Para aislar o restringir?</td>
+                                            <td><input type="checkbox" name="c-e-4" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>¿Se ha verificado que el método definido a subir la herramienta hacia el sitio de trabajo es seguro?</td>
+                                            <td><input type="checkbox" name="c-e-5" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>¿Se verificó puntos de anclaje por trabajor, el sistema de aseguramiento de escalera o estructura fija?</td>
+                                            <td><input type="checkbox" name="c-e-6" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>Efectuar conexión a tierra de equipos</td>
+                                            <td><input type="checkbox" name="c-e-7" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>¿Se utiliza sistema de ventilación mecánica?</td>
+                                            <td><input type="checkbox" name="c-e-8" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>9</td>
+                                            <td>¿Se cuenta con condiciones de seguridad para realizar el trabajo?</td>
+                                            <td><input type="checkbox" name="c-e-9" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>¿La ejecución de la actividad pone en peligro su seguridad o la de terceros?</td>
+                                            <td><input type="checkbox" name="c-e-10" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>11</td>
+                                            <td>¿Se cumple con las distancias de seguridad para adelantar labores en cercanías a líneas y/o equipos eléctricos energizados?</td>
+                                            <td><input type="checkbox" name="c-e-11" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>12</td>
+                                            <td>En caso de ser una actividad con riesgo eléctrico ¿Cumple con las 5 reglas de oro?</td>
+                                            <td><input type="checkbox" name="c-e-12" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>13</td>
+                                            <td>¿Se cuenta con un medio de comunicación?</td>
+                                            <td><input type="checkbox" name="c-e-13" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+
+                                <!-- ELEMENTOS DE PROTECCIÓN INDIVIDUAL -->
+                                <h3 class="text-wrap fs-5 fw-bold">ELEMENTOS DE PROTECCIÓN INDIVIDUAL</h3>
+                                <div class="d-flex mb-0">
+                                    <div class="d-flex flex-row p-2">
+                                        <h4 class="fs-6">Marcar todas</h4>
+                                        <input class="form-check-input mt-1 ms-1" type="checkbox" name="e-p-i-ma">
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered mb-5">
+                                        <tr>
+                                            <th class="no">No.</th>
+                                            <th>Condición</th>
+                                            <th class="input">X</th>
+                                        </tr>
+                        
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Casco</td>
+                                            <td><input type="checkbox" name="e-p-i-1" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Barbuquejo</td>
+                                            <td><input type="checkbox" name="e-p-i-2" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Overol</td>
+                                            <td><input type="checkbox" name="e-p-i-3" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Gafas</td>
+                                            <td><input type="checkbox" name="e-p-i-4" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Botas de Caucho</td>
+                                            <td><input type="checkbox" name="e-p-i-5" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>Botas Dieléctricas de Seguridad</td>
+                                            <td><input type="checkbox" name="e-p-i-6" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>Casco tipo II con Barbuquejo</td>
+                                            <td><input type="checkbox" name="e-p-i-7" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>Guantes Power Flex</td>
+                                            <td><input type="checkbox" name="e-p-i-8" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>9</td>
+                                            <td>Guantes de Vaqueta</td>
+                                            <td><input type="checkbox" name="e-p-i-9" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>Protección Auditiva Inserción</td>
+                                            <td><input type="checkbox" name="e-p-i-10" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>11</td>
+                                            <td>Protección Auditiva Copa</td>
+                                            <td><input type="checkbox" name="e-p-i-11" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>12</td>
+                                            <td>Chaleco Reflectivo</td>
+                                            <td><input type="checkbox" name="e-p-i-12" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>13</td>
+                                            <td>Arnés</td>
+                                            <td><input type="checkbox" name="e-p-i-13" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>14</td>
+                                            <td>Tie off</td>
+                                            <td><input type="checkbox" name="e-p-i-14" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>15</td>
+                                            <td>Eslinga de Posicionamiento</td>
+                                            <td><input type="checkbox" name="e-p-i-15" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>16</td>
+                                            <td>Eslinga en y</td>
+                                            <td><input type="checkbox" name="e-p-i-16" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>17</td>
+                                            <td>Mosquetón</td>
+                                            <td><input type="checkbox" name="e-p-i-17" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>18</td>
+                                            <td>Arrestador</td>
+                                            <td><input type="checkbox" name="e-p-i-18" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>19</td>
+                                            <td>Linea de vida</td>
+                                            <td><input type="checkbox" name="e-p-i-19" class="form-check-input mt-1 ms-1"></td>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
 
 
         </div>

@@ -1,4 +1,4 @@
-CONDICIONES GENERALES DE LA TAREA Y DEL PERSONAL
+CONDICIONES GENERALES DE LA TAREA Y DEL PERSONAL (c-g-)
     1 ¿El personal entiende las normas y prácticas de los procedimientos a seguir?
     2 ¿Se han lavado y/o desinfectado los EPPs, equipos de alturas, herramientas y materiales a utilizar?
     3 ¿El personal que va desarrollar los trabajos, antes de iniciar cada una de las actividades, ha realizado el respectivo lavado de manos con agua y jabón o gel antibacterial?
@@ -13,7 +13,7 @@ CONDICIONES GENERALES DE LA TAREA Y DEL PERSONAL
     ¿El tiempo de sueño ha sido el suficiente para realizar la labor?
     ¿Han consumido bebidas alcohólicas o sustancias alucinógenas en las últimas 24 horas?
     ¿Se le ha tomado al trabajador la toma de temperatura diaria?
-HERRAMIENTAS Y EQUPOS
+HERRAMIENTAS Y EQUPOS (h-e-)
     1 Pinzas
     2 Pelacables
     3 Alicates
@@ -28,7 +28,7 @@ HERRAMIENTAS Y EQUPOS
     12 Fusionadora
     13 Bocina
     14 [OTRO]
-MEDIDAS DE CONTROL
+MEDIDAS DE CONTROL (m-c-)
     1 Demarcar y señalar el área de trabajo
     2 Uso de equipo de protección de caídas
     3 Capacitación y entrenamiento adecuado
@@ -73,3 +73,141 @@ ESCALERAS
     13 Etiquetas
     14 Apoya postes
     15 [OBSERVACIONES]
+
+
+
+/***** DATOS RELACIONADOS A CADA ÓRDEN DE TRABAJO *****/
+
+ELEMENTOS DE PROTECCIÓN INDIVIDUAL (e-p-i-)
+    1 Casco
+    2 Barbuquejo
+    3 Overol
+    4 Gafas
+    5 Botas de Caucho
+    6 Botas Dieléctricas de Seguridad
+    7 Casco tipo II con Barbuquejo
+    8 Guantes Power Flex
+    9 Guantes de Vaqueta
+    10 Protección Auditiva Inserción
+    11 Protección Auditiva Copa
+    12 Chaleco Reflectivo
+    13 Arnés
+    14 Tie off
+    15 Eslinga de Posicionamiento
+    16 Eslinga en y
+    17 Mosquetón
+    18 Arrestador
+    19 Linea de vida
+
+CONDICIONES ESPECÍFICAS DE LA TAREA (c-e-)
+    1 ¿Las condiciones climáticas son favorables para el desarrollo de la actividad?
+    2 ¿Se realiza la reunión de análisis de riesgos y se comunica las medidas de control  a todos los trabajadores?
+    3 ¿Todos los trabajadores autorizados conocen las medidas de precaución establecidas en la evaluación de riesgos?
+    4 ¿Se ha instalado señalización preventiva que delimite el área de trabajo cinta, conos, señales, etc. Para aislar o restringir? 
+    5 ¿Se ha verificado que el método definido a subir la herramienta hacia el sitio de trabajo es seguro?
+    6 ¿Se verificó puntos de anclaje por trabajor, el sistema de aseguramiento de escalera o estructura fija?
+    7 ¿Se evalúan las condiciones atmosféricas mediante la medición de niveles de oxígeno, toxicidad e inflamabilidad?
+    8 ¿Se utiliza sistema de ventilación mecánica?
+    9 ¿Se cuenta con condiciones de seguridad para realizar el trabajo?
+    10 ¿La ejecución de la actividad pone en peligro su seguridad o la de terceros?
+    11 ¿Se cumple con las distancias de seguridad para adelantar labores en cercanías a líneas y/o equipos eléctricos energizados?
+    12 En caso de ser una actividad con riesgo eléctrico ¿Cumple con las 5 reglas de oro?
+    13 ¿Se cuenta con un medio de comunicación?
+
+PELIGROS Y RIESGOS
+    TAREAS DE ALTO RIESGO: {
+        1 Trabajos en Alturas > 1.50m
+        2 Espacios Confinados
+        3 Contacto con Redes Eléctricas
+        4 Excavaciones
+        5 Caliente, corte y soldadura
+        6 Sistema a presión
+        7 Izaje y Cargas Suspendidas
+    }
+
+    FÍSICOS: {
+        1 Ruido
+        2 Iluminación
+        3 Vibraciones
+        4 Radiación Ionizante
+        5 Radiación no Ionizante
+        6 Temperatura Extrema por Calor
+    }
+
+    BIOMECÁNICOS: {
+        1 Postura Prolongada
+        2 Postura Mantenida
+        3 Postura Forzada
+        4 Movimiento Repetitivo
+        5 Manejo Manual de Cargas
+        6 Esfuerzo
+    }
+
+    RIESGO PÚBLICO: {
+        1 Robos, atentados
+    }
+
+    ELÉCTRICO: {
+        1 Energía Alta Tensión
+        2 Energía Media Tensión
+        3 Energía Baja Tensión 
+        4 Energía Estática
+        5 Tecnológico (Exposición, derrame, fugas)
+    }
+
+    PSICOSOCIAL: {
+        1 Características de la tarea
+        2 Grupo social de trabajo
+        3 Organización del trabajo
+        4 Gestión de la Organización
+        5 Jornada de Trabajo
+    }
+
+    BIOLÓGICOS: {
+        1 Virus
+        2 Bacterias
+        3 Picaduras
+        4 Mordeduras
+        5 Picaduras
+        6 Hongos
+        7 Fluidos o excrementos
+    }
+
+    MECÁNICO: {
+        1 Manejo de Herramientas
+        2 Superficies/Herram. Cortantes
+        3 Proyección de Partículas
+        4 Partes en Movimiento
+    }
+
+    LOCATIVO: {
+        1 Condiciones de orden y aseo
+        2 Almacenamiento de materiales/sustancias
+        3 Superficies Regulares o Deslizantes
+        4 Caida de Objetos
+    }
+
+    ACCIDENTE DE TRÁNSITO: {
+        1 Transporte de Materiales o Insumos
+        2 Movilización Peatonal
+        3 Movilización Vehicular (Automóvil-Moto-Grúa)
+    }
+
+    FENÓMENOS NATURALES: {
+        1 Sismo
+        2 Terrenitis
+        3 Derrumbes
+        4 Lluvias
+    }
+
+    QUÍMICOS: {
+        1 Polvos Orgánicos
+        2 Polvos Inorgánicos
+        3 Gases y Vapores
+        4 Líquidos (niebla y rocío)
+        5 Humos metálicos
+        6 Humos NO metálicos
+        7 Material Particulado
+        8 Fibras
+    }
+
