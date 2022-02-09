@@ -65,7 +65,7 @@ class UI{
                 <h5 class="card-header bg-primary text-light">Orden N#: <b>${numero}</b></h5>
                 <div class="card-body">
 
-                <p class="card-text">Hora Inicial: <b>${horaInicial}</b> <br> Hora Final: <b>${horaFinal}</b></p>
+                <p class="card-text">Hora Inicial: <b>${horaInicial}</b> <br> Hora Final: <b>${horaFinal ? horaFinal : '--|--'}</b></p>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary mb-2 mt-3" data-bs-toggle="modal" data-bs-target="#editOrdenModal">
                         Ver y Editar
@@ -151,7 +151,7 @@ crearOrden.addEventListener('click', () =>{
         id: Date.now(),
         numero: nOrden.value,
         horaInicial: hiOrden.value,
-        horaFinal: hiOrden.value.length <= 0 ? false: hiOrden.value,
+        horaFinal: hfOrden.value.length <= 0 ? false: hfOrden.value,
         datosPropios: {
             eleProtInd: {
                 p1: false,
