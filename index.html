@@ -693,24 +693,26 @@
 
 
                             <div class="modal-body">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="nOrden" placeholder="name@example.com">
-                                    <label for="nOrden">Número de Orden</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="time" class="form-control" id="hiOrden" placeholder="hora inicial">
-                                    <label for="hiOrden">Hora Inicial</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="time" class="form-control" id="hfOrden" placeholder="hora final">
-                                    <label for="hfOrden">Hora Final</label>
-                                </div>
+                                <form action="" id="nuevaOrden">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="nOrden" placeholder="name@example.com">
+                                        <label for="nOrden">Número de Orden</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="time" class="form-control" id="hiOrden" placeholder="hora inicial">
+                                        <label for="hiOrden">Hora Inicial</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="time" class="form-control" id="hfOrden" placeholder="hora final">
+                                        <label for="hfOrden">Hora Final</label>
+                                    </div>
+                                </form>
                             </div>
 
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary">Crear</button>
+                                <button type="button" class="btn btn-primary" id="crearOrden">Crear</button>
                             </div>
                         </div>
                     </div>
