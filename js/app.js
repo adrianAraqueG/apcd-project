@@ -1,3 +1,3 @@
 import { datos as datosGenerales } from './generales.js';
-import { f as ordenes } from './ordenes.js';
+import { ordenes as ordenes } from './ordenes.js';
 
