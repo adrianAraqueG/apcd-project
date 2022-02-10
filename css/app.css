@@ -36,4 +36,6 @@ th .input{
     padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
+
+    width: 100%;
 }
