@@ -3,6 +3,7 @@
  *  -------------------------------------------------------|
  * */
 
+/** ---------- Clase Orden --------- */
 class Orden {
     constructor(){
         this.ordenes = [];
@@ -23,7 +24,11 @@ class Orden {
     }
 }
 
+
+
+/** --------- Clase UI -------- */
 class UI{
+    // Agrega alertas a los inputs
     static inputAlerta(tipo, child){
         console.log(child);
         if(tipo === 'error'){
@@ -31,6 +36,8 @@ class UI{
         }
     }
 
+
+    // Imprime alertas success y danger
     static imprimirAlerta(tipo, mensaje, elemento){
         if(tipo === 'success'){
             let divAlerta = document.createElement('div');
@@ -52,6 +59,8 @@ class UI{
         }
     }
 
+
+    // Imprime las órdenes que haya en la instancia
     static imprimirOrdenes(){
         this.limpiarDivOrdenes();
 
@@ -104,6 +113,8 @@ class UI{
         }
     }
 
+
+    // Limpia los objetos que haya dentro del contenedor de las órdenes
     static limpiarDivOrdenes(){
         const divOrdenes = document.querySelector('#ordenes');
 
@@ -144,10 +155,17 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 
 
-const crearOrden = document.querySelector('#crearOrden');
+const btnCrearOrden = document.querySelector('#btnCrearOrden');
 
 // Crea una nueva orden //
-crearOrden.addEventListener('click', () =>{
+btnCrearOrden.addEventListener('click', crearOrden); 
+
+
+/**--------------------------------------------------------|
+ * --------------------- FUNCIONES ------------------------|
+ *  -------------------------------------------------------|
+ * */
+function crearOrden(){
 
     const nOrden = document.querySelector('#nOrden');
     const hiOrden = document.querySelector('#hiOrden');
@@ -319,13 +337,9 @@ crearOrden.addEventListener('click', () =>{
 
     // imprimir de nuevo las ordenes
     UI.imprimirOrdenes();
-});
+};
 
 
-/**--------------------------------------------------------|
- * --------------------- FUNCIONES ------------------------|
- *  -------------------------------------------------------|
- * */
 
 function eliminarOrden(id){
     console.log('eliminando orden ', id);

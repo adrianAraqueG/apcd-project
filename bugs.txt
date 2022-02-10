@@ -6,3 +6,10 @@ MEJORAS AL ASPECTO
  2 - Agregar membretes de la compañía *** SIN SOLUCIONAR ***
  3 - Mejorar aspecto de las tablas en General *** SIN SOLUCIONAR ***
  4 - Ajustar width de los modals *** SIN SOLUCIONAR ***
+
+ COSAS A IMPLEMENTAR
+ 1 - Funcionalidad 'Agregar' para las tablas. *** SIN HACER ***
+ 2 - Funcionalidad 'Editar' *** SIN HACER *** 
+ 3 - Funcionalidad Convertir a PDF *** SIN HACER *** 
+    3.1 Llenar Formulario. 
+ 4 - 
