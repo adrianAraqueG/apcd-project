@@ -342,10 +342,15 @@ function crearOrden(){
 
 
 function eliminarOrden(id){
-    console.log('eliminando orden ', id);
-    ordenes.eliminarOrden(id);
-
-    UI.imprimirOrdenes();
     
-    console.log(ordenes);
+    const opcion = confirm(`¿Seguro quieres eliminar la orden #: ${id}?`);
+
+    if(opcion === true){
+        console.log('eliminando orden ', id);
+        ordenes.eliminarOrden(id);
+
+        UI.imprimirOrdenes();
+    
+        console.log(ordenes);
+    }
 }
