@@ -10,6 +10,7 @@ class Orden {
 
     addOrden(orden){
         this.ordenes = [...this.ordenes, orden];
+        console.log('añadiendo orden al objeto');
         console.log(this.ordenes);
     }
 
@@ -17,8 +18,8 @@ class Orden {
         return this.ordenes;
     }
 
-    deleteOrden(id){
-
+    eliminarOrden(id){
+        this.ordenes = this.ordenes.filter( orden => orden.id !== id);
     }
 }
 
@@ -54,28 +55,53 @@ class UI{
     static imprimirOrdenes(){
         this.limpiarDivOrdenes();
 
-        ordenes.getOrdenes().forEach(orden => {
-            const {horaInicial, horaFinal, id, numero} = orden;
-
-            const divOrden = document.createElement('div');
-            divOrden.classList.add('card', 'mt-4');
-            divOrden.dataset.id = id;
-
-            divOrden.innerHTML = `
-                <h5 class="card-header bg-primary text-light">Orden N#: <b>${numero}</b></h5>
-                <div class="card-body">
-
-                <p class="card-text">Hora Inicial: <b>${horaInicial}</b> <br> Hora Final: <b>${horaFinal ? horaFinal : '--|--'}</b></p>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary mb-2 mt-3" data-bs-toggle="modal" data-bs-target="#editOrdenModal">
-                        Ver y Editar
-                    </button>
-
-                </div>
-            `;
-
-            document.querySelector('#ordenes').appendChild(divOrden);
-        });
+        if(ordenes.getOrdenes().length > 0){
+            ordenes.getOrdenes().forEach(orden => {
+                const {horaInicial, horaFinal, id, numero} = orden;
+    
+                const divOrden = document.createElement('div');
+                divOrden.classList.add('card', 'mt-4');
+                divOrden.dataset.id = id;
+    
+                const cardHeader = document.createElement('h5');
+                cardHeader.classList.add('card-header', 'bg-primary', 'text-light');
+                cardHeader.innerHTML = `Orden N#: <b>${numero}</b>`;
+    
+                const cardBody = document.createElement('div');
+                cardBody.classList.add('card-body');
+    
+                    const cardText = document.createElement('p');
+                    cardText.classList.add('card-text');
+                    cardText.innerHTML = `Hora Inicial: <b>${horaInicial}</b> <br> Hora Final: <b>${horaFinal ? horaFinal : '--:--'}</b>`;
+    
+                    const btnEditar = document.createElement('button');
+                    btnEditar.classList.add('btn', 'btn-primary', 'mb-2', 'mt-3');
+                    btnEditar.textContent = 'Ver y Editar';
+                    btnEditar.setAttribute('type', 'button');
+                    btnEditar.setAttribute('data-bs-toggle', 'modal');
+                    btnEditar.setAttribute('data-bs-target', '#editOrdenModal');
+                    //btnEditar.onclick = editarOrden(id);
+    
+                    const btnEliminar = document.createElement('button');
+                    btnEliminar.classList.add('btn', 'btn-danger', 'mb-2', 'mt-3', 'ms-2');
+                    btnEliminar.textContent = 'Eliminar';
+                    btnEditar.setAttribute('type', 'button');
+                    btnEliminar.onclick = () => eliminarOrden(id);
+                
+                //Añadir al div padre
+                cardBody.appendChild(cardText);
+                cardBody.appendChild(btnEditar);
+                cardBody.appendChild(btnEliminar);
+    
+                divOrden.appendChild(cardHeader);
+                divOrden.appendChild(cardBody);
+                    
+    
+    
+                document.querySelector('#ordenes').appendChild(divOrden);
+                console.log('imprimiendo ordenes...');
+            });
+        }
     }
 
     static limpiarDivOrdenes(){
@@ -84,6 +110,8 @@ class UI{
         while(divOrdenes.firstChild){
             divOrdenes.removeChild(divOrdenes.firstChild);
         }
+
+        console.log('limpiando div ordenes...');
     }
 }
 
@@ -298,3 +326,12 @@ crearOrden.addEventListener('click', () =>{
  * --------------------- FUNCIONES ------------------------|
  *  -------------------------------------------------------|
  * */
+
+function eliminarOrden(id){
+    console.log('eliminando orden ', id);
+    ordenes.eliminarOrden(id);
+
+    UI.imprimirOrdenes();
+    
+    console.log(ordenes);
+}
