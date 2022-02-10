@@ -5,6 +5,15 @@
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
+body{
+    background: rgb(28,27,59) !important;
+    background: linear-gradient(90deg, rgba(28,27,59,1) 0%, rgba(14,98,170,1) 49%, rgba(0,212,255,1) 100%) !important;
+}
+
+.container{
+    border-radius: 10px;
+}
+
 .no{
     width: 0px;
     text-align: center;
