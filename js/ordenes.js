@@ -343,7 +343,7 @@ function crearOrden(){
 
 function eliminarOrden(id){
     
-    const opcion = confirm(`¿Seguro quieres eliminar la orden #: ${id}?`);
+    const opcion = confirm(`¿Quieres eliminar la orden ${id}?`);
 
     if(opcion === true){
         console.log('eliminando orden ', id);

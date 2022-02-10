@@ -19,3 +19,14 @@ th .input{
     width: 120px;
     text-align: center;
 }
+
+
+/* Input date */
+
+.input-date{
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    
+    width: 100%;
+}
