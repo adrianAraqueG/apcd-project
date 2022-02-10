@@ -19,6 +19,14 @@ class Orden {
         return this.ordenes;
     }
 
+    getOrden(idOrden){
+        for(const orden in this.ordenes){
+            if(this.ordenes[orden].id === idOrden){
+                return this.ordenes[orden];
+            }
+        }
+    }
+
     eliminarOrden(id){
         this.ordenes = this.ordenes.filter( orden => orden.id !== id);
     }
@@ -89,7 +97,7 @@ class UI{
                     btnEditar.setAttribute('type', 'button');
                     btnEditar.setAttribute('data-bs-toggle', 'modal');
                     btnEditar.setAttribute('data-bs-target', '#editOrdenModal');
-                    //btnEditar.onclick = editarOrden(id);
+                    btnEditar.onclick = () => editarOrden(id);
     
                     const btnEliminar = document.createElement('button');
                     btnEliminar.classList.add('btn', 'btn-danger', 'mb-2', 'mt-3', 'ms-2');
@@ -353,4 +361,19 @@ function eliminarOrden(id){
     
         console.log(ordenes);
     }
+}
+
+function editarOrden(idOrden){
+    console.log(`editando: ${idOrden}`);
+    const orden = ordenes.getOrden(idOrden);
+
+    // destructuring 1
+    const {id, numero, horaFinal, horaInicial} = orden;
+    // rellenar
+    document.querySelector('#edit-nOrden').value = numero;
+    document.querySelector('#edit-hfOrden').value = horaFinal;
+    document.querySelector('#edit-hiOrden').value = horaInicial;
+
+    // destructuring 2
+    //const {  } = orden;
 }
