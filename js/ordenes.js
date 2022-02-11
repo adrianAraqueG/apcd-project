@@ -397,10 +397,12 @@ function editarOrden(id){
     // rellenar y actualizar
     let i = 1;
     for( let pregunta in eleProtInd){ 
-        // rellenar
-
         let input = document.querySelector(`input[name="e-p-i-${i}"]`);
-        input.addEventListener('change', e =>{
+        // rellenar
+        input.checked = eleProtInd[pregunta];
+
+        // agregar listener
+        input.addEventListener('input', e =>{
             ordenTrabajoEditando.datosPropios.eleProtInd[pregunta];
         });
 
