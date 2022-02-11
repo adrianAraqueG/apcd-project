@@ -9,7 +9,7 @@ MEJORAS AL ASPECTO
 
  COSAS A IMPLEMENTAR
  1 - Funcionalidad 'Agregar' para las tablas. *** SIN HACER ***
- 2 - Funcionalidad 'Editar' *** SIN HACER *** 
+ 2 - Funcionalidad 'Editar' *** TERMINADA *** 
  3 - Funcionalidad Convertir a PDF *** SIN HACER *** 
     3.1 Llenar Formulario. 
  4 - 

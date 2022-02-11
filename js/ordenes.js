@@ -565,5 +565,10 @@ function editarOrden(id){
     document.querySelector('#guardarCambios').addEventListener('click', e =>{
         ordenes.editarOrden(ordenTrabajoEditando);
         console.log(ordenTrabajoEditando);
+        // imprimir alerta
+        const divAlerta = document.querySelector('#editBody');
+        UI.imprimirAlerta('success', 'Cambios guardados', divAlerta);
     });
+
+    
 }
