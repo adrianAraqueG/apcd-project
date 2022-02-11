@@ -27,6 +27,11 @@ class Orden {
         }
     }
 
+    editarOrden(ordenActualizada){
+        this.ordenes = this.ordenes.map( orden => orden.id === ordenActualizada.id ? ordenActualizada : orden);
+        UI.imprimirOrdenes();
+    }
+
     eliminarOrden(id){
         this.ordenes = this.ordenes.filter( orden => orden.id !== id);
     }
@@ -208,50 +213,50 @@ function crearOrden(){
         horaFinal: hfOrden.value.length <= 0 ? false: hfOrden.value,
         datosPropios: {
             eleProtInd: {
-                p1: false,
-                p2: false,
-                p3: false,
-                p4: false,
-                p5: false,
-                p6: false,
-                p7: false,
-                p8: false,
-                p9: false,
-                p10: false,
-                p11: false,
-                p12: false,
-                p13: false,
-                p14: false,
-                p15: false,
-                p16: false,
-                p17: false,
-                p18: false,
-                p19: false,
+                'e-p-i-1': false,
+                'e-p-i-2': false,
+                'e-p-i-3': false,
+                'e-p-i-4': false,
+                'e-p-i-5': false,
+                'e-p-i-6': false,
+                'e-p-i-7': false,
+                'e-p-i-8': false,
+                'e-p-i-9': false,
+                'e-p-i-10': false,
+                'e-p-i-11': false,
+                'e-p-i-12': false,
+                'e-p-i-13': false,
+                'e-p-i-14': false,
+                'e-p-i-15': false,
+                'e-p-i-16': false,
+                'e-p-i-17': false,
+                'e-p-i-18': false,
+                'e-p-i-19': false,
             },
             condEsp: {
-                p1: false,
-                p2: false,
-                p3: false,
-                p4: false,
-                p5: false,
-                p6: false,
-                p7: false,
-                p8: false,
-                p9: false,
-                p10: false,
-                p11: false,
-                p12: false,
-                p13: false,
+                'c-e-1': false,
+                'c-e-2': false,
+                'c-e-3': false,
+                'c-e-4': false,
+                'c-e-5': false,
+                'c-e-6': false,
+                'c-e-7': false,
+                'c-e-8': false,
+                'c-e-9': false,
+                'c-e-10': false,
+                'c-e-11': false,
+                'c-e-12': false,
+                'c-e-13': false,
             },
             peligrosRiesgos: {
                 tareasAltoRiesgo: {
-                    p1: false,
-                    p2: false,
-                    p3: false,
-                    p4: false,
-                    p5: false,
-                    p6: false,
-                    p7: false,
+                    't-a-r-1': false,
+                    't-a-r-2': false,
+                    't-a-r-3': false,
+                    't-a-r-4': false,
+                    't-a-r-5': false,
+                    't-a-r-6': false,
+                    't-a-r-7': false,
                 },
                 fisicos: {
                     p1: false,
@@ -363,17 +368,184 @@ function eliminarOrden(id){
     }
 }
 
-function editarOrden(idOrden){
-    console.log(`editando: ${idOrden}`);
-    const orden = ordenes.getOrden(idOrden);
+function editarOrden(id){
+    console.log(`editando: ${id}`);
+    const orden = ordenes.getOrden(id);
 
     // destructuring 1
-    const {id, numero, horaFinal, horaInicial} = orden;
-    // rellenar
+    const {numero, horaFinal, horaInicial} = orden;
+    // rellenar datos generales
     document.querySelector('#edit-nOrden').value = numero;
     document.querySelector('#edit-hfOrden').value = horaFinal;
     document.querySelector('#edit-hiOrden').value = horaInicial;
+    // listeners
+    document.querySelector('#edit-nOrden').addEventListener('input', e =>{
+        ordenTrabajoEditando.numero = e.target.value;
+        console.log('numero de orden cambiado: ');
+    });
+    document.querySelector('#edit-hfOrden').addEventListener('input', e =>{
+        ordenTrabajoEditando.horaFinal = e.target.value;
+    });
+    document.querySelector('#edit-hiOrden').addEventListener('input', e =>{
+        ordenTrabajoEditando.horaInicial = e.target.value;
+    });
 
-    // destructuring 2
-    //const {  } = orden;
+
+
+    // destructuring / E - P - I
+    const { datosPropios: { eleProtInd } } = orden;
+    // rellenar y actualizar
+    let i = 1;
+    for( let pregunta in eleProtInd){ 
+        // rellenar
+
+        let input = document.querySelector(`input[name="e-p-i-${i}"]`);
+        input.addEventListener('change', e =>{
+            ordenTrabajoEditando.datosPropios.eleProtInd[pregunta];
+        });
+
+        i = i + 1;
+    }
+
+
+
+
+
+
+    let ordenTrabajoEditando = {
+        id: id,
+        numero: numero,
+        horaInicial: horaInicial,
+        horaFinal: horaFinal,
+        datosPropios: {
+            eleProtInd: {
+                'e-p-i-1': false,
+                'e-p-i-2': false,
+                'e-p-i-3': false,
+                'e-p-i-4': false,
+                'e-p-i-5': false,
+                'e-p-i-6': false,
+                'e-p-i-7': false,
+                'e-p-i-8': false,
+                'e-p-i-9': false,
+                'e-p-i-10': false,
+                'e-p-i-11': false,
+                'e-p-i-12': false,
+                'e-p-i-13': false,
+                'e-p-i-14': false,
+                'e-p-i-15': false,
+                'e-p-i-16': false,
+                'e-p-i-17': false,
+                'e-p-i-18': false,
+                'e-p-i-19': false,
+            },
+            condEsp: {
+                'c-e-1': false,
+                'c-e-2': false,
+                'c-e-3': false,
+                'c-e-4': false,
+                'c-e-5': false,
+                'c-e-6': false,
+                'c-e-7': false,
+                'c-e-8': false,
+                'c-e-9': false,
+                'c-e-10': false,
+                'c-e-11': false,
+                'c-e-12': false,
+                'c-e-13': false,
+            },
+            peligrosRiesgos: {
+                tareasAltoRiesgo: {
+                    't-a-r-1': false,
+                    't-a-r-2': false,
+                    't-a-r-3': false,
+                    't-a-r-4': false,
+                    't-a-r-5': false,
+                    't-a-r-6': false,
+                    't-a-r-7': false,
+                },
+                fisicos: {
+                    p1: false,
+                    p2: false,
+                    p3: false,
+                    p4: false,
+                    p5: false,
+                    p6: false,
+                },
+                biomecanicos: {
+                    p1: false,
+                    p2: false,
+                    p3: false,
+                    p4: false,
+                    p5: false,
+                    p6: false,
+                },
+                riesgoPublico: {
+                    p1: false,
+                },
+                electrico: {
+                    p1: false,
+                    p2: false,
+                    p3: false,
+                    p4: false,
+                    p5: false,
+                },
+                psicosocial: {
+                    p1: false,
+                    p2: false,
+                    p3: false,
+                    p4: false,
+                    p5: false,
+                },
+                biologicos: {
+                    p1: false,
+                    p2: false,
+                    p3: false,
+                    p4: false,
+                    p5: false,
+                    p6: false,
+                    p7: false,
+                },
+                mecanico: {
+                    p1: false,
+                    p2: false,
+                    p3: false,
+                    p4: false,
+                },
+                locativo: {
+                    p1: false,
+                    p2: false,
+                    p3: false,
+                    p4: false,
+                },
+                accTransito: {
+                    p1: false,
+                    p2: false,
+                    p3: false,
+                },
+                fenoNaturales: {
+                    p1: false,
+                    p2: false,
+                    p3: false,
+                    p4: false,
+                },
+                quimicos: {
+                    p1: false,
+                    p2: false,
+                    p3: false,
+                    p4: false,
+                    p5: false,
+                    p6: false,
+                    p7: false,
+                    p8: false,
+                },
+            }
+        }
+    }
+    
+    //actualizar en la clase
+    document.querySelector('#guardarCambios').addEventListener('click', e =>{
+        ordenes.editarOrden(ordenTrabajoEditando);
+        console.log(ordenTrabajoEditando);
+    });
 }
