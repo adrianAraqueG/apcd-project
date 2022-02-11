@@ -390,30 +390,6 @@ function editarOrden(id){
         ordenTrabajoEditando.horaInicial = e.target.value;
     });
 
-
-
-    // destructuring / E - P - I
-    const { datosPropios: { eleProtInd } } = orden;
-    // rellenar y actualizar
-    let i = 1;
-    for( let pregunta in eleProtInd){ 
-        let input = document.querySelector(`input[name="e-p-i-${i}"]`);
-        // rellenar
-        input.checked = eleProtInd[pregunta];
-
-        // agregar listener
-        input.addEventListener('input', e =>{
-            ordenTrabajoEditando.datosPropios.eleProtInd[pregunta];
-        });
-
-        i = i + 1;
-    }
-
-
-
-
-
-
     let ordenTrabajoEditando = {
         id: id,
         numero: numero,
@@ -544,6 +520,46 @@ function editarOrden(id){
             }
         }
     }
+
+    // destructuring / E - P - I
+    const { datosPropios: { eleProtInd } } = orden;
+    // rellenar y actualizar
+    let it1 = 1;
+    for( let pregunta in eleProtInd){ 
+        let input = document.querySelector(`input[name="e-p-i-${it1}"]`);
+
+        // agregar listener
+        input.addEventListener('input', e =>{
+            ordenTrabajoEditando.datosPropios.eleProtInd[pregunta] = e.target.checked;
+        });
+
+        // rellenar
+        input.checked = eleProtInd[pregunta];
+        ordenTrabajoEditando.datosPropios.eleProtInd[pregunta] = eleProtInd[pregunta];
+
+        it1 = it1 + 1;
+    }
+
+    // destructuring / C - E
+    const { datosPropios: { condEsp } } = orden;
+    // rellenar y actualizar
+    let it2 = 1;
+    for( let pregunta in condEsp){ 
+        let input = document.querySelector(`input[name="c-e-${it2}"]`);
+        console.log(input);
+
+        // agregar listener
+        input.addEventListener('input', e =>{
+            ordenTrabajoEditando.datosPropios.condEsp[pregunta] = e.target.checked;
+        });
+
+        // rellenar
+        input.checked = condEsp[pregunta];
+        ordenTrabajoEditando.datosPropios.condEsp[pregunta] = condEsp[pregunta];
+
+        it2 = it2 + 1;
+    }
+
     
     //actualizar en la clase
     document.querySelector('#guardarCambios').addEventListener('click', e =>{
