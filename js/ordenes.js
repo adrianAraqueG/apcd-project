@@ -28,10 +28,10 @@ class Orden {
     }
 
     editarOrden(ordenActualizada){
+        console.log(ordenActualizada);
         for( let orden in this.ordenes ){
-            if(orden.id === this.ordenes){
-                orden = ordenActualizada;
-                return;
+            if(this.ordenes[orden].id === ordenActualizada.id){
+                this.ordenes[orden] = ordenActualizada;
             }
         };
 
@@ -385,15 +385,203 @@ function eliminarOrden(id){
 
 
 
-
 function editarOrden(id){
-    console.log(`editando: ${id}`);
+    console.log('editando: ', id);
 
-    document.querySelector('#guardarCambios').removeEventListener('input', actualizar, false);
-    document.querySelector('#guardarCambios').addEventListener('input', actualizar);
-    
-    function actualizar(){
-        console.log(id);
+    const orden = ordenes.getOrden(id);
+    const {numero, horaFinal, horaInicial} = orden;
+    const {datosPropios} = orden;
+
+    document.querySelector('#edit-nOrden').value = numero;
+    document.querySelector('#edit-hiOrden').value = horaInicial;
+    document.querySelector('#edit-hfOrden').value = horaFinal;
+
+    let c1 = 1
+    for(let valor in datosPropios.condEsp){
+        const input = document.querySelector(`input[name="c-e-${c1}"]`);
+        input.checked = datosPropios.condEsp[`c-e-${c1}`];
+
+        c1 = c1 + 1;
+    }
+    let c2 = 1
+    for(let valor in datosPropios.eleProtInd){
+        const input = document.querySelector(`input[name="e-p-i-${c2}"]`);
+        input.checked = datosPropios.eleProtInd[`e-p-i-${c2}`];
+
+        c2 = c2 + 1;
     }
 
+    // Listeners
+    const btnGuardarCambios = document.querySelector('#guardarCambios');
+    btnGuardarCambios.addEventListener('click', actualizar);
+    function actualizar(e){
+        if(confirm('está por guardar')){
+
+            const ordenEditada = {
+                id,
+                numero: document.querySelector('#edit-nOrden').value,
+                horaInicial: document.querySelector('#edit-hiOrden').value,
+                horaFinal: document.querySelector('#edit-hfOrden').value,
+                datosPropios: {
+                    eleProtInd: {
+                        'e-p-i-1': false,
+                        'e-p-i-2': false,
+                        'e-p-i-3': false,
+                        'e-p-i-4': false,
+                        'e-p-i-5': false,
+                        'e-p-i-6': false,
+                        'e-p-i-7': false,
+                        'e-p-i-8': false,
+                        'e-p-i-9': false,
+                        'e-p-i-10': false,
+                        'e-p-i-11': false,
+                        'e-p-i-12': false,
+                        'e-p-i-13': false,
+                        'e-p-i-14': false,
+                        'e-p-i-15': false,
+                        'e-p-i-16': false,
+                        'e-p-i-17': false,
+                        'e-p-i-18': false,
+                        'e-p-i-19': false,
+                    },
+                    condEsp: {
+                        'c-e-1': false,
+                        'c-e-2': false,
+                        'c-e-3': false,
+                        'c-e-4': false,
+                        'c-e-5': false,
+                        'c-e-6': false,
+                        'c-e-7': false,
+                        'c-e-8': false,
+                        'c-e-9': false,
+                        'c-e-10': false,
+                        'c-e-11': false,
+                        'c-e-12': false,
+                        'c-e-13': false,
+                    },
+                    peligrosRiesgos: {
+                        tareasAltoRiesgo: {
+                            't-a-r-1': false,
+                            't-a-r-2': false,
+                            't-a-r-3': false,
+                            't-a-r-4': false,
+                            't-a-r-5': false,
+                            't-a-r-6': false,
+                            't-a-r-7': false,
+                        },
+                        fisicos: {
+                            p1: false,
+                            p2: false,
+                            p3: false,
+                            p4: false,
+                            p5: false,
+                            p6: false,
+                        },
+                        biomecanicos: {
+                            p1: false,
+                            p2: false,
+                            p3: false,
+                            p4: false,
+                            p5: false,
+                            p6: false,
+                        },
+                        riesgoPublico: {
+                            p1: false,
+                        },
+                        electrico: {
+                            p1: false,
+                            p2: false,
+                            p3: false,
+                            p4: false,
+                            p5: false,
+                        },
+                        psicosocial: {
+                            p1: false,
+                            p2: false,
+                            p3: false,
+                            p4: false,
+                            p5: false,
+                        },
+                        biologicos: {
+                            p1: false,
+                            p2: false,
+                            p3: false,
+                            p4: false,
+                            p5: false,
+                            p6: false,
+                            p7: false,
+                        },
+                        mecanico: {
+                            p1: false,
+                            p2: false,
+                            p3: false,
+                            p4: false,
+                        },
+                        locativo: {
+                            p1: false,
+                            p2: false,
+                            p3: false,
+                            p4: false,
+                        },
+                        accTransito: {
+                            p1: false,
+                            p2: false,
+                            p3: false,
+                        },
+                        fenoNaturales: {
+                            p1: false,
+                            p2: false,
+                            p3: false,
+                            p4: false,
+                        },
+                        quimicos: {
+                            p1: false,
+                            p2: false,
+                            p3: false,
+                            p4: false,
+                            p5: false,
+                            p6: false,
+                            p7: false,
+                            p8: false,
+                        },
+                    }
+                }
+            }
+
+            let c1 = 1
+            for(let valor in datosPropios.condEsp){
+                const input = document.querySelector(`input[name="c-e-${c1}"]`);
+                ordenEditada.datosPropios.condEsp[`c-e-${c1}`] = input.checked;
+
+                c1 = c1 + 1;
+            }
+
+            let c2 = 1
+            for(let valor in datosPropios.eleProtInd){
+                const input = document.querySelector(`input[name="e-p-i-${c2}"]`);
+                ordenEditada.datosPropios.eleProtInd[`e-p-i-${c2}`] = input.checked;
+
+                c2 = c2 + 1;
+            }
+
+            ordenes.editarOrden(ordenEditada);
+            btnCerrar1.click();
+        } 
+    }
+
+    // cuando cerramos...
+    const btnCerrar1 = document.querySelector('#cerrarModal1');
+    const btnCerrar2 = document.querySelector('#cerrarModal2');
+    btnCerrar1.addEventListener('click', cerrar);
+    btnCerrar2.addEventListener('click', cerrar);
+
+    function cerrar(){
+        // Borrar listeners
+        console.log('Quitando listeners...');
+        console.log('Ordenes Generales: ');
+        console.log(ordenes.getOrdenes());
+        btnGuardarCambios.removeEventListener('click', actualizar, false);
+        btnCerrar1.removeEventListener('click', cerrar, false);
+        btnCerrar2.removeEventListener('click', cerrar, false);
+    }
 }
