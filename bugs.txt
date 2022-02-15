@@ -12,4 +12,4 @@ MEJORAS AL ASPECTO
  2 - Funcionalidad 'Editar' *** TERMINADA *** 
  3 - Funcionalidad Convertir a PDF *** SIN HACER *** 
     3.1 Llenar Formulario. 
- 4 - 
+ 4 - Eliminar los eventListeners de la creación de Órdenes ** SIN HACER **

@@ -28,8 +28,15 @@ class Orden {
     }
 
     editarOrden(ordenActualizada){
-        this.ordenes = this.ordenes.map( orden => orden.id === ordenActualizada.id ? ordenActualizada : orden);
+        for( let orden in this.ordenes ){
+            if(orden.id === this.ordenes){
+                orden = ordenActualizada;
+                return;
+            }
+        };
+
         UI.imprimirOrdenes();
+        console.log(this.ordenes);
     }
 
     eliminarOrden(id){
@@ -102,13 +109,13 @@ class UI{
                     btnEditar.setAttribute('type', 'button');
                     btnEditar.setAttribute('data-bs-toggle', 'modal');
                     btnEditar.setAttribute('data-bs-target', '#editOrdenModal');
-                    btnEditar.onclick = () => editarOrden(id);
+                    btnEditar.onclick = () => {editarOrden(id)};
     
                     const btnEliminar = document.createElement('button');
                     btnEliminar.classList.add('btn', 'btn-danger', 'mb-2', 'mt-3', 'ms-2');
                     btnEliminar.textContent = 'Eliminar';
                     btnEditar.setAttribute('type', 'button');
-                    btnEliminar.onclick = () => eliminarOrden(id);
+                    btnEliminar.onclick = () => {eliminarOrden(id)};
                 
                 //Añadir al div padre
                 cardBody.appendChild(cardText);
@@ -122,6 +129,7 @@ class UI{
     
                 document.querySelector('#ordenes').appendChild(divOrden);
                 //console.log('imprimiendo ordenes...');
+                //console.log(divOrden);
             });
         }
     }
@@ -178,23 +186,28 @@ btnCrearOrden.addEventListener('click', crearOrden);
  * --------------------- FUNCIONES ------------------------|
  *  -------------------------------------------------------|
  * */
+
+let c = 0;
 function crearOrden(){
 
     const nOrden = document.querySelector('#nOrden');
     const hiOrden = document.querySelector('#hiOrden');
     const hfOrden = document.querySelector('#hfOrden');
 
-    nOrden.addEventListener('input', () =>{
-        if(nOrden.classList.contains('is-invalid')){
-            nOrden.classList.remove('is-invalid');
-        }
-    });
-
-    hiOrden.addEventListener('input', () =>{
-        if(hiOrden.classList.contains('is-invalid')){
-            hiOrden.classList.remove('is-invalid');
-        }
-    });
+    if(c <= 0){
+        nOrden.addEventListener('input', () =>{
+            if(nOrden.classList.contains('is-invalid')){
+                nOrden.classList.remove('is-invalid');
+            }
+            console.log('nOden');
+        });
+    
+        hiOrden.addEventListener('input', () =>{
+            if(hiOrden.classList.contains('is-invalid')){
+                hiOrden.classList.remove('is-invalid');
+            }
+        });
+    }
 
     // validar campos
     if(nOrden.value === ''){
@@ -350,6 +363,8 @@ function crearOrden(){
 
     // imprimir de nuevo las ordenes
     UI.imprimirOrdenes();
+
+    c = c + 1;
 };
 
 
@@ -370,23 +385,15 @@ function eliminarOrden(id){
 
 
 
-let counter = 0;
+
 function editarOrden(id){
     console.log(`editando: ${id}`);
 
-    let obj = {valor: false};
-    console.log('primer valor');
-    console.log(obj);
-
-    const btnGuardarObj = document.querySelector('#guardarCambios');
-    btnGuardarObj.addEventListener('click', guardar);
-
-    function guardar(){
-        obj = {valor: true};
-        console.log('segundo valor');
-        console.log(obj);
-
-        btnGuardarObj.removeEventListener('click', guardar, false);
+    document.querySelector('#guardarCambios').removeEventListener('input', actualizar, false);
+    document.querySelector('#guardarCambios').addEventListener('input', actualizar);
+    
+    function actualizar(){
+        console.log(id);
     }
-    counter = counter + 1
+
 }
