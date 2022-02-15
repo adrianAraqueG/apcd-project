@@ -11,8 +11,8 @@ class Orden {
 
     addOrden(orden){
         this.ordenes = [...this.ordenes, orden];
-        console.log('añadiendo orden al objeto');
-        console.log(this.ordenes);
+        //console.log('añadiendo orden al objeto');
+        //console.log(this.ordenes);
     }
 
     getOrdenes(){
@@ -121,7 +121,7 @@ class UI{
     
     
                 document.querySelector('#ordenes').appendChild(divOrden);
-                console.log('imprimiendo ordenes...');
+                //console.log('imprimiendo ordenes...');
             });
         }
     }
@@ -135,7 +135,7 @@ class UI{
             divOrdenes.removeChild(divOrdenes.firstChild);
         }
 
-        console.log('limpiando div ordenes...');
+        //console.log('limpiando div ordenes...');
     }
 }
 
@@ -373,212 +373,20 @@ function eliminarOrden(id){
 let counter = 0;
 function editarOrden(id){
     console.log(`editando: ${id}`);
-    const orden = ordenes.getOrden(id);
 
-    // destructuring 1
-    const {numero, horaFinal, horaInicial} = orden;
-    // rellenar datos generales
-    document.querySelector('#edit-nOrden').value = numero;
-    document.querySelector('#edit-hfOrden').value = horaFinal;
-    document.querySelector('#edit-hiOrden').value = horaInicial;
-    // listeners
-    document.querySelector('#edit-nOrden').addEventListener('input', e =>{
-        ordenTrabajoEditando.numero = e.target.value;
-        console.log('numero de orden cambiado: ');
-    });
-    document.querySelector('#edit-hfOrden').addEventListener('input', e =>{
-        ordenTrabajoEditando.horaFinal = e.target.value;
-    });
-    document.querySelector('#edit-hiOrden').addEventListener('input', e =>{
-        ordenTrabajoEditando.horaInicial = e.target.value;
-    });
+    let obj = {valor: false};
+    console.log('primer valor');
+    console.log(obj);
 
-    let ordenTrabajoEditando = {
-        id: id,
-        numero: numero,
-        horaInicial: horaInicial,
-        horaFinal: horaFinal,
-        datosPropios: {
-            eleProtInd: {
-                'e-p-i-1': false,
-                'e-p-i-2': false,
-                'e-p-i-3': false,
-                'e-p-i-4': false,
-                'e-p-i-5': false,
-                'e-p-i-6': false,
-                'e-p-i-7': false,
-                'e-p-i-8': false,
-                'e-p-i-9': false,
-                'e-p-i-10': false,
-                'e-p-i-11': false,
-                'e-p-i-12': false,
-                'e-p-i-13': false,
-                'e-p-i-14': false,
-                'e-p-i-15': false,
-                'e-p-i-16': false,
-                'e-p-i-17': false,
-                'e-p-i-18': false,
-                'e-p-i-19': false,
-            },
-            condEsp: {
-                'c-e-1': false,
-                'c-e-2': false,
-                'c-e-3': false,
-                'c-e-4': false,
-                'c-e-5': false,
-                'c-e-6': false,
-                'c-e-7': false,
-                'c-e-8': false,
-                'c-e-9': false,
-                'c-e-10': false,
-                'c-e-11': false,
-                'c-e-12': false,
-                'c-e-13': false,
-            },
-            peligrosRiesgos: {
-                tareasAltoRiesgo: {
-                    't-a-r-1': false,
-                    't-a-r-2': false,
-                    't-a-r-3': false,
-                    't-a-r-4': false,
-                    't-a-r-5': false,
-                    't-a-r-6': false,
-                    't-a-r-7': false,
-                },
-                fisicos: {
-                    p1: false,
-                    p2: false,
-                    p3: false,
-                    p4: false,
-                    p5: false,
-                    p6: false,
-                },
-                biomecanicos: {
-                    p1: false,
-                    p2: false,
-                    p3: false,
-                    p4: false,
-                    p5: false,
-                    p6: false,
-                },
-                riesgoPublico: {
-                    p1: false,
-                },
-                electrico: {
-                    p1: false,
-                    p2: false,
-                    p3: false,
-                    p4: false,
-                    p5: false,
-                },
-                psicosocial: {
-                    p1: false,
-                    p2: false,
-                    p3: false,
-                    p4: false,
-                    p5: false,
-                },
-                biologicos: {
-                    p1: false,
-                    p2: false,
-                    p3: false,
-                    p4: false,
-                    p5: false,
-                    p6: false,
-                    p7: false,
-                },
-                mecanico: {
-                    p1: false,
-                    p2: false,
-                    p3: false,
-                    p4: false,
-                },
-                locativo: {
-                    p1: false,
-                    p2: false,
-                    p3: false,
-                    p4: false,
-                },
-                accTransito: {
-                    p1: false,
-                    p2: false,
-                    p3: false,
-                },
-                fenoNaturales: {
-                    p1: false,
-                    p2: false,
-                    p3: false,
-                    p4: false,
-                },
-                quimicos: {
-                    p1: false,
-                    p2: false,
-                    p3: false,
-                    p4: false,
-                    p5: false,
-                    p6: false,
-                    p7: false,
-                    p8: false,
-                },
-            }
-        }
+    const btnGuardarObj = document.querySelector('#guardarCambios');
+    btnGuardarObj.addEventListener('click', guardar);
+
+    function guardar(){
+        obj = {valor: true};
+        console.log('segundo valor');
+        console.log(obj);
+
+        btnGuardarObj.removeEventListener('click', guardar, false);
     }
-
-    // destructuring / E - P - I
-    const { datosPropios: { eleProtInd } } = orden;
-    // rellenar y actualizar
-    let it1 = 1;
-    for( let pregunta in eleProtInd){ 
-        let input = document.querySelector(`input[name="e-p-i-${it1}"]`);
-
-        // agregar listener
-        input.addEventListener('input', e =>{
-            ordenTrabajoEditando.datosPropios.eleProtInd[pregunta] = e.target.checked;
-        });
-
-        // rellenar
-        input.checked = eleProtInd[pregunta];
-        ordenTrabajoEditando.datosPropios.eleProtInd[pregunta] = eleProtInd[pregunta];
-
-        it1 = it1 + 1;
-    }
-
-    // destructuring / C - E
-    const { datosPropios: { condEsp } } = orden;
-    // rellenar y actualizar
-    let it2 = 1;
-    for( let pregunta in condEsp){ 
-        let input = document.querySelector(`input[name="c-e-${it2}"]`);
-        console.log(input);
-
-        // agregar listener
-        input.addEventListener('input', e =>{
-            ordenTrabajoEditando.datosPropios.condEsp[pregunta] = e.target.checked;
-        });
-
-        // rellenar
-        input.checked = condEsp[pregunta];
-        ordenTrabajoEditando.datosPropios.condEsp[pregunta] = condEsp[pregunta];
-
-        it2 = it2 + 1;
-    }
-
-    // guardar en la clase
-    const btnGuardarCambios = document.querySelector('#guardarCambios');
-    if(counter <= 0){
-        btnGuardarCambios.addEventListener('click', () =>{ guardarCambios() });
-    }
-
-        function guardarCambios(){
-            const opcion = confirm('¿Quieres guardar los cambios?');
-
-            if(opcion){
-                ordenes.editarOrden(ordenTrabajoEditando);
-                document.querySelector('#cerrarModal').click();
-            }
-        }
-
-
-
-    counter = counter + 1;
+    counter = counter + 1
 }
