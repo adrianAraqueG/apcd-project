@@ -11,8 +11,6 @@ class Orden {
 
     addOrden(orden){
         this.ordenes = [...this.ordenes, orden];
-        //console.log('añadiendo orden al objeto');
-        //console.log(this.ordenes);
     }
 
     getOrdenes(){
@@ -128,8 +126,6 @@ class UI{
     
     
                 document.querySelector('#ordenes').appendChild(divOrden);
-                //console.log('imprimiendo ordenes...');
-                //console.log(divOrden);
             });
         }
     }
@@ -142,8 +138,6 @@ class UI{
         while(divOrdenes.firstChild){
             divOrdenes.removeChild(divOrdenes.firstChild);
         }
-
-        //console.log('limpiando div ordenes...');
     }
 }
 
@@ -160,7 +154,7 @@ export const ordenes = new Orden;
 
 /**--------------------------------------------------------|
  * --------------------- LISTENERS ------------------------|
- *  -------------------------------------------------------|
+ * --------------------------------------------------------|
  * */
 document.addEventListener('DOMContentLoaded', () =>{
     // Comprobar si hay ordenes

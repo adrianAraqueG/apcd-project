@@ -20,6 +20,68 @@ const ordenTrabajo = [];
 let condicionesGenerales = [];
 let medidasDeControl = [];
 let herramientasEquipos = [];
+const escaleras = {
+    escF1: {
+       'e-f1-1': false,
+       'e-f1-2': false,
+       'e-f1-3': false,
+       'e-f1-4': false,
+       'e-f1-5': false,
+       'e-f1-6': false,
+       'e-f1-7': false,
+       'e-f1-8': false,
+       'e-f1-9': false,
+       'e-f1-10': false,
+       'e-f1-11': false,
+       'e-f1-12': false,
+       'e-f1-13': false,
+    },
+    escF2: {
+       'e-f2-1': false,
+       'e-f2-2': false,
+       'e-f2-3': false,
+       'e-f2-4': false,
+       'e-f2-5': false,
+       'e-f2-6': false,
+       'e-f2-7': false,
+       'e-f2-8': false,
+       'e-f2-9': false,
+       'e-f2-10': false,
+       'e-f2-11': false,
+       'e-f2-12': false,
+       'e-f2-13': false,
+    },
+    escTA: {
+       'e-ta-1': false,
+       'e-ta-2': false,
+       'e-ta-3': false,
+       'e-ta-4': false,
+       'e-ta-5': false,
+       'e-ta-6': false,
+       'e-ta-7': false,
+       'e-ta-8': false,
+       'e-ta-9': false,
+       'e-ta-10': false,
+       'e-ta-11': false,
+       'e-ta-12': false,
+       'e-ta-13': false,
+    },
+    escAT: {
+       'e-at-1': false,
+       'e-at-2': false,
+       'e-at-3': false,
+       'e-at-4': false,
+       'e-at-5': false,
+       'e-at-6': false,
+       'e-at-7': false,
+       'e-at-8': false,
+       'e-at-9': false,
+       'e-at-10': false,
+       'e-at-11': false,
+       'e-at-12': false,
+       'e-at-13': false,
+    }
+ }
 
 
 const datos = new Array();
@@ -76,8 +138,8 @@ markallCG.forEach( elemento => {elemento.addEventListener('change', () => {marca
 // llenar datos por defecto & agregar datos al objeto
 for(let i = 1; i <= 14; i++){
     inputCG = document.querySelectorAll(`input[name="c-g-${i}"]`);
-    let def = {input: false};
-    condicionesGenerales[i] = def;
+    
+    condicionesGenerales[i] = false;
     datos['condicionesGenerales'] = condicionesGenerales;
 
     inputCG.forEach( elemento => { 
@@ -101,8 +163,7 @@ markallMC.addEventListener('change', marcarTodasMC);
 for(let i = 1; i <= 27; i++){
     let inputMC = document.querySelector(`input[name="m-c-${i}"]`);
 
-    let def = false;
-    medidasDeControl[i] = def;
+    medidasDeControl[i] = false;
     datos['medidasDeControl'] = medidasDeControl;
 
     inputMC.addEventListener('input', () =>{
@@ -125,10 +186,8 @@ markallHE.addEventListener('change', marcarTodasHE);
 
 for(let i = 1; i <= 13; i++){
     let inputHE = document.querySelector(`input[name="h-e-${i}"]`);
-    //console.log(inputHE);
-
-    let def = false;
-    herramientasEquipos[i] = def;
+    
+    herramientasEquipos[i] = false;
     datos['herramientasEqupos'] = herramientasEquipos;
 
     inputHE.addEventListener('input', () =>{
@@ -136,6 +195,67 @@ for(let i = 1; i <= 13; i++){
     });
 }
 
+
+
+
+/**--------------------------------------------------------| 
+ * ------------------ ESCALERAS ---------------------------|
+ *  -------------------------------------------------------|
+ * */
+
+// ESCALERA DOBLE F1
+for(let i = 1; i <= 14; i++){
+    const input = document.querySelector(`input[name=e-f1-${i}]`);
+
+    input.checked = false;
+    escaleras.escF1[`e-f1-${i}`] = false; 
+    
+    input.addEventListener('input', e =>{
+        //console.log(e.target.checked);
+        escaleras['escF1'][`e-f1-${i}`] = e.target.checked;
+        console.log(escaleras);
+    }); 
+}
+
+
+// ESCALERA DOBLE F2
+for(let i = 1; i <= 14; i++){
+    const input = document.querySelector(`input[name=e-f2-${i}]`);
+
+    input.checked = false;
+    escaleras.escF1[`e-f2-${i}`] = false; 
+    
+    input.addEventListener('input', e =>{
+        escaleras['escF2'][`e-f2-${i}`] = e.target.checked;
+        console.log(escaleras);
+    }); 
+}
+
+// ESCALERA TIJERA ALUMINIO
+for(let i = 1; i <= 14; i++){
+    const input = document.querySelector(`input[name=e-ta-${i}]`);
+
+    input.checked = false;
+    escaleras.escF1[`e-ta-${i}`] = false; 
+    
+    input.addEventListener('input', e =>{
+        escaleras['escTA'][`e-ta-${i}`] = e.target.checked;
+        console.log(escaleras);
+    }); 
+}
+
+// ESCALERA ARTICULADA - TELESCÓPICA
+for(let i = 1; i <= 14; i++){
+    const input = document.querySelector(`input[name=e-at-${i}]`);
+
+    input.checked = false;
+    escaleras.escF1[`e-at-${i}`] = false; 
+    
+    input.addEventListener('input', e =>{
+        escaleras['escAT'][`e-at-${i}`] = e.target.checked;
+        console.log(escaleras);
+    }); 
+}
 
 
 
