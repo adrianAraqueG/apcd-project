@@ -15,9 +15,22 @@ export { datos };
     departamento: ''
 }
 
-const ordenTrabajo = [];
-
-let condicionesGenerales = [];
+const condicionesGenerales = {
+    'c-g-1': false,
+    'c-g-2': false,
+    'c-g-3': false,
+    'c-g-4': false,
+    'c-g-5': false,
+    'c-g-6': false,
+    'c-g-7': false,
+    'c-g-8': false,
+    'c-g-9': false,
+    'c-g-10': false,
+    'c-g-11': false,
+    'c-g-12': false,
+    'c-g-13': false,
+    'c-g-14': false,
+}
 let medidasDeControl = [];
 let herramientasEquipos = [];
 const escaleras = {
@@ -129,23 +142,58 @@ document.addEventListener('DOMContentLoaded', () =>{
  * ------------------ CONDICIONES GENERALES INPUTS --------|
  *  -------------------------------------------------------|
  * */
-let inputCG;
 
-//Leer los radios de los marcadores generales
-const markallCG = document.querySelectorAll(`input[name="c-g-ma"]`);
-markallCG.forEach( elemento => {elemento.addEventListener('change', () => {marcarTodasCG(elemento, 14);});});
+// Marcar todas - Condiciones Generales
+do{
+    const markAll = document.querySelectorAll('input[name="c-g-ma"]');
+    markAll.forEach( elemento =>{
 
-// llenar datos por defecto & agregar datos al objeto
-for(let i = 1; i <= 14; i++){
-    inputCG = document.querySelectorAll(`input[name="c-g-${i}"]`);
-    
-    condicionesGenerales[i] = false;
-    datos['condicionesGenerales'] = condicionesGenerales;
+        const inputs = document.querySelectorAll('')
 
-    inputCG.forEach( elemento => { 
-        elemento.addEventListener('input', () => {agregarValor(condicionesGenerales, elemento, i, 'cg')});
-     }); 
-}
+        elemento.addEventListener('input', e =>{
+            if(e.target.value === 'si'){
+                for(let value in condicionesGenerales){
+                    condicionesGenerales[value] = e.target.value;
+                }
+
+                // console.log(condicionesGenerales);
+            }else if(e.target.value === 'no'){
+                for(let value in condicionesGenerales){
+                    condicionesGenerales[value] = e.target.value;
+                }
+                console.log(condicionesGenerales);
+            }else if(e.target.value === 'na'){
+                for(let value in condicionesGenerales){
+                    condicionesGenerales[value] = e.target.value;
+                }
+                console.log(condicionesGenerales);
+            }
+        });
+    });
+
+}while(false);
+
+// llenar datos por defecto & agregar listener
+// NOTA: do while evita tener que crear un iterador con scope global
+do{
+ let i = 1
+ for(let value in condicionesGenerales){
+    let input = document.querySelectorAll(`input[name="c-g-${i}"]`);
+    //console.log(input);
+
+    input.forEach( elemento => {
+        elemento.addEventListener('change', e =>{
+            condicionesGenerales[value] = e.target.value;
+            console.log(e.target.value);
+            console.log(condicionesGenerales);
+        });
+    });
+
+    i = i + 1;
+ }
+
+
+}while(false);
 
 
 
