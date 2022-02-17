@@ -13,3 +13,4 @@ MEJORAS AL ASPECTO
  3 - Funcionalidad Convertir a PDF *** SIN HACER *** 
     3.1 Llenar Formulario. 
  4 - Refactorizar código de generales.js usando for in *** SIN HACER *** 
+ 5 - Refactorizar código de ordenes.js *** SIN HACER *** 

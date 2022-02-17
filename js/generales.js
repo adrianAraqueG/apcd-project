@@ -1,6 +1,6 @@
 /** APCD - JS 
- * 
- * 
+ * Adrián Araque
+ * Opegin
 */
 
 export { datos };
@@ -31,8 +31,50 @@ const condicionesGenerales = {
     'c-g-13': false,
     'c-g-14': false,
 }
-let medidasDeControl = [];
-let herramientasEquipos = [];
+const medidasControl = {
+    'm-c-1': false,
+    'm-c-2': false,
+    'm-c-3': false,
+    'm-c-4': false,
+    'm-c-5': false,
+    'm-c-6': false,
+    'm-c-7': false,
+    'm-c-8': false,
+    'm-c-9': false,
+    'm-c-10': false,
+    'm-c-11': false,
+    'm-c-12': false,
+    'm-c-13': false,
+    'm-c-14': false,
+    'm-c-15': false,
+    'm-c-16': false,
+    'm-c-17': false,
+    'm-c-18': false,
+    'm-c-19': false,
+    'm-c-20': false,
+    'm-c-21': false,
+    'm-c-22': false,
+    'm-c-23': false,
+    'm-c-24': false,
+    'm-c-25': false,
+    'm-c-26': false,
+    'm-c-27': false,
+}
+const herramientasEquipos = {
+    'h-e-1': false,
+    'h-e-2': false,
+    'h-e-3': false,
+    'h-e-4': false,
+    'h-e-5': false,
+    'h-e-6': false,
+    'h-e-7': false,
+    'h-e-8': false,
+    'h-e-9': false,
+    'h-e-10': false,
+    'h-e-11': false,
+    'h-e-12': false,
+    'h-e-13': false,
+}
 const escaleras = {
     escF1: {
        'e-f1-1': false,
@@ -94,14 +136,19 @@ const escaleras = {
        'e-at-12': false,
        'e-at-13': false,
     }
- }
+}
 
 
 const datos = new Array();
 datos['generales'] = datosGenerales;
 datos['condicionesGenerales'] = condicionesGenerales;
-datos['medidasDeControl'] = medidasDeControl;
+datos['medidasControl'] = medidasControl;
 datos['herramientasEquipos'] = herramientasEquipos;
+datos['escaleras'] = escaleras;
+
+
+
+
 
 
 /**--------------------------------------------------------| 
@@ -148,44 +195,67 @@ do{
     const markAll = document.querySelectorAll('input[name="c-g-ma"]');
     markAll.forEach( elemento =>{
 
-        const inputs = document.querySelectorAll('')
+        const npreguntas = 14;
 
         elemento.addEventListener('input', e =>{
             if(e.target.value === 'si'){
+
                 for(let value in condicionesGenerales){
                     condicionesGenerales[value] = e.target.value;
                 }
 
-                // console.log(condicionesGenerales);
+                for(let i = 1; i <= npreguntas; i++){
+                    const inputs = document.querySelectorAll(`input[name="c-g-${i}"]`);
+                    inputs.forEach(input => {
+                        if(input.value === 'si'){
+                            input.checked = true;
+                        }
+                        
+                    });
+                }
+
             }else if(e.target.value === 'no'){
                 for(let value in condicionesGenerales){
                     condicionesGenerales[value] = e.target.value;
                 }
-                console.log(condicionesGenerales);
+
+                for(let i = 1; i <= npreguntas; i++){
+                    const inputs = document.querySelectorAll(`input[name="c-g-${i}"]`);
+                    inputs.forEach(input => {
+                        if(input.value === 'no'){
+                            input.checked = true;
+                        }
+                    });
+                }
+
             }else if(e.target.value === 'na'){
                 for(let value in condicionesGenerales){
                     condicionesGenerales[value] = e.target.value;
                 }
-                console.log(condicionesGenerales);
+                
+                for(let i = 1; i <= npreguntas; i++){
+                    const inputs = document.querySelectorAll(`input[name="c-g-${i}"]`);
+                    inputs.forEach(input => {
+                        if(input.value === 'na'){
+                            input.checked = true;
+                        }
+                    });
+                }
             }
         });
     });
 
 }while(false);
 
-// llenar datos por defecto & agregar listener
-// NOTA: do while evita tener que crear un iterador con scope global
+// Agregar listeners - Condiciones Generales
 do{
  let i = 1
  for(let value in condicionesGenerales){
-    let input = document.querySelectorAll(`input[name="c-g-${i}"]`);
-    //console.log(input);
+    const input = document.querySelectorAll(`input[name="c-g-${i}"]`);
 
     input.forEach( elemento => {
         elemento.addEventListener('change', e =>{
             condicionesGenerales[value] = e.target.value;
-            console.log(e.target.value);
-            console.log(condicionesGenerales);
         });
     });
 
@@ -204,20 +274,51 @@ do{
  * ------------------ MEDIDAS DE CONTROL ------------------|
  *  -------------------------------------------------------|
  * */
-// markall
-const markallMC = document.querySelector('input[name="m-c-ma"]');
-markallMC.addEventListener('change', marcarTodasMC);
+// Marcar Todas - Medidas de Control
+do{
+    const markAll = document.querySelector('input[name="m-c-ma"]');
+    const npreguntas = 27
 
-for(let i = 1; i <= 27; i++){
-    let inputMC = document.querySelector(`input[name="m-c-${i}"]`);
+    markAll.addEventListener('input', e =>{
+        if(e.target.checked === true){
+            for(let value in medidasControl){
+                medidasControl[value] = true;
+            }
+            for(let i = 1; i <= npreguntas; i++){
+                const input = document.querySelector(`input[name="m-c-${i}"]`);
+                input.checked = true;
+            }
+            console.log(medidasControl);
 
-    medidasDeControl[i] = false;
-    datos['medidasDeControl'] = medidasDeControl;
-
-    inputMC.addEventListener('input', () =>{
-        agregarValor(medidasDeControl, inputMC, i, 'mc');
+        } else if(e.target.checked === false){
+            for(let value in medidasControl){
+                medidasControl[value] = false;
+            }
+            for(let i = 1; i <= npreguntas; i++){
+                const input = document.querySelector(`input[name="m-c-${i}"]`);
+                input.checked = false;
+            }
+            console.log(medidasControl);
+        }
     });
-}
+
+}while(false);
+
+// Agregar listeners - Medidas de Control
+do{
+    let i = 1;
+    for(let value in medidasControl){
+        const input = document.querySelector(`input[name="m-c-${i}"]`);
+        
+        input.addEventListener('input', e =>{
+            medidasControl[value] = input.checked;
+            console.log(input.checked);
+            console.log(medidasControl);
+        });
+
+        i = i + 1;
+    }
+}while(false);
 
 
 
@@ -228,20 +329,55 @@ for(let i = 1; i <= 27; i++){
  * ---------------- HERRAMIENTAS Y EQUIPOS ----------------|
  *  -------------------------------------------------------|
  * */
-// markall
-const markallHE = document.querySelector('input[name="h-e-ma"]');
-markallHE.addEventListener('change', marcarTodasHE);
+// Marcar Todas - Herramientas y Equipos
+do{
+    const markAll = document.querySelector('input[name="h-e-ma"]');
+    const npreguntas = 13
 
-for(let i = 1; i <= 13; i++){
-    let inputHE = document.querySelector(`input[name="h-e-${i}"]`);
-    
-    herramientasEquipos[i] = false;
-    datos['herramientasEqupos'] = herramientasEquipos;
+    markAll.addEventListener('input', e =>{
+        if(e.target.checked === true){
+            for(let value in herramientasEquipos){
+                herramientasEquipos[value] = true;
+            }
+            for(let i = 1; i <= npreguntas; i++){
+                const input = document.querySelector(`input[name="h-e-${i}"]`);
+                input.checked = true;
+            }
+            console.log(herramientasEquipos);
+            console.log(datos);
 
-    inputHE.addEventListener('input', () =>{
-        agregarValor(herramientasEquipos, inputHE, i, 'he');
+        } else if(e.target.checked === false){
+            for(let value in herramientasEquipos){
+                herramientasEquipos[value] = false;
+            }
+            for(let i = 1; i <= npreguntas; i++){
+                const input = document.querySelector(`input[name="h-e-${i}"]`);
+                input.checked = false;
+            }
+            console.log(herramientasEquipos);
+            console.log(datos);
+        }
     });
-}
+
+}while(false);
+
+// Agregar listeners - Herramientas y Equipos 
+do{
+    let i = 1;
+    for(let value in herramientasEquipos){
+        const input = document.querySelector(`input[name="h-e-${i}"]`);
+        
+        input.addEventListener('input', e =>{
+            herramientasEquipos[value] = input.checked;
+            console.log(input.checked);
+            console.log(herramientasEquipos);
+        });
+
+        i = i + 1;
+    }
+}while(false);
+
+
 
 
 
@@ -312,140 +448,3 @@ for(let i = 1; i <= 14; i++){
  * ------------------ FUNCIONES ---------------------------|
  *  -------------------------------------------------------|
  * */
-// agregar Valores a los arrays
-function agregarValor(array, input, numero, id){
-    let valor = {}
-
-    console.log(input);
-    console.log(numero);
-
-    if(input.type === 'checkbox' && id === 'mc'){
-        if(input.checked === true){
-            medidasDeControl[numero] = true;
-        }else if(input.checked === false){
-            medidasDeControl[numero] = false;
-        }
-
-        console.log(medidasDeControl);
-        console.log('input al checkbox');
-
-        return;
-
-    } else if(input.type === 'checkbox' && id === 'he'){
-        if(input.checked === true){
-            herramientasEquipos[numero] = true;
-        }else if(input.checked === false){
-            herramientasEquipos[numero] = false;
-        }
-
-        console.log(herramientasEquipos);
-        console.log('input al checkbox');
-
-        return;
-
-    }else if(input.type === "radio" && id === "cg"){
-        if(input.checked){
-            valor = {
-                input: input.value
-            }    
-        }else{
-            valor = {
-                valor: input.value
-            }
-        }
-    }
-
-    array[numero] = valor;
-    console.log(array);
-    console.log('cambio');
-}
-
-
-// marcar Todos los Items con la misma opción CG
-function marcarTodasCG(input, ndatos){
-    if(input.value === 'si'){
-
-        for(let i = 1; i <= ndatos; i++){
-
-            inputCG = document.querySelectorAll(`input[name="c-g-${i}"]`);
-            inputCG.forEach( elemento => {
-                
-                    if(elemento.value === 'si'){
-                        elemento.checked = true;
-                    } console.log('chequeado');
-                
-                condicionesGenerales[i].input = 'si';
-            });
-        }
-
-        console.log(condicionesGenerales);
-
-    }else if(input.value === 'no'){
-
-        for(let i = 1; i <= ndatos; i++){
-            inputCG = document.querySelectorAll(`input[name="c-g-${i}"]`);
-            inputCG.forEach( elemento => {
-
-                    if(elemento.value === 'no'){
-                        elemento.checked = true;
-                    } console.log('chequeado');
-                
-                condicionesGenerales[i].input = 'no';
-            });
-        }
-
-        console.log(condicionesGenerales);
-
-    }else if(input.value === 'na'){
-
-        for(let i = 1; i <= ndatos; i++){
-            inputCG = document.querySelectorAll(`input[name="c-g-${i}"]`);
-            inputCG.forEach( elemento => {
-
-                    if(elemento.value === 'na'){
-                        elemento.checked = true;
-                    } console.log('chequeado');
-                
-                condicionesGenerales[i].input = 'na';
-            });
-        }
-
-        console.log(condicionesGenerales);
-    }
-}
-
-function marcarTodasMC(){
-    if(markallMC.checked === true){
-        for(let i = 1; i <= 27; i++){
-            let inputs = document.querySelector(`input[name="m-c-${i}"]`);
-            inputs.checked = true;
-            medidasDeControl[i] = true;
-        }
-    } else{
-        for(let i = 1; i <= 27; i++){
-            let inputs = document.querySelector(`input[name="m-c-${i}"]`);
-            inputs.checked = false;
-            medidasDeControl[i] = false;
-        }
-    }
-
-    console.log(datos);
-}
-
-function marcarTodasHE(){
-    if(markallHE.checked === true){
-        for(let i = 1; i <= 27; i++){
-            let inputs = document.querySelector(`input[name="h-e-${i}"]`);
-            inputs.checked = true;
-            herramientasEquipos[i] = true;
-        }
-    } else{
-        for(let i = 1; i <= 27; i++){
-            let inputs = document.querySelector(`input[name="h-e-${i}"]`);
-            inputs.checked = false;
-            herramientasEquipos[i] = false;
-        }
-    }
-
-    console.log(datos);
-}

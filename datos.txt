@@ -361,49 +361,49 @@ const condicionesGenerales = {
 }
 
 const medidasDeControl = {
-    'm-c-1': false;
-    'm-c-2': false;
-    'm-c-3': false;
-    'm-c-4': false;
-    'm-c-5': false;
-    'm-c-6': false;
-    'm-c-7': false;
-    'm-c-8': false;
-    'm-c-9': false;
-    'm-c-10': false;
-    'm-c-11': false;
-    'm-c-12': false;
-    'm-c-13': false;
-    'm-c-14': false;
-    'm-c-15': false;
-    'm-c-16': false;
-    'm-c-17': false;
-    'm-c-18': false;
-    'm-c-19': false;
-    'm-c-20': false;
-    'm-c-21': false;
-    'm-c-22': false;
-    'm-c-23': false;
-    'm-c-24': false;
-    'm-c-25': false;
-    'm-c-26': false;
-    'm-c-27': false;
+    'm-c-1': false,
+    'm-c-2': false,
+    'm-c-3': false,
+    'm-c-4': false,
+    'm-c-5': false,
+    'm-c-6': false,
+    'm-c-7': false,
+    'm-c-8': false,
+    'm-c-9': false,
+    'm-c-10': false,
+    'm-c-11': false,
+    'm-c-12': false,
+    'm-c-13': false,
+    'm-c-14': false,
+    'm-c-15': false,
+    'm-c-16': false,
+    'm-c-17': false,
+    'm-c-18': false,
+    'm-c-19': false,
+    'm-c-20': false,
+    'm-c-21': false,
+    'm-c-22': false,
+    'm-c-23': false,
+    'm-c-24': false,
+    'm-c-25': false,
+    'm-c-26': false,
+    'm-c-27': false,
 }
 
 const herramientasEquipos = {
-    'h-e-1': false;
-    'h-e-2': false;
-    'h-e-3': false;
-    'h-e-4': false;
-    'h-e-5': false;
-    'h-e-6': false;
-    'h-e-7': false;
-    'h-e-8': false;
-    'h-e-9': false;
-    'h-e-10': false;
-    'h-e-11': false;
-    'h-e-12': false;
-    'h-e-13': false;
+    'h-e-1': false,
+    'h-e-2': false,
+    'h-e-3': false,
+    'h-e-4': false,
+    'h-e-5': false,
+    'h-e-6': false,
+    'h-e-7': false,
+    'h-e-8': false,
+    'h-e-9': false,
+    'h-e-10': false,
+    'h-e-11': false,
+    'h-e-12': false,
+    'h-e-13': false,
 }
 
 const escaleras = {
