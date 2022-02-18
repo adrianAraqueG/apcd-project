@@ -15,13 +15,13 @@ body{
 }
 
 .no{
-    width: 0px;
-    text-align: center;
+    width: 0px !important;
+    text-align: center !important;
 }
 
-th .input{
-    width: 0px;
-    text-align: center;
+.input{
+    width: 10px !important;
+    text-align: center !important;
 }
 
 .agregar{

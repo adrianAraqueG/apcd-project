@@ -2,17 +2,14 @@ BUGS A ARREGLAR
  1 - En versión móvil los placeholders e íconos del input fecha no aparecen *** SIN SOLUCIONAR ***
 
 MEJORAS AL ASPECTO
- 1 - Mejorar el aspecto y alineación de los checkbox y radios en las tablas *** SIN SOLUCIONAR ***
- 2 - Agregar membretes de la compañía *** SIN SOLUCIONAR ***
- 3 - Mejorar aspecto de las tablas en General *** SIN SOLUCIONAR ***
- 4 - Ajustar width de los modals *** SIN SOLUCIONAR ***
+ - Agregar membretes de la compañía *** SIN SOLUCIONAR ***
+ - Mejorar aspecto de las tablas en General *** SIN SOLUCIONAR ***
+ - Ajustar width de los modals *** SIN SOLUCIONAR ***
 
  COSAS A IMPLEMENTAR
- 1 - Funcionalidad 'Agregar' para las tablas. *** SIN HACER ***
- 2 - Funcionalidad Convertir a PDF *** SIN HACER *** 
-    2.1 Llenar Formulario. 
- 3 - Refactorizar código de ordenes.js *** SIN HACER *** 
- 4 - Añadir función 'Marcar todas' en las Ordenes *** SIN HACER *** 
- 5 - Añadir todos los datos a las órdenes *** SIN HACER ***
- 6 - Agregar placeholder a las tareas *** SIN HACER *** 
- 7 - Guardar información en localhost *** SIN HACER *** 
+ - Funcionalidad 'Agregar' para las tablas. *** SIN HACER ***
+ - Funcionalidad Convertir a PDF *** SIN HACER *** 
+    Llenar Formulario. 
+ - Refactorizar código de ordenes.js *** SIN HACER *** 
+ - Añadir función 'Marcar todas' en las Ordenes *** SIN HACER *** 
+ - Guardar información en localhost *** SIN HACER *** 
