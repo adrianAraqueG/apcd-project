@@ -10,7 +10,8 @@ table{
 
     border-collapse: collapse;
 
-    
+    padding: 0px;
+    margin: 0px;    
 }
 .inner-table{
    width: 100%;
@@ -32,6 +33,9 @@ tr{
 td{
     border: 1px solid;
     font-size: 15px;
+    
+    margin: 0px;
+    padding: 0px;
 }
 .inner-table td{
     font-size: 10px;
@@ -55,4 +59,15 @@ th{
 .tiny-table th{
     font-size: 8px;
     border: none;
+}
+
+/* IMG */
+.img-logo{
+    width: 100px;
+}
+
+/* DATOS HEADER */
+
+.datos-header p{
+    margin-block: 5px;
 }
