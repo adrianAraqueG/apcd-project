@@ -9,8 +9,9 @@ MEJORAS AL ASPECTO
 
  COSAS A IMPLEMENTAR
  1 - Funcionalidad 'Agregar' para las tablas. *** SIN HACER ***
- 2 - Funcionalidad 'Editar' *** TERMINADA *** 
- 3 - Funcionalidad Convertir a PDF *** SIN HACER *** 
-    3.1 Llenar Formulario. 
- 4 - Refactorizar código de generales.js usando for in *** SIN HACER *** 
- 5 - Refactorizar código de ordenes.js *** SIN HACER *** 
+ 2 - Funcionalidad Convertir a PDF *** SIN HACER *** 
+    2.1 Llenar Formulario. 
+ 3 - Refactorizar código de ordenes.js *** SIN HACER *** 
+ 4 - Añadir función 'Marcar todas' en las Ordenes *** SIN HACER *** 
+ 5 - Añadir todos los datos a las órdenes *** SIN HACER ***
+ 6 - Agregar placeholder a las tareas *** SIN HACER *** 

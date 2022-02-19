@@ -164,19 +164,16 @@ document.addEventListener('DOMContentLoaded', () =>{
         datosGenerales.ciudad = e.target.value;
 
         datos['generales'] = datosGenerales;
-        console.log(datos);
     });
     fechaInput.addEventListener('input', e =>{
         datosGenerales.fecha = e.target.value;
 
         datos['generales'] = datosGenerales;
-        // console.log(datos);
     });
     departamentoInput.addEventListener('input', e =>{
         datosGenerales.departamento = e.target.value;
 
         datos['generales'] = datosGenerales;
-        // console.log(datos);
     });
 });
 
@@ -288,7 +285,6 @@ do{
                 const input = document.querySelector(`input[name="m-c-${i}"]`);
                 input.checked = true;
             }
-            console.log(medidasControl);
 
         } else if(e.target.checked === false){
             for(let value in medidasControl){
@@ -298,7 +294,6 @@ do{
                 const input = document.querySelector(`input[name="m-c-${i}"]`);
                 input.checked = false;
             }
-            console.log(medidasControl);
         }
     });
 
@@ -312,8 +307,6 @@ do{
         
         input.addEventListener('input', e =>{
             medidasControl[value] = input.checked;
-            console.log(input.checked);
-            console.log(medidasControl);
         });
 
         i = i + 1;
@@ -343,8 +336,6 @@ do{
                 const input = document.querySelector(`input[name="h-e-${i}"]`);
                 input.checked = true;
             }
-            console.log(herramientasEquipos);
-            console.log(datos);
 
         } else if(e.target.checked === false){
             for(let value in herramientasEquipos){
@@ -354,8 +345,6 @@ do{
                 const input = document.querySelector(`input[name="h-e-${i}"]`);
                 input.checked = false;
             }
-            console.log(herramientasEquipos);
-            console.log(datos);
         }
     });
 
@@ -369,8 +358,6 @@ do{
         
         input.addEventListener('input', e =>{
             herramientasEquipos[value] = input.checked;
-            console.log(input.checked);
-            console.log(herramientasEquipos);
         });
 
         i = i + 1;
@@ -395,9 +382,7 @@ for(let i = 1; i <= 14; i++){
     escaleras.escF1[`e-f1-${i}`] = false; 
     
     input.addEventListener('input', e =>{
-        //console.log(e.target.checked);
         escaleras['escF1'][`e-f1-${i}`] = e.target.checked;
-        console.log(escaleras);
     }); 
 }
 
@@ -411,7 +396,6 @@ for(let i = 1; i <= 14; i++){
     
     input.addEventListener('input', e =>{
         escaleras['escF2'][`e-f2-${i}`] = e.target.checked;
-        console.log(escaleras);
     }); 
 }
 
@@ -424,7 +408,6 @@ for(let i = 1; i <= 14; i++){
     
     input.addEventListener('input', e =>{
         escaleras['escTA'][`e-ta-${i}`] = e.target.checked;
-        console.log(escaleras);
     }); 
 }
 
@@ -437,7 +420,6 @@ for(let i = 1; i <= 14; i++){
     
     input.addEventListener('input', e =>{
         escaleras['escAT'][`e-at-${i}`] = e.target.checked;
-        console.log(escaleras);
     }); 
 }
 
