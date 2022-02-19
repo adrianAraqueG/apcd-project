@@ -126,6 +126,8 @@ class UI{
     
     
                 document.querySelector('#ordenes').appendChild(divOrden);
+
+                this.placeholder();
             });
         }
     }
@@ -137,6 +139,22 @@ class UI{
 
         while(divOrdenes.firstChild){
             divOrdenes.removeChild(divOrdenes.firstChild);
+        }
+
+    }
+
+    // Placeholder - agrega o quita placeholder al div ordenes
+    static placeholder(){
+        const divOrdenes = document.querySelector('#ordenes');
+
+        const ph = document.createElement('p');
+        ph.classList.add('fs-4');
+        ph.textContent = 'Aún no hay ordenes';
+
+        if(ordenes.getOrdenes().length > 0 && divOrdenes.contains(ph)){
+            divOrdenes.removeChild(ph);
+        }else if(ordenes.getOrdenes().length <= 0 ){
+            divOrdenes.appendChild(ph);
         }
     }
 }
@@ -157,14 +175,9 @@ export const ordenes = new Orden;
  * --------------------------------------------------------|
  * */
 document.addEventListener('DOMContentLoaded', () =>{
-    // Comprobar si hay ordenes
-    if(ordenes.getOrdenes().length > 0){
-        //actualizar placeholder
-        
-    }else{
-        // actualizar placeholder
-        
-    }
+    // placeholder
+    UI.placeholder();
+    
 
 });
 
@@ -372,6 +385,7 @@ function eliminarOrden(id){
         ordenes.eliminarOrden(id);
 
         UI.imprimirOrdenes();
+        UI.placeholder();
     
         console.log(ordenes);
     }

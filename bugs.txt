@@ -15,3 +15,4 @@ MEJORAS AL ASPECTO
  4 - Añadir función 'Marcar todas' en las Ordenes *** SIN HACER *** 
  5 - Añadir todos los datos a las órdenes *** SIN HACER ***
  6 - Agregar placeholder a las tareas *** SIN HACER *** 
+ 7 - Guardar información en localhost *** SIN HACER *** 
