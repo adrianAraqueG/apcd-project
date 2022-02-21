@@ -20,12 +20,20 @@
             
             <form id="c_general" class="mb-5 mt-5">
                 <h3 class="text-wrap fw-bold fs-5">DATOS GENERALES DE CUADRILLA</h3>
-                <label for="fecha" class="">Fecha</label>
+                <label for="fecha" class="form-text">Fecha</label>
                 <input type="date" name="fecha" id="fecha" class="input-date mb-2">
-    
-                <input type="text" name="ciudad" id="ciudad" placeholder="Ciudad" class="form-control mb-2">
-    
-                <input type="text" name="departamento" id="departamento" placeholder="Departamento" class="form-control mb-2">
+
+                <label for="departamento" class="form-text">Departamento</label>
+                <select name="departamento" id="departamento" class="form-select">
+                    <option value="" selected disabled>SELECCIONA UN DEPARTAMENTO--</option>
+                    <option value="casanare">CASANARE</option>
+                    <option value="caldas">CALDAS</option>
+                </select>
+
+                <label for="ciudad" class="form-text">Ciudad</label>
+                <select name="ciudad" id="ciudad" class="form-select" disabled>
+                    <option value="default" select disabled >SELECCIONA UNA CIUDAD</option>
+                </select>
             </form>
 
 

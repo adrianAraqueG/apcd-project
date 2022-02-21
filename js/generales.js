@@ -155,26 +155,9 @@ datos['escaleras'] = escaleras;
  * ------------------ DATOS GENERALES ---------------------|
  *  -------------------------------------------------------|
  * */
-const fechaInput = document.querySelector('#fecha');
-const ciudadInput = document.querySelector('#ciudad');
-const departamentoInput = document.querySelector('#departamento');
-
+// Ejecutando al cargar la página.
 document.addEventListener('DOMContentLoaded', () =>{
-    ciudadInput.addEventListener('input', e =>{
-        datosGenerales.ciudad = e.target.value;
-
-        datos['generales'] = datosGenerales;
-    });
-    fechaInput.addEventListener('input', e =>{
-        datosGenerales.fecha = e.target.value;
-
-        datos['generales'] = datosGenerales;
-    });
-    departamentoInput.addEventListener('input', e =>{
-        datosGenerales.departamento = e.target.value;
-
-        datos['generales'] = datosGenerales;
-    });
+    llenarSelects();
 });
 
 
@@ -430,3 +413,45 @@ for(let i = 1; i <= 14; i++){
  * ------------------ FUNCIONES ---------------------------|
  *  -------------------------------------------------------|
  * */
+
+function llenarSelects(){
+    const fechaInput = document.querySelector('#fecha');
+    const ciudadSelect = document.querySelector('#ciudad')
+    const departamentoSelect = document.querySelector('#departamento');
+
+    // lista de departamentos  y ciudades
+    const departamentos = {
+        'casanare': ['YOPAL', 'AGUAZUL', 'TAURAMENA', 'OROCUE'],
+        'caldas': ['MANIZALES', 'ARANZAZU', 'LA MERCED'],
+    }
+
+    departamentoSelect.addEventListener('change', e => {
+        // debugger;
+        datosGenerales.departamento = (e.target.value);
+        
+        // Limpiamos select
+        while(ciudadSelect.firstChild){
+            ciudadSelect.removeChild(ciudadSelect.firstChild);
+        }
+
+        setTimeout(departamentos[e.target.value].forEach(ciudad => {
+            const opcion = document.createElement('option');
+            opcion.value = ciudad.toLowerCase();
+            opcion.textContent = ciudad;
+
+            ciudadSelect.appendChild(opcion);
+        }), 100);
+
+        datosGenerales.ciudad = departamentos[e.target.value][0].toLowerCase();
+        console.log(datosGenerales);
+
+        ciudadSelect.removeAttribute('disabled');
+        // debugger;
+    });
+
+    ciudadSelect.addEventListener('change', e =>{
+        datosGenerales.ciudad = e.target.value;
+        console.log(datosGenerales);
+    });
+    
+}

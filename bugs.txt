@@ -13,3 +13,4 @@ MEJORAS AL ASPECTO
  - Refactorizar código de ordenes.js *** SIN HACER *** 
  - Añadir función 'Marcar todas' en las Ordenes *** SIN HACER *** 
  - Guardar información en localhost *** SIN HACER *** 
+ - Hacer Manifest (PWA);
