@@ -794,6 +794,7 @@ function editarOrden(id){
                 c = c + 1;
             }
 
+            console.log(ordenEditada);
             ordenes.editarOrden(ordenEditada);
             btnCerrar1.click();
         } 
