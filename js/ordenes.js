@@ -287,12 +287,12 @@ function crearOrden(){
                     'p-f-6': false,
                 },
                 biomecanicos: {
-                    'p-m-1': false,
-                    'p-m-1': false,
-                    'p-m-1': false,
-                    'p-m-1': false,
-                    'p-m-1': false,
-                    'p-m-1': false,
+                    'p-bm-1': false,
+                    'p-bm-1': false,
+                    'p-bm-1': false,
+                    'p-bm-1': false,
+                    'p-bm-1': false,
+                    'p-bm-1': false,
                 },
                 riesgoPublico: {
                     'r-p-1': false,
@@ -404,20 +404,131 @@ function editarOrden(id){
     document.querySelector('#edit-hiOrden').value = horaInicial;
     document.querySelector('#edit-hfOrden').value = horaFinal;
 
-    let c1 = 1
+    // Llenar valores - Condiciones Específicas
+    let c = 1
     for(let valor in datosPropios.condEsp){
-        const input = document.querySelector(`input[name="c-e-${c1}"]`);
-        input.checked = datosPropios.condEsp[`c-e-${c1}`];
+        const input = document.querySelector(`input[name="c-e-${c}"]`);
+        input.checked = datosPropios.condEsp[`c-e-${c}`];
 
-        c1 = c1 + 1;
+        c = c + 1;
     }
-    let c2 = 1
+
+    // Llenar valores - Elementos Protección Individual
+    c = 1
     for(let valor in datosPropios.eleProtInd){
-        const input = document.querySelector(`input[name="e-p-i-${c2}"]`);
-        input.checked = datosPropios.eleProtInd[`e-p-i-${c2}`];
+        const input = document.querySelector(`input[name="e-p-i-${c}"]`);
+        input.checked = datosPropios.eleProtInd[`e-p-i-${c}`];
 
-        c2 = c2 + 1;
+        c = c + 1;
     }
+
+    // Llenar valores - Tareas Alto Riesgo
+    c = 1
+    for(let valor in datosPropios.peligrosRiesgos.tareasAltoRiesgo){
+        const input = document.querySelector(`input[name="t-a-r-${c}"]`);
+        input.checked = datosPropios.peligrosRiesgos.tareasAltoRiesgo[`t-a-r-${c}`];
+
+        c = c + 1;
+    }
+
+    // Llenar valores - Peligros físicos
+    c = 1
+    for(let valor in datosPropios.peligrosRiesgos.fisicos){
+        const input = document.querySelector(`input[name="p-f-${c}"]`);
+        input.checked = datosPropios.peligrosRiesgos.fisicos[`p-f-${c}`];
+
+        c = c + 1;
+    }
+
+    // Llenar valores - Peligros biomecánicos
+    c = 1
+    for(let valor in datosPropios.peligrosRiesgos.biomecanicos){
+        const input = document.querySelector(`input[name="p-bm-${c}"]`);
+        input.checked = datosPropios.peligrosRiesgos.biomecanicos[`p-bm-${c}`];
+
+        c = c + 1;
+    }
+
+    // Llenar valores - Riesgo público
+    c = 1
+    for(let valor in datosPropios.peligrosRiesgos.riesgoPublico){
+        const input = document.querySelector(`input[name="r-p-${c}"]`);
+        input.checked = datosPropios.peligrosRiesgos.riesgoPublico[`r-p-${c}`];
+
+        c = c + 1;
+    }
+    // Llenar valores - Peligro eléctrico
+    c = 1
+    for(let valor in datosPropios.peligrosRiesgos.electrico){
+        const input = document.querySelector(`input[name="p-e-${c}"]`);
+        input.checked = datosPropios.peligrosRiesgos.electrico[`p-e-${c}`];
+
+        c = c + 1;
+    }
+
+    // Llenar valores - Psicosocial
+    c = 1
+    for(let valor in datosPropios.peligrosRiesgos.psicosocial){
+        const input = document.querySelector(`input[name="p-p-${c}"]`);
+        input.checked = datosPropios.peligrosRiesgos.psicosocial[`p-p-${c}`];
+
+        c = c + 1;
+    }
+
+    // Llenar valores - Biológicos
+    c = 1
+    for(let valor in datosPropios.peligrosRiesgos.biologicos){
+        const input = document.querySelector(`input[name="p-b-${c}"]`);
+        input.checked = datosPropios.peligrosRiesgos.biologicos[`p-b-${c}`];
+
+        c = c + 1;
+    }
+
+    // Llenar valores - Mecánico
+    c = 1
+    for(let valor in datosPropios.peligrosRiesgos.mecanico){
+        const input = document.querySelector(`input[name="p-m-${c}"]`);
+        input.checked = datosPropios.peligrosRiesgos.mecanico[`p-m-${c}`];
+
+        c = c + 1;
+    }
+
+    // Llenar valores - Locativo
+    c = 1
+    for(let valor in datosPropios.peligrosRiesgos.locativo){
+        const input = document.querySelector(`input[name="p-l-${c}"]`);
+        input.checked = datosPropios.peligrosRiesgos.locativo[`p-l-${c}`];
+
+        c = c + 1;
+    }
+
+    // Llenar valores - Accidente de Tránsito
+    c = 1
+    for(let valor in datosPropios.peligrosRiesgos.accTransito){
+        const input = document.querySelector(`input[name="p-a-t-${c}"]`);
+        input.checked = datosPropios.peligrosRiesgos.accTransito[`p-a-t-${c}`];
+
+        c = c + 1;
+    }
+
+    // Llenar valores - Fenómenos Naturales
+    c = 1
+    for(let valor in datosPropios.peligrosRiesgos.fenoNaturales){
+        const input = document.querySelector(`input[name="p-f-n-${c}"]`);
+        input.checked = datosPropios.peligrosRiesgos.fenoNaturales[`p-f-n-${c}`];
+
+        c = c + 1;
+    }
+
+    // Llenar valores - Químicos
+    c = 1
+    for(let valor in datosPropios.peligrosRiesgos.quimicos){
+        const input = document.querySelector(`input[name="p-q-${c}"]`);
+        input.checked = datosPropios.peligrosRiesgos.quimicos[`p-q-${c}`];
+
+        c = c + 1;
+    }
+    
 
     // Listeners
     const btnGuardarCambios = document.querySelector('#guardarCambios');
@@ -478,98 +589,209 @@ function editarOrden(id){
                             't-a-r-7': false,
                         },
                         fisicos: {
-                            p1: false,
-                            p2: false,
-                            p3: false,
-                            p4: false,
-                            p5: false,
-                            p6: false,
+                            'p-f-1': false,
+                            'p-f-2': false,
+                            'p-f-3': false,
+                            'p-f-4': false,
+                            'p-f-5': false,
+                            'p-f-6': false,
                         },
                         biomecanicos: {
-                            p1: false,
-                            p2: false,
-                            p3: false,
-                            p4: false,
-                            p5: false,
-                            p6: false,
+                            'p-bm-1': false,
+                            'p-bm-2': false,
+                            'p-bm-3': false,
+                            'p-bm-4': false,
+                            'p-bm-5': false,
+                            'p-bm-6': false,
                         },
                         riesgoPublico: {
-                            p1: false,
+                            'r-p-1': false,
                         },
                         electrico: {
-                            p1: false,
-                            p2: false,
-                            p3: false,
-                            p4: false,
-                            p5: false,
+                            'p-e-1': false,
+                            'p-e-2': false,
+                            'p-e-3': false,
+                            'p-e-4': false,
+                            'p-e-5': false,
                         },
                         psicosocial: {
-                            p1: false,
-                            p2: false,
-                            p3: false,
-                            p4: false,
-                            p5: false,
+                            'p-p-1': false,
+                            'p-p-2': false,
+                            'p-p-3': false,
+                            'p-p-4': false,
+                            'p-p-5': false,
                         },
                         biologicos: {
-                            p1: false,
-                            p2: false,
-                            p3: false,
-                            p4: false,
-                            p5: false,
-                            p6: false,
-                            p7: false,
+                            'p-b-1': false,
+                            'p-b-2': false,
+                            'p-b-3': false,
+                            'p-b-4': false,
+                            'p-b-5': false,
+                            'p-b-6': false,
+                            'p-b-7': false,
                         },
                         mecanico: {
-                            p1: false,
-                            p2: false,
-                            p3: false,
-                            p4: false,
+                            'p-m-1': false,
+                            'p-m-2': false,
+                            'p-m-3': false,
+                            'p-m-4': false,
                         },
                         locativo: {
-                            p1: false,
-                            p2: false,
-                            p3: false,
-                            p4: false,
+                            'p-l-1': false,
+                            'p-l-2': false,
+                            'p-l-3': false,
+                            'p-l-4': false,
                         },
                         accTransito: {
-                            p1: false,
-                            p2: false,
-                            p3: false,
+                            'p-a-t-1': false,
+                            'p-a-t-2': false,
+                            'p-a-t-3': false,
                         },
                         fenoNaturales: {
-                            p1: false,
-                            p2: false,
-                            p3: false,
-                            p4: false,
+                            'p-f-n-1': false,
+                            'p-f-n-2': false,
+                            'p-f-n-3': false,
+                            'p-f-n-4': false,
                         },
                         quimicos: {
-                            p1: false,
-                            p2: false,
-                            p3: false,
-                            p4: false,
-                            p5: false,
-                            p6: false,
-                            p7: false,
-                            p8: false,
+                            'p-q-1': false,
+                            'p-q-2': false,
+                            'p-q-3': false,
+                            'p-q-4': false,
+                            'p-q-5': false,
+                            'p-q-6': false,
+                            'p-q-7': false,
+                            'p-q-8': false,
                         },
                     }
                 }
             }
 
-            let c1 = 1
-            for(let valor in datosPropios.condEsp){
-                const input = document.querySelector(`input[name="c-e-${c1}"]`);
-                ordenEditada.datosPropios.condEsp[`c-e-${c1}`] = input.checked;
+            // Guardar Valores ya seleccionados
 
-                c1 = c1 + 1;
+            // Guardar - Condiciones Específicas
+            let c = 1;
+            for(let valor in datosPropios.condEsp){
+                const input = document.querySelector(`input[name="c-e-${c}"]`);
+                ordenEditada.datosPropios.condEsp[`c-e-${c}`] = input.checked;
+
+                c = c + 1;
             }
 
-            let c2 = 1
+            // Guardar - Condiciones Elementos Protección Individual
+            c = 1;
             for(let valor in datosPropios.eleProtInd){
-                const input = document.querySelector(`input[name="e-p-i-${c2}"]`);
-                ordenEditada.datosPropios.eleProtInd[`e-p-i-${c2}`] = input.checked;
+                const input = document.querySelector(`input[name="e-p-i-${c}"]`);
+                ordenEditada.datosPropios.eleProtInd[`e-p-i-${c}`] = input.checked;
 
-                c2 = c2 + 1;
+                c = c + 1;
+            }
+
+            // Guardar - Tareas Alto Riesgo
+            c = 1;
+            for(let valor in datosPropios.peligrosRiesgos.tareasAltoRiesgo){
+                const input = document.querySelector(`input[name="t-a-r-${c}"]`);
+                ordenEditada.datosPropios.peligrosRiesgos.tareasAltoRiesgo[`t-a-r-${c}`] = input.checked;
+
+                c = c + 1;
+            }
+
+            // Llenar valores - Peligros físicos
+            c = 1
+            for(let valor in datosPropios.peligrosRiesgos.fisicos){
+                const input = document.querySelector(`input[name="p-f-${c}"]`);
+                ordenEditada.datosPropios.peligrosRiesgos.fisicos[`p-f-${c}`] = input.checked;
+
+                c = c + 1;
+            }
+
+            // Llenar valores - Peligros biomecánicos
+            c = 1
+            for(let valor in datosPropios.peligrosRiesgos.biomecanicos){
+                const input = document.querySelector(`input[name="p-bm-${c}"]`);
+                ordenEditada.datosPropios.peligrosRiesgos.biomecanicos[`p-bm-${c}`] = input.checked;
+
+                c = c + 1;
+            }
+
+            // Llenar valores - Riesgo público
+            c = 1
+            for(let valor in datosPropios.peligrosRiesgos.riesgoPublico){
+                const input = document.querySelector(`input[name="r-p-${c}"]`);
+                ordenEditada.datosPropios.peligrosRiesgos.riesgoPublico[`r-p-${c}`] = input.checked;
+
+                c = c + 1;
+            }
+            // Llenar valores - Peligro eléctrico
+            c = 1
+            for(let valor in datosPropios.peligrosRiesgos.electrico){
+                const input = document.querySelector(`input[name="p-e-${c}"]`);
+                ordenEditada.datosPropios.peligrosRiesgos.electrico[`p-e-${c}`] = input.checked;
+
+                c = c + 1;
+            }
+
+            // Llenar valores - Psicosocial
+            c = 1
+            for(let valor in datosPropios.peligrosRiesgos.psicosocial){
+                const input = document.querySelector(`input[name="p-p-${c}"]`);
+                ordenEditada.datosPropios.peligrosRiesgos.psicosocial[`p-p-${c}`] = input.checked;
+
+                c = c + 1;
+            }
+
+            // Llenar valores - Biológicos
+            c = 1
+            for(let valor in datosPropios.peligrosRiesgos.biologicos){
+                const input = document.querySelector(`input[name="p-b-${c}"]`);
+                ordenEditada.datosPropios.peligrosRiesgos.biologicos[`p-b-${c}`] = input.checked;
+
+                c = c + 1;
+            }
+
+            // Llenar valores - Mecánico
+            c = 1
+            for(let valor in datosPropios.peligrosRiesgos.mecanico){
+                const input = document.querySelector(`input[name="p-m-${c}"]`);
+                ordenEditada.datosPropios.peligrosRiesgos.mecanico[`p-m-${c}`] = input.checked;
+
+                c = c + 1;
+            }
+
+            // Llenar valores - Locativo
+            c = 1
+            for(let valor in datosPropios.peligrosRiesgos.locativo){
+                const input = document.querySelector(`input[name="p-l-${c}"]`);
+                ordenEditada.datosPropios.peligrosRiesgos.locativo[`p-l-${c}`] = input.checked;
+
+                c = c + 1;
+            }
+
+            // Llenar valores - Accidente de Tránsito
+            c = 1
+            for(let valor in datosPropios.peligrosRiesgos.accTransito){
+                const input = document.querySelector(`input[name="p-a-t-${c}"]`);
+                ordenEditada.datosPropios.peligrosRiesgos.accTransito[`p-a-t-${c}`] = input.checked;
+
+                c = c + 1;
+            }
+
+            // Llenar valores - Fenómenos Naturales
+            c = 1
+            for(let valor in datosPropios.peligrosRiesgos.fenoNaturales){
+                const input = document.querySelector(`input[name="p-f-n-${c}"]`);
+                ordenEditada.datosPropios.peligrosRiesgos.fenoNaturales[`p-f-n-${c}`] = input.checked;
+
+                c = c + 1;
+            }
+
+            // Llenar valores - Químicos
+            c = 1
+            for(let valor in datosPropios.peligrosRiesgos.quimicos){
+                const input = document.querySelector(`input[name="p-q-${c}"]`);
+                ordenEditada.datosPropios.peligrosRiesgos.quimicos[`p-q-${c}`] = input.checked;
+
+                c = c + 1;
             }
 
             ordenes.editarOrden(ordenEditada);

@@ -1,4 +1,4 @@
-CONDICIONES GENERALES DE LA TAREA Y DEL PERSONAL (c-g-)
+bCONDICIONES GENERALES DE LA TAREA Y DEL PERSONAL (c-g-)
     1 ¿El personal entiende las normas y prácticas de los procedimientos a seguir?
     2 ¿Se han lavado y/o desinfectado los EPPs, equipos de alturas, herramientas y materiales a utilizar?
     3 ¿El personal que va desarrollar los trabajos, antes de iniciar cada una de las actividades, ha realizado el respectivo lavado de manos con agua y jabón o gel antibacterial?
@@ -273,12 +273,12 @@ const ordenTrabajo = {
                     'p-f-6': false,
                 },
                 biomecanicos: {
-                    'p-m-1': false,
-                    'p-m-1': false,
-                    'p-m-1': false,
-                    'p-m-1': false,
-                    'p-m-1': false,
-                    'p-m-1': false,
+                    'p-bm-1': false,
+                    'p-bm-1': false,
+                    'p-bm-1': false,
+                    'p-bm-1': false,
+                    'p-bm-1': false,
+                    'p-bm-1': false,
                 },
                 riesgoPublico: {
                     'r-p-1': false,

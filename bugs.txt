@@ -2,15 +2,16 @@ BUGS A ARREGLAR
  1 - En versión móvil los placeholders e íconos del input fecha no aparecen *** SIN SOLUCIONAR ***
 
 MEJORAS AL ASPECTO
- - Agregar membretes de la compañía *** SIN SOLUCIONAR ***
- - Mejorar aspecto de las tablas en General *** SIN SOLUCIONAR ***
- - Ajustar width de los modals *** SIN SOLUCIONAR ***
+ - Agregar membretes de la compañía 
+ - Mejorar aspecto de las tablas en General 
+ - Ajustar width de los modals 
 
  COSAS A IMPLEMENTAR
- - Funcionalidad 'Agregar' para las tablas. *** SIN HACER ***
- - Funcionalidad Convertir a PDF *** SIN HACER *** 
+ - Funcionalidad 'Agregar' para las tablas. 
+ - Funcionalidad Convertir a PDF 
     Llenar Formulario. 
- - Refactorizar código de ordenes.js *** SIN HACER *** 
- - Añadir función 'Marcar todas' en las Ordenes *** SIN HACER *** 
- - Guardar información en localhost *** SIN HACER *** 
- - Hacer Manifest (PWA);
+ - Refactorizar código de ordenes.js 
+ - Añadir función 'Marcar todas' en las Ordenes 
+ - Guardar información en localhost 
+ - Hacer Manifest (PWA)
+ - Agregar Datos Personales de integrantes de la cuadrilla 
