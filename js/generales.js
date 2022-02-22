@@ -16,20 +16,38 @@ export { datos };
 }
 
 const condicionesGenerales = {
-    'c-g-1': false,
-    'c-g-2': false,
-    'c-g-3': false,
-    'c-g-4': false,
-    'c-g-5': false,
-    'c-g-6': false,
-    'c-g-7': false,
-    'c-g-8': false,
-    'c-g-9': false,
-    'c-g-10': false,
-    'c-g-11': false,
-    'c-g-12': false,
-    'c-g-13': false,
-    'c-g-14': false,
+    preguntas: {
+        'c-g-1': false,
+        'c-g-2': false,
+        'c-g-3': false,
+        'c-g-4': false,
+        'c-g-5': false,
+        'c-g-6': false,
+        'c-g-7': false,
+        'c-g-8': false,
+        'c-g-9': false,
+        'c-g-10': false,
+        'c-g-11': false,
+        'c-g-12': false,
+        'c-g-13': false,
+        'c-g-14': false,
+    },
+    observaciones: {
+        'c-g-1-obs': false,
+        'c-g-2-obs': false,
+        'c-g-3-obs': false,
+        'c-g-4-obs': false,
+        'c-g-5-obs': false,
+        'c-g-6-obs': false,
+        'c-g-7-obs': false,
+        'c-g-8-obs': false,
+        'c-g-9-obs': false,
+        'c-g-10-obs': false,
+        'c-g-11-obs': false,
+        'c-g-12-obs': false,
+        'c-g-13-obs': false,
+        'c-g-14-obs': false,
+    }
 }
 const medidasControl = {
     'm-c-1': false,
@@ -180,8 +198,8 @@ do{
         elemento.addEventListener('input', e =>{
             if(e.target.value === 'si'){
 
-                for(let value in condicionesGenerales){
-                    condicionesGenerales[value] = e.target.value;
+                for(let value in condicionesGenerales.preguntas){
+                    condicionesGenerales.preguntas[value] = e.target.value;
                 }
 
                 for(let i = 1; i <= npreguntas; i++){
@@ -195,8 +213,8 @@ do{
                 }
 
             }else if(e.target.value === 'no'){
-                for(let value in condicionesGenerales){
-                    condicionesGenerales[value] = e.target.value;
+                for(let value in condicionesGenerales.preguntas){
+                    condicionesGenerales.preguntas[value] = e.target.value;
                 }
 
                 for(let i = 1; i <= npreguntas; i++){
@@ -209,8 +227,8 @@ do{
                 }
 
             }else if(e.target.value === 'na'){
-                for(let value in condicionesGenerales){
-                    condicionesGenerales[value] = e.target.value;
+                for(let value in condicionesGenerales.preguntas){
+                    condicionesGenerales.preguntas[value] = e.target.value;
                 }
                 
                 for(let i = 1; i <= npreguntas; i++){
@@ -230,12 +248,12 @@ do{
 // Agregar listeners - Condiciones Generales
 do{
  let i = 1
- for(let value in condicionesGenerales){
+ for(let value in condicionesGenerales.preguntas){
     const input = document.querySelectorAll(`input[name="c-g-${i}"]`);
 
     input.forEach( elemento => {
         elemento.addEventListener('change', e =>{
-            condicionesGenerales[value] = e.target.value;
+            condicionesGenerales.preguntas[value] = e.target.value;
         });
     });
 
@@ -244,6 +262,34 @@ do{
 
 
 }while(false);
+
+
+// Agregar Observaciones
+/*do{
+    const txtArea = document.querySelector('#aggObsTxtarea');
+    const guardarObs = document.querySelector('#guardarObs');
+
+    for(let value in condicionesGenerales.observaciones){
+        const button = document.querySelector(`button[name=${value}]`);
+        
+
+        button.addEventListener('click', e =>{
+            // Rellenar txt area con los datos guardados
+            if(condicionesGenerales.observaciones[value] !== false){
+                txtArea.textContent = datosGenerales.observaciones[value];
+            }else{
+                txtArea.textContent = '';
+            }
+        });
+
+        guardarObs.addEventListener('click', e =>{
+            if(confirm('¿Deseas Guardar la observación?')){
+                console.log(condicionesGenerales.observaciones[value]);
+            }
+        });
+    }   
+
+}while(false);*/
 
 
 
@@ -454,4 +500,9 @@ function llenarSelects(){
         console.log(datosGenerales);
     });
     
+    // Guardar Fecha
+    fechaInput.addEventListener('input', e =>{
+        datosGenerales.fecha = e.target.value;
+        console.log(datosGenerales.fecha);
+    });
 }

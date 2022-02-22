@@ -344,20 +344,38 @@ const ordenTrabajo = {
     }
 
 const condicionesGenerales = {
-    'c-g-1': false,
-    'c-g-2': false,
-    'c-g-3': false,
-    'c-g-4': false,
-    'c-g-5': false,
-    'c-g-6': false,
-    'c-g-7': false,
-    'c-g-8': false,
-    'c-g-9': false,
-    'c-g-10': false,
-    'c-g-11': false,
-    'c-g-12': false,
-    'c-g-13': false,
-    'c-g-14': false,
+    preguntas: {
+        'c-g-1': false,
+        'c-g-2': false,
+        'c-g-3': false,
+        'c-g-4': false,
+        'c-g-5': false,
+        'c-g-6': false,
+        'c-g-7': false,
+        'c-g-8': false,
+        'c-g-9': false,
+        'c-g-10': false,
+        'c-g-11': false,
+        'c-g-12': false,
+        'c-g-13': false,
+        'c-g-14': false,
+    },
+    observaciones: {
+        'c-g-1-obs': false,
+        'c-g-2-obs': false,
+        'c-g-3-obs': false,
+        'c-g-4-obs': false,
+        'c-g-5-obs': false,
+        'c-g-6-obs': false,
+        'c-g-7-obs': false,
+        'c-g-8-obs': false,
+        'c-g-9-obs': false,
+        'c-g-10-obs': false,
+        'c-g-11-obs': false,
+        'c-g-12-obs': false,
+        'c-g-13-obs': false,
+        'c-g-14-obs': false,
+    }
 }
 
 const medidasDeControl = {

@@ -5,12 +5,15 @@ MEJORAS AL ASPECTO
  - Agregar membretes de la compañía 
  - Mejorar aspecto de las tablas en General 
  - Ajustar width de los modals 
+ - Arregar input de la fecha
 
  COSAS A IMPLEMENTAR
- - Funcionalidad 'Agregar' para las tablas. 
+ - Funcionalidad 'Agregar' para las tablas.
+ - Agregar Datos Personales de integrantes de la cuadrilla 
+ - Guardar información en localhost 
+ - Hacer Manifest (PWA)
  - Funcionalidad Convertir a PDF 
     Llenar Formulario. 
  - Refactorizar código de ordenes.js
- - Guardar información en localhost 
- - Hacer Manifest (PWA)
- - Agregar Datos Personales de integrantes de la cuadrilla 
+ - Refactorizar HTML
+ 
