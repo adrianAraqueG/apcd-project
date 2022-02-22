@@ -26,7 +26,6 @@ class Orden {
     }
 
     editarOrden(ordenActualizada){
-        console.log(ordenActualizada);
         for( let orden in this.ordenes ){
             if(this.ordenes[orden].id === ordenActualizada.id){
                 this.ordenes[orden] = ordenActualizada;
@@ -34,7 +33,6 @@ class Orden {
         };
 
         UI.imprimirOrdenes();
-        console.log(this.ordenes);
     }
 
     eliminarOrden(id){
@@ -48,7 +46,6 @@ class Orden {
 class UI{
     // Agrega alertas a los inputs
     static inputAlerta(tipo, child){
-        console.log(child);
         if(tipo === 'error'){
             child.classList.add('is-invalid');
         }
@@ -206,7 +203,6 @@ function crearOrden(){
             if(nOrden.classList.contains('is-invalid')){
                 nOrden.classList.remove('is-invalid');
             }
-            console.log('nOden');
         });
     
         hiOrden.addEventListener('input', () =>{
@@ -414,20 +410,29 @@ function editarOrden(id){
         const markAll = document.querySelector('input[name="c-e-ma"]');
         const npreguntas = 13
 
+
+        // Settear el check de 'Marcar Todas'
+        let counter = 0
+        for(let value in datosPropios.condEsp){
+            if(datosPropios.condEsp[value] === true){
+                counter = counter + 1;
+            }
+        }
+
+        if(counter === npreguntas){
+            markAll.checked = true;
+        }else{
+            markAll.checked = false;
+        }
+
         markAll.addEventListener('input', e =>{
             if(e.target.checked === true){
-                for(let value in datosPropios.condEsp){
-                    datosPropios.condEsp[value] = true;
-                }
                 for(let i = 1; i <= npreguntas; i++){
                     const input = document.querySelector(`input[name="c-e-${i}"]`);
                     input.checked = true;
                 }
 
             } else if(e.target.checked === false){
-                for(let value in datosPropios.condEsp){
-                    datosPropios.condEsp[value] = false;
-                }
                 for(let i = 1; i <= npreguntas; i++){
                     const input = document.querySelector(`input[name="c-e-${i}"]`);
                     input.checked = false;
@@ -453,20 +458,30 @@ function editarOrden(id){
         const markAll = document.querySelector('input[name="e-p-i-ma"]');
         const npreguntas = 19
 
+
+        // Settear el check de 'Marcar Todas'
+        let counter = 0
+        for(let value in datosPropios.eleProtInd){
+            if(datosPropios.eleProtInd[value] === true){
+                counter = counter + 1;
+            }
+        }
+
+        if(counter === npreguntas){
+            markAll.checked = true;
+        }else{
+            markAll.checked = false;
+        }
+
+
         markAll.addEventListener('input', e =>{
             if(e.target.checked === true){
-                for(let value in datosPropios.eleProtInd){
-                    datosPropios.eleProtInd[value] = true;
-                }
                 for(let i = 1; i <= npreguntas; i++){
                     const input = document.querySelector(`input[name="e-p-i-${i}"]`);
                     input.checked = true;
                 }
 
             } else if(e.target.checked === false){
-                for(let value in datosPropios.eleProtInd){
-                    datosPropios.eleProtInd[value] = false;
-                }
                 for(let i = 1; i <= npreguntas; i++){
                     const input = document.querySelector(`input[name="e-p-i-${i}"]`);
                     input.checked = false;
@@ -857,8 +872,7 @@ function editarOrden(id){
 
                 c = c + 1;
             }
-
-            console.log(ordenEditada);
+            
             ordenes.editarOrden(ordenEditada);
             btnCerrar1.click();
         } 
