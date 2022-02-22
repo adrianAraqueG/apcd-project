@@ -216,14 +216,18 @@ function crearOrden(){
         });
     }
 
+
+    const pInt = parseInt(nOrden.value);
     // validar campos
-    if(nOrden.value === ''){
+    if(nOrden.value === '' /*|| nOrden.value.length > 12 || pInt.toString().match(/\d/g).length < 12*/){
         UI.inputAlerta('error', nOrden);
         return; 
     }else if(hiOrden.value.length === 0){
         UI.inputAlerta('error', hiOrden);
         return;
     }
+
+
 
     // crear orden
     const ordenTrabajo = {
@@ -404,6 +408,36 @@ function editarOrden(id){
     document.querySelector('#edit-hiOrden').value = horaInicial;
     document.querySelector('#edit-hfOrden').value = horaFinal;
 
+
+    // Marcar Todas - Condicones Específicas
+    do{
+        const markAll = document.querySelector('input[name="c-e-ma"]');
+        const npreguntas = 13
+
+        markAll.addEventListener('input', e =>{
+            if(e.target.checked === true){
+                for(let value in datosPropios.condEsp){
+                    datosPropios.condEsp[value] = true;
+                }
+                for(let i = 1; i <= npreguntas; i++){
+                    const input = document.querySelector(`input[name="c-e-${i}"]`);
+                    input.checked = true;
+                }
+
+            } else if(e.target.checked === false){
+                for(let value in datosPropios.condEsp){
+                    datosPropios.condEsp[value] = false;
+                }
+                for(let i = 1; i <= npreguntas; i++){
+                    const input = document.querySelector(`input[name="c-e-${i}"]`);
+                    input.checked = false;
+                }
+            }
+        });
+        
+
+    }while(false);
+
     // Llenar valores - Condiciones Específicas
     let c = 1
     for(let valor in datosPropios.condEsp){
@@ -413,6 +447,35 @@ function editarOrden(id){
         c = c + 1;
     }
 
+
+    // Marcar Todas - Elementos Protección Individual
+    do{
+        const markAll = document.querySelector('input[name="e-p-i-ma"]');
+        const npreguntas = 19
+
+        markAll.addEventListener('input', e =>{
+            if(e.target.checked === true){
+                for(let value in datosPropios.eleProtInd){
+                    datosPropios.eleProtInd[value] = true;
+                }
+                for(let i = 1; i <= npreguntas; i++){
+                    const input = document.querySelector(`input[name="e-p-i-${i}"]`);
+                    input.checked = true;
+                }
+
+            } else if(e.target.checked === false){
+                for(let value in datosPropios.eleProtInd){
+                    datosPropios.eleProtInd[value] = false;
+                }
+                for(let i = 1; i <= npreguntas; i++){
+                    const input = document.querySelector(`input[name="e-p-i-${i}"]`);
+                    input.checked = false;
+                }
+            }
+        });
+
+    }while(false);
+
     // Llenar valores - Elementos Protección Individual
     c = 1
     for(let valor in datosPropios.eleProtInd){
@@ -421,6 +484,7 @@ function editarOrden(id){
 
         c = c + 1;
     }
+
 
     // Llenar valores - Tareas Alto Riesgo
     c = 1
