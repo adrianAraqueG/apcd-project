@@ -25,6 +25,10 @@ btnAbrirModal.addEventListener('click', agregarInt);
 /** FUNCIONES */
 
 function agregarInt(){
+    btnGuardar.addEventListener('click', guardarInt);
+}
+
+function guardarInt(){
     //Validar
     if(nombreInput.value === ''){
         inputAlerta(nombreInput);
@@ -35,6 +39,18 @@ function agregarInt(){
     }else if(cargoInput.value === ''){
         inputAlerta(cargoInput);
         return;
+    }
+
+    // cerrando todo...
+    const btnCerrar1 = document.querySelector('#btnCerrarInt1');
+    const btnCerrar2 = document.querySelector('#btnCerrarInt2');
+    btnCerrar1.addEventListener('click', cerrar);
+    btnCerrar2.addEventListener('click', cerrar);
+
+    function cerrar(){
+        btnCerrar1.removeEventListener('click', cerrar, false);
+        btnCerrar2.removeEventListener('click', cerrar, false);
+        btnGuardarInt.removeEventListener('click', guardarInt, false);
     }
 
     if(confirm('¿Quieres añadir el nuevo integrante?')){
@@ -50,17 +66,6 @@ function agregarInt(){
         console.log(integrantes);
         btnCerrar1.click();
 
-    }
-    
-    // cerrando todo...
-    const btnCerrar1 = document.querySelector('#btnCerrarInt1');
-    const btnCerrar2 = document.querySelector('#btnCerrarInt2');
-    btnCerrar1.addEventListener('click', cerrar);
-    btnCerrar2.addEventListener('click', cerrar);
-
-    function cerrar(){
-        btnCerrar1.removeEventListener('click', cerrar, false);
-        btnCerrar2.removeEventListener('click', cerrar, false);
     }
 }
 
