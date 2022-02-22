@@ -7,6 +7,7 @@
     <title>APCD - PWA</title>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/bt/bootstrap.css">
+    <link rel="stylesheet" href="img/bootstrap-icons-1.8.1/bootstrap-icons.css">
 </head>
 <body>
     
@@ -41,8 +42,8 @@
             <!-- INTEGRANTES DE CUADRILLA -->
             <div>
                 <h3 class="text-wrap fs-5 fw-bold">INTEGRANTES DE CUADRILLA</h3>
-                <div id="integrantes">
-                    <p class="text-secondary">Aún no hay integrantes</p>
+                <div class="table-responsive" id="integrantes">
+                    
                 </div>
 
                 <button class="btn btn-primary" id="abrirModalInt" data-bs-toggle="modal" data-bs-target="#modalIntegrantes">
@@ -55,7 +56,7 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="Integrantes">Agregar Nuevo Integrante</h5>
+                      <h5 class="modal-title" id="integrantesTitle">Agregar Nuevo Integrante</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCerrarInt2"></button>
                     </div>
                     <div class="modal-body">
@@ -72,7 +73,7 @@
 
                         <label for="cargoInt" class="form-text">Ciudad</label>
                         <select name="cargoInt" id="cargoInt" class="form-select" >
-                            <option value="defaultc" selected disabled>SELECCIONA UN CARGO--</option>
+                            <option value="" selected disabled>SELECCIONA UN CARGO--</option>
                             <option value="tecnico">TÉCNICO</option>
                             <option value="auxiliar">AUXILIAR</option>
                         </select>
@@ -129,8 +130,8 @@
                             <input type="radio" name="c-g-1" value="na" class="form-check-input fs-6 mt-2">
                         </td>
                         <td>
-                            <button class="btn btn-primary text-light p-1" name="c-g-1-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
-                                <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
+                            <button class="btn btn-primary text-light p-2" name="c-g-1-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
+                                <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>
                     </tr>
@@ -147,8 +148,8 @@
                             <input type="radio" name="c-g-2" value="na" class="form-check-input fs-6 mt-2">
                         </td>
                         <td>
-                            <button class="btn btn-primary text-light p-1" name="c-g-2-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
-                                <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
+                            <button class="btn btn-primary text-light p-2" name="c-g-2-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
+                                <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>
                     </tr>
@@ -165,9 +166,10 @@
                             <input type="radio" name="c-g-3" value="na" class="form-check-input fs-6 mt-2">
                         </td>
                         <td>
-                            <button class="btn btn-primary text-light p-1" name="c-g-3-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
-                                <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
-                            </button>                        </td>
+                            <button class="btn btn-primary text-light p-2" name="c-g-3-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
                     </tr>
                     <tr>
                         <td>4</td>
@@ -182,9 +184,10 @@
                             <input type="radio" name="c-g-4" value="na" class="form-check-input fs-6 mt-2">
                         </td>
                         <td>
-                            <button class="btn btn-primary text-light p-1" name="c-g-4-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
-                                <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
-                            </button>                        </td>
+                            <button class="btn btn-primary text-light p-2" name="c-g-4-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
                     </tr>
                     <tr>
                         <td>5</td>
@@ -199,9 +202,10 @@
                             <input type="radio" name="c-g-5" value="na" class="form-check-input fs-6 mt-2">
                         </td>
                         <td>
-                            <button class="btn btn-primary text-light p-1" name="c-g-5-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
-                                <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
-                            </button>                        </td>
+                            <button class="btn btn-primary text-light p-2" name="c-g-5-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
                     </tr>
                     <tr>
                         <td>6</td>
@@ -216,8 +220,8 @@
                             <input type="radio" name="c-g-6" value="na" class="form-check-input fs-6 mt-2">
                         </td>
                         <td>
-                            <button class="btn btn-primary text-light p-1" name="c-g-6-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
-                                <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
+                            <button class="btn btn-primary text-light p-2" name="c-g-6-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
+                                <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>
                     </tr>
@@ -234,8 +238,8 @@
                             <input type="radio" name="c-g-7" value="na" class="form-check-input fs-6 mt-2">
                         </td>
                         <td>
-                            <button class="btn btn-primary text-light p-1" name="c-g-7-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
-                                <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
+                            <button class="btn btn-primary text-light p-2" name="c-g-7-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
+                                <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>
                     </tr>
@@ -252,8 +256,8 @@
                             <input type="radio" name="c-g-8" value="na" class="form-check-input fs-6 mt-2">
                         </td>
                         <td>
-                            <button class="btn btn-primary text-light p-1" name="c-g-8-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
-                                <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
+                            <button class="btn btn-primary text-light p-2" name="c-g-8-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
+                                <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>
                     </tr>
@@ -270,8 +274,8 @@
                             <input type="radio" name="c-g-9" value="na" class="form-check-input fs-6 mt-2">
                         </td>
                         <td>
-                            <button class="btn btn-primary text-light p-1" name="c-g-9-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
-                                <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
+                            <button class="btn btn-primary text-light p-2" name="c-g-9-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
+                                <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>
                     </tr>
@@ -288,8 +292,8 @@
                             <input type="radio" name="c-g-10" value="na" class="form-check-input fs-6 mt-2">
                         </td>
                         <td>
-                            <button class="btn btn-primary text-light p-1" name="c-g-10-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
-                                <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
+                            <button class="btn btn-primary text-light p-2" name="c-g-10-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
+                                <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>
                     </tr>
@@ -306,8 +310,8 @@
                             <input type="radio" name="c-g-11" value="na" class="form-check-input fs-6 mt-2">
                         </td>
                         <td>
-                            <button class="btn btn-primary text-light p-1" name="c-g-11-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
-                                <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
+                            <button class="btn btn-primary text-light p-2" name="c-g-11-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
+                                <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>
                     </tr>
@@ -324,8 +328,8 @@
                             <input type="radio" name="c-g-12" value="na" class="form-check-input fs-6 mt-2">
                         </td>
                         <td>
-                            <button class="btn btn-primary text-light p-1" name="c-g-12-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
-                                <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
+                            <button class="btn btn-primary text-light p-2" name="c-g-12-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
+                                <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>
                     </tr>
@@ -342,8 +346,8 @@
                             <input type="radio" name="c-g-13" value="na" class="form-check-input fs-6 mt-2">
                         </td>
                         <td>
-                            <button class="btn btn-primary text-light p-1" name="c-g-13-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
-                                <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
+                            <button class="btn btn-primary text-light p-2" name="c-g-13-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
+                                <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>
                     </tr>
@@ -360,8 +364,8 @@
                             <input type="radio" name="c-g-14" value="na" class="form-check-input fs-6 mt-2">
                         </td>
                         <td>
-                            <button class="btn btn-primary text-light p-1" name="c-g-14-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
-                                <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
+                            <button class="btn btn-primary text-light p-2" name="c-g-14-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
+                                <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>
                     </tr>
