@@ -265,9 +265,8 @@ do{
 
 
 // Agregar Observaciones
-/*do{
+do{
     const txtArea = document.querySelector('#aggObsTxtarea');
-    const guardarObs = document.querySelector('#guardarObs');
 
     for(let value in condicionesGenerales.observaciones){
         const button = document.querySelector(`button[name=${value}]`);
@@ -276,20 +275,18 @@ do{
         button.addEventListener('click', e =>{
             // Rellenar txt area con los datos guardados
             if(condicionesGenerales.observaciones[value] !== false){
-                txtArea.textContent = datosGenerales.observaciones[value];
+                txtArea.value = condicionesGenerales.observaciones[value];
+                console.log('distinto a false');
             }else{
-                txtArea.textContent = '';
+                txtArea.value = '';
             }
+
+            guardarObs(button.name);
         });
 
-        guardarObs.addEventListener('click', e =>{
-            if(confirm('¿Deseas Guardar la observación?')){
-                console.log(condicionesGenerales.observaciones[value]);
-            }
-        });
     }   
 
-}while(false);*/
+}while(false);
 
 
 
@@ -505,4 +502,34 @@ function llenarSelects(){
         datosGenerales.fecha = e.target.value;
         console.log(datosGenerales.fecha);
     });
+}
+
+
+function guardarObs(name){
+    const btnGuardar = document.querySelector('#btnGuardarObs');
+    const txtArea = document.querySelector('#aggObsTxtarea');
+
+    btnGuardar.addEventListener('click', actualizar);
+
+    function actualizar(){
+        console.log(txtArea.value);
+        if(confirm('¿Quieres guardar la Observación?')){
+            condicionesGenerales.observaciones[name] = txtArea.value;
+
+            btnCerrar1.click();
+            console.log('condGen:');
+            console.log(condicionesGenerales.observaciones);
+        }
+    }
+
+    const btnCerrar1 = document.querySelector('#btnCerrarAggObs1');
+    const btnCerrar2 = document.querySelector('#btnCerrarAggObs2');
+    btnCerrar1.addEventListener('click', cerrar);
+    btnCerrar2.addEventListener('click', cerrar);
+
+    function cerrar(){
+        btnCerrar1.removeEventListener('click', cerrar, false);
+        btnCerrar2.removeEventListener('click', cerrar, false);
+        btnGuardar.removeEventListener('click', actualizar, false);
+    }
 }

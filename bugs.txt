@@ -8,7 +8,6 @@ MEJORAS AL ASPECTO
  - Arregar input de la fecha
 
  COSAS A IMPLEMENTAR
- - Funcionalidad 'Agregar' para las tablas.
  - Agregar Datos Personales de integrantes de la cuadrilla 
  - Guardar información en localhost 
  - Hacer Manifest (PWA)
