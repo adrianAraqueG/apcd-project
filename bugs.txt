@@ -9,10 +9,19 @@ MEJORAS AL ASPECTO
 
  COSAS A IMPLEMENTAR
  - Agregar Datos Personales de integrantes de la cuadrilla 
- - Guardar información en localhost 
- - Hacer Manifest (PWA)
- - Funcionalidad Convertir a PDF 
-    Llenar Formulario. 
+ - Guardar información en localhost
+   - Guardar y leer información de DATOS GENERALES.
+   - Guardar y leer informacion de CONDICIONES ESPECÍFICAS.
+   - Guardar y leer informacion de MEDIDAS DE CONTROL.
+   - Guardar y leer informacion de HERRAMIENTAS Y EQUIPOS.
+   - Guardar y leer informacion de ESCALERAS.
+ - Funcionalidad Convertir a PDF
+   - Implementar y hacer pruebas de las librerías.
+   - Implementar Canvas para rellenar las cuadrillas.
+   - Llenar la cuadrilla.
+  - Hacer PWA
+   - Modelas íconos
+   - Hacer Manifest
  - Refactorizar código de ordenes.js
  - Refactorizar HTML
  
