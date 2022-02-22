@@ -10,8 +10,7 @@ MEJORAS AL ASPECTO
  - Funcionalidad 'Agregar' para las tablas. 
  - Funcionalidad Convertir a PDF 
     Llenar Formulario. 
- - Refactorizar código de ordenes.js 
- - Añadir función 'Marcar todas' en las Ordenes 
+ - Refactorizar código de ordenes.js
  - Guardar información en localhost 
  - Hacer Manifest (PWA)
  - Agregar Datos Personales de integrantes de la cuadrilla 
