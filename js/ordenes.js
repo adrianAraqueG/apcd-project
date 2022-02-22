@@ -145,7 +145,7 @@ class UI{
         const divOrdenes = document.querySelector('#ordenes');
 
         const ph = document.createElement('p');
-        ph.classList.add('fs-4');
+        ph.classList.add('fs-4', 'text-secondary');
         ph.textContent = 'Aún no hay ordenes';
 
         if(ordenes.getOrdenes().length > 0 && divOrdenes.contains(ph)){

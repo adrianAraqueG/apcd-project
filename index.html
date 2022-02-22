@@ -32,9 +32,61 @@
 
                 <label for="ciudad" class="form-text">Ciudad</label>
                 <select name="ciudad" id="ciudad" class="form-select" disabled>
-                    <option value="" select disabled >SELECCIONA UNA CIUDAD</option>
+                    <option value="" disabled selected >SELECCIONA UNA CIUDAD--</option>
                 </select>
             </form>
+
+
+
+            <!-- INTEGRANTES DE CUADRILLA -->
+            <div>
+                <h3 class="text-wrap fs-5 fw-bold">INTEGRANTES DE CUADRILLA</h3>
+                <div id="integrantes">
+                    <p class="text-secondary">Aún no hay integrantes</p>
+                </div>
+
+                <button class="btn btn-primary" id="abrirModalInt" data-bs-toggle="modal" data-bs-target="#modalIntegrantes">
+                    Agregar Integrante
+                </button>
+            </div>
+
+            <!-- MODAL INTEGRANTES -->
+            <div class="modal fade" id="modalIntegrantes" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="Integrantes">Agregar Nuevo Integrante</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCerrarInt2"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- INPUTS -->
+                        <div class="form-floating mb-3">
+                            <input type="text" name="nombreInt" class="form-control" id="nombreInt">
+                            <label for="nombreInt">Nombre completo</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="cedulaInt" class="form-control" id="cedulaInt">
+                            <label for="cedulaInt">Cédula C.C</label>
+                        </div>
+
+                        <label for="cargoInt" class="form-text">Ciudad</label>
+                        <select name="cargoInt" id="cargoInt" class="form-select" >
+                            <option value="defaultc" selected disabled>SELECCIONA UN CARGO--</option>
+                            <option value="tecnico">TÉCNICO</option>
+                            <option value="auxiliar">AUXILIAR</option>
+                        </select>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCerrarInt1">Cerrar</button>
+                      <button type="button" class="btn btn-primary" id="btnGuardarInt">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            <hr>
 
 
 
@@ -166,7 +218,8 @@
                         <td>
                             <button class="btn btn-primary text-light p-1" name="c-g-6-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
                                 <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
-                            </button>                        </td>
+                            </button>
+                        </td>
                     </tr>
                     <tr>
                         <td>7</td>
@@ -183,7 +236,8 @@
                         <td>
                             <button class="btn btn-primary text-light p-1" name="c-g-7-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
                                 <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
-                            </button>                        </td>
+                            </button>
+                        </td>
                     </tr>
                     <tr>
                         <td>8</td>
@@ -200,7 +254,8 @@
                         <td>
                             <button class="btn btn-primary text-light p-1" name="c-g-8-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
                                 <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
-                            </button>                        </td>
+                            </button>
+                        </td>
                     </tr>
                     <tr>
                         <td>9</td>
@@ -217,7 +272,8 @@
                         <td>
                             <button class="btn btn-primary text-light p-1" name="c-g-9-obs" data-bs-toggle="modal" data-bs-target="#modalAggObs">
                                 <img class="icon" src="img/icons/icon-edit-w.png" alt="icon edit">
-                            </button>                        </td>
+                            </button>
+                        </td>
                     </tr>
                     <tr>
                         <td>10</td>
