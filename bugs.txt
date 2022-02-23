@@ -8,8 +8,7 @@ MEJORAS AL ASPECTO
  - Arregar input de la fecha
 
  COSAS A IMPLEMENTAR
- - Agregar Datos Personales de integrantes de la cuadrilla 
- - Guardar información en localhost
+ - Implementar localhost
    - Guardar y leer información de DATOS GENERALES.
    - Guardar y leer informacion de CONDICIONES ESPECÍFICAS.
    - Guardar y leer informacion de MEDIDAS DE CONTROL.

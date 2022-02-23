@@ -9,13 +9,13 @@ export { datos };
  * --------------------- ARRAYS GLOBALES ------------------|
  *  -------------------------------------------------------|
  * */
- const datosGenerales = {
+ let datosGenerales = {
     fecha: '',
     ciudad: '',
-    departamento: ''
+    departamento: '',
 }
 
-const condicionesGenerales = {
+let condicionesGenerales = {
     preguntas: {
         'c-g-1': false,
         'c-g-2': false,
@@ -49,7 +49,7 @@ const condicionesGenerales = {
         'c-g-14-obs': false,
     }
 }
-const medidasControl = {
+let medidasControl = {
     'm-c-1': false,
     'm-c-2': false,
     'm-c-3': false,
@@ -78,7 +78,7 @@ const medidasControl = {
     'm-c-26': false,
     'm-c-27': false,
 }
-const herramientasEquipos = {
+let herramientasEquipos = {
     'h-e-1': false,
     'h-e-2': false,
     'h-e-3': false,
@@ -93,7 +93,7 @@ const herramientasEquipos = {
     'h-e-12': false,
     'h-e-13': false,
 }
-const escaleras = {
+let escaleras = {
     escF1: {
        'e-f1-1': false,
        'e-f1-2': false,
@@ -157,16 +157,6 @@ const escaleras = {
 }
 
 
-const datos = new Array();
-datos['generales'] = datosGenerales;
-datos['condicionesGenerales'] = condicionesGenerales;
-datos['medidasControl'] = medidasControl;
-datos['herramientasEquipos'] = herramientasEquipos;
-datos['escaleras'] = escaleras;
-
-
-
-
 
 
 /**--------------------------------------------------------| 
@@ -175,10 +165,19 @@ datos['escaleras'] = escaleras;
  * */
 // Ejecutando al cargar la página.
 document.addEventListener('DOMContentLoaded', () =>{
+    obtenerLS();
+
     llenarSelects();
 });
 
 
+
+const datos = [];
+/*datos['datosGenerales'] = datosGenerales;
+datos['condicionesGenerales'] = condicionesGenerales;
+datos['medidasControl'] = medidasControl;
+datos['herramientasEquipos'] = herramientasEquipos;
+datos['escaleras'] = escaleras;*/
 
 
 
@@ -462,22 +461,67 @@ function llenarSelects(){
     const ciudadSelect = document.querySelector('#ciudad')
     const departamentoSelect = document.querySelector('#departamento');
 
+    // sincronizar los datos
+    fechaInput.value = datosGenerales.fecha;
+    if(datosGenerales.departamento !== ''){
+        departamentoSelect.value = datosGenerales.departamento;
+    }
+
     // lista de departamentos  y ciudades
     const departamentos = {
         'casanare': ['YOPAL', 'AGUAZUL', 'TAURAMENA', 'OROCUE'],
         'caldas': ['MANIZALES', 'ARANZAZU', 'LA MERCED'],
     }
 
-    departamentoSelect.addEventListener('change', e => {
-        // debugger;
-        datosGenerales.departamento = (e.target.value);
-        
-        // Limpiamos select
+    if(!window.localStorage.getItem('datosGenerales')){
+        departamentoSelect.addEventListener('change', e => {
+            datosGenerales.departamento = (e.target.value);
+            
+            while(ciudadSelect.firstChild){
+                ciudadSelect.removeChild(ciudadSelect.firstChild);
+            }
+    
+            setTimeout(departamentos[e.target.value].forEach(ciudad => {
+                const opcion = document.createElement('option');
+                opcion.value = ciudad.toLowerCase();
+                opcion.textContent = ciudad;
+    
+                ciudadSelect.appendChild(opcion);
+            }), 100);
+    
+            datosGenerales.ciudad = departamentos[e.target.value][0].toLowerCase();
+    
+            ciudadSelect.removeAttribute('disabled');
+    
+            actualizarLS();
+        });
+    }else{
+        //debugger;
+        departamentoSelect.addEventListener('change', e =>{;
+            datosGenerales.departamento = (e.target.value);
+
+            while(ciudadSelect.firstChild){
+                ciudadSelect.removeChild(ciudadSelect.firstChild);
+            }
+    
+            setTimeout(departamentos[e.target.value].forEach(ciudad => {
+                const opcion = document.createElement('option');
+                opcion.value = ciudad.toLowerCase();
+                opcion.textContent = ciudad;
+    
+                ciudadSelect.appendChild(opcion);
+            }), 100);
+    
+            datosGenerales.ciudad = departamentos[e.target.value][0].toLowerCase();
+
+            actualizarLS();
+        });
+
         while(ciudadSelect.firstChild){
             ciudadSelect.removeChild(ciudadSelect.firstChild);
         }
 
-        setTimeout(departamentos[e.target.value].forEach(ciudad => {
+        setTimeout(departamentos[datosGenerales.departamento].forEach(ciudad => {
             const opcion = document.createElement('option');
             opcion.value = ciudad.toLowerCase();
             opcion.textContent = ciudad;
@@ -485,23 +529,21 @@ function llenarSelects(){
             ciudadSelect.appendChild(opcion);
         }), 100);
 
-        datosGenerales.ciudad = departamentos[e.target.value][0].toLowerCase();
-        console.log(datosGenerales);
-
         ciudadSelect.removeAttribute('disabled');
-        // debugger;
-    });
+        ciudadSelect.value = datosGenerales.ciudad;
+    }
 
     ciudadSelect.addEventListener('change', e =>{
         datosGenerales.ciudad = e.target.value;
-        console.log(datosGenerales);
+        actualizarLS();
     });
     
     // Guardar Fecha
     fechaInput.addEventListener('input', e =>{
         datosGenerales.fecha = e.target.value;
-        console.log(datosGenerales.fecha);
+        actualizarLS();
     });
+    
 }
 
 
@@ -531,5 +573,36 @@ function guardarObs(name){
         btnCerrar1.removeEventListener('click', cerrar, false);
         btnCerrar2.removeEventListener('click', cerrar, false);
         btnGuardar.removeEventListener('click', actualizar, false);
+    }
+}
+
+function actualizarLS(){
+    // Variable para localStorage
+    const LS = window.localStorage;
+
+    LS.setItem('datosGenerales', JSON.stringify(datosGenerales));
+    LS.setItem('condicionesGenerales', JSON.stringify(condicionesGenerales));
+    LS.setItem('medidasControl', JSON.stringify(condicionesGenerales));
+    LS.setItem('herramientasEquipos', JSON.stringify(condicionesGenerales));
+    LS.setItem('escaleras', JSON.stringify(condicionesGenerales));
+}
+
+function obtenerLS(){
+    const LS = window.localStorage;
+    if(LS.getItem('datosGenerales')){
+        let datosLS = JSON.parse(LS.getItem('datosGenerales'));
+        datosGenerales = datosLS;
+
+        datosLS = JSON.parse(LS.getItem('condicionesGenerales'));
+        condicionesGenerales = datosLS;
+
+        datosLS = JSON.parse(LS.getItem('medidasControl'));
+        medidasControl = datosLS;
+
+        datosLS = JSON.parse(LS.getItem('herramientasEquipos'));
+        herramientasEquipos = datosLS;
+
+        datosLS = JSON.parse(LS.getItem('escaleras'));
+        escaleras = datosLS;
     }
 }
