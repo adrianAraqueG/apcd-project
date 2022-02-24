@@ -164,20 +164,12 @@ let escaleras = {
  *  -------------------------------------------------------|
  * */
 // Ejecutando al cargar la página.
-document.addEventListener('DOMContentLoaded', () =>{
+document.addEventListener('DOMContentLoaded', e =>{
     obtenerLS();
-
-    llenarSelects();
-});
-
-
+    activarSelects();
+})
 
 const datos = [];
-/*datos['datosGenerales'] = datosGenerales;
-datos['condicionesGenerales'] = condicionesGenerales;
-datos['medidasControl'] = medidasControl;
-datos['herramientasEquipos'] = herramientasEquipos;
-datos['escaleras'] = escaleras;*/
 
 
 
@@ -211,6 +203,8 @@ do{
                     });
                 }
 
+                actualizarLS();
+
             }else if(e.target.value === 'no'){
                 for(let value in condicionesGenerales.preguntas){
                     condicionesGenerales.preguntas[value] = e.target.value;
@@ -225,6 +219,8 @@ do{
                     });
                 }
 
+                actualizarLS();
+
             }else if(e.target.value === 'na'){
                 for(let value in condicionesGenerales.preguntas){
                     condicionesGenerales.preguntas[value] = e.target.value;
@@ -238,6 +234,8 @@ do{
                         }
                     });
                 }
+
+                actualizarLS();
             }
         });
     });
@@ -246,18 +244,36 @@ do{
 
 // Agregar listeners - Condiciones Generales
 do{
- let i = 1
- for(let value in condicionesGenerales.preguntas){
-    const input = document.querySelectorAll(`input[name="c-g-${i}"]`);
+    // sincronizar datos
+    if(window.localStorage.getItem('condicionesGenerales')){
+        for(let value in condicionesGenerales.preguntas){
+            const inputs = document.querySelectorAll(`input[name=${value}]`);
+            inputs.forEach( input => {
+                //console.log(datosGenerales)
+                if(input.value === condicionesGenerales.preguntas[value]){
+                    input.cheked = true;
+                }
+            });
+        }
+    }else{
+        console.log('no hay datos en LS');
+    }
 
-    input.forEach( elemento => {
-        elemento.addEventListener('change', e =>{
-            condicionesGenerales.preguntas[value] = e.target.value;
+
+
+    let i = 1
+    for(let value in condicionesGenerales.preguntas){
+        const input = document.querySelectorAll(`input[name="c-g-${i}"]`);
+
+        input.forEach( elemento => {
+            elemento.addEventListener('change', e =>{
+                condicionesGenerales.preguntas[value] = e.target.value;
+                actualizarLS();
+            });
         });
-    });
 
-    i = i + 1;
- }
+        i = i + 1;
+    }
 
 
 }while(false);
@@ -400,51 +416,53 @@ do{
  * */
 
 // ESCALERA DOBLE F1
-for(let i = 1; i <= 14; i++){
-    const input = document.querySelector(`input[name=e-f1-${i}]`);
+for(let value in escaleras.escF1){
+    const input = document.querySelector(`input[name=${value}]`);
 
     input.checked = false;
-    escaleras.escF1[`e-f1-${i}`] = false; 
+    escaleras.escF1[value] = false; 
     
     input.addEventListener('input', e =>{
-        escaleras['escF1'][`e-f1-${i}`] = e.target.checked;
+        escaleras.escF1[value] = e.target.checked;
+        console.log(escaleras.escF1[value])
     }); 
 }
 
 
 // ESCALERA DOBLE F2
-for(let i = 1; i <= 14; i++){
-    const input = document.querySelector(`input[name=e-f2-${i}]`);
+for(let value in escaleras.escF2){
+    const input = document.querySelector(`input[name=${value}]`);
 
     input.checked = false;
-    escaleras.escF1[`e-f2-${i}`] = false; 
+    escaleras.escF2[value] = false; 
     
     input.addEventListener('input', e =>{
-        escaleras['escF2'][`e-f2-${i}`] = e.target.checked;
+        escaleras.escF2[value] = e.target.checked;
     }); 
 }
 
 // ESCALERA TIJERA ALUMINIO
-for(let i = 1; i <= 14; i++){
-    const input = document.querySelector(`input[name=e-ta-${i}]`);
+for(let value in escaleras.escTA){
+    const input = document.querySelector(`input[name=${value}]`);
 
     input.checked = false;
-    escaleras.escF1[`e-ta-${i}`] = false; 
+    escaleras.escTA[value] = false; 
     
     input.addEventListener('input', e =>{
-        escaleras['escTA'][`e-ta-${i}`] = e.target.checked;
+        escaleras.escTA[value] = e.target.checked;
     }); 
 }
 
 // ESCALERA ARTICULADA - TELESCÓPICA
-for(let i = 1; i <= 14; i++){
-    const input = document.querySelector(`input[name=e-at-${i}]`);
+for(let value in escaleras.escAT){
+    const input = document.querySelector(`input[name=${value}]`);
 
     input.checked = false;
-    escaleras.escF1[`e-at-${i}`] = false; 
+    escaleras.escAT[value] = false; 
     
     input.addEventListener('input', e =>{
-        escaleras['escAT'][`e-at-${i}`] = e.target.checked;
+        escaleras.escAT[value] = e.target.checked;
+        console.log(escaleras.escAT);
     }); 
 }
 
@@ -456,7 +474,9 @@ for(let i = 1; i <= 14; i++){
  *  -------------------------------------------------------|
  * */
 
-function llenarSelects(){
+
+// llena los campos generales y agrega listeners
+function activarSelects(){
     const fechaInput = document.querySelector('#fecha');
     const ciudadSelect = document.querySelector('#ciudad')
     const departamentoSelect = document.querySelector('#departamento');
@@ -467,75 +487,9 @@ function llenarSelects(){
         departamentoSelect.value = datosGenerales.departamento;
     }
 
-    // lista de departamentos  y ciudades
-    const departamentos = {
-        'casanare': ['YOPAL', 'AGUAZUL', 'TAURAMENA', 'OROCUE'],
-        'caldas': ['MANIZALES', 'ARANZAZU', 'LA MERCED'],
-    }
-
-    if(!window.localStorage.getItem('datosGenerales')){
-        departamentoSelect.addEventListener('change', e => {
-            datosGenerales.departamento = (e.target.value);
-            
-            while(ciudadSelect.firstChild){
-                ciudadSelect.removeChild(ciudadSelect.firstChild);
-            }
-    
-            setTimeout(departamentos[e.target.value].forEach(ciudad => {
-                const opcion = document.createElement('option');
-                opcion.value = ciudad.toLowerCase();
-                opcion.textContent = ciudad;
-    
-                ciudadSelect.appendChild(opcion);
-            }), 100);
-    
-            datosGenerales.ciudad = departamentos[e.target.value][0].toLowerCase();
-    
-            ciudadSelect.removeAttribute('disabled');
-    
-            actualizarLS();
-        });
-    }else{
-        //debugger;
-        departamentoSelect.addEventListener('change', e =>{;
-            datosGenerales.departamento = (e.target.value);
-
-            while(ciudadSelect.firstChild){
-                ciudadSelect.removeChild(ciudadSelect.firstChild);
-            }
-    
-            setTimeout(departamentos[e.target.value].forEach(ciudad => {
-                const opcion = document.createElement('option');
-                opcion.value = ciudad.toLowerCase();
-                opcion.textContent = ciudad;
-    
-                ciudadSelect.appendChild(opcion);
-            }), 100);
-    
-            datosGenerales.ciudad = departamentos[e.target.value][0].toLowerCase();
-
-            actualizarLS();
-        });
-
-        while(ciudadSelect.firstChild){
-            ciudadSelect.removeChild(ciudadSelect.firstChild);
-        }
-
-        setTimeout(departamentos[datosGenerales.departamento].forEach(ciudad => {
-            const opcion = document.createElement('option');
-            opcion.value = ciudad.toLowerCase();
-            opcion.textContent = ciudad;
-
-            ciudadSelect.appendChild(opcion);
-        }), 100);
-
-        ciudadSelect.removeAttribute('disabled');
-        ciudadSelect.value = datosGenerales.ciudad;
-    }
-
     ciudadSelect.addEventListener('change', e =>{
         datosGenerales.ciudad = e.target.value;
-        actualizarLS();
+        //actualizarLS();
     });
     
     // Guardar Fecha
@@ -547,6 +501,7 @@ function llenarSelects(){
 }
 
 
+// guarda las observaciones en generales
 function guardarObs(name){
     const btnGuardar = document.querySelector('#btnGuardarObs');
     const txtArea = document.querySelector('#aggObsTxtarea');
@@ -576,33 +531,13 @@ function guardarObs(name){
     }
 }
 
+
+// actualiza los datos en el localStorage
 function actualizarLS(){
     // Variable para localStorage
-    const LS = window.localStorage;
-
-    LS.setItem('datosGenerales', JSON.stringify(datosGenerales));
-    LS.setItem('condicionesGenerales', JSON.stringify(condicionesGenerales));
-    LS.setItem('medidasControl', JSON.stringify(condicionesGenerales));
-    LS.setItem('herramientasEquipos', JSON.stringify(condicionesGenerales));
-    LS.setItem('escaleras', JSON.stringify(condicionesGenerales));
+    console.log('acutalizando en el LS...');
 }
 
 function obtenerLS(){
-    const LS = window.localStorage;
-    if(LS.getItem('datosGenerales')){
-        let datosLS = JSON.parse(LS.getItem('datosGenerales'));
-        datosGenerales = datosLS;
-
-        datosLS = JSON.parse(LS.getItem('condicionesGenerales'));
-        condicionesGenerales = datosLS;
-
-        datosLS = JSON.parse(LS.getItem('medidasControl'));
-        medidasControl = datosLS;
-
-        datosLS = JSON.parse(LS.getItem('herramientasEquipos'));
-        herramientasEquipos = datosLS;
-
-        datosLS = JSON.parse(LS.getItem('escaleras'));
-        escaleras = datosLS;
-    }
+    console.log('obteniendo del LS...');
 }
