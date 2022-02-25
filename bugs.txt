@@ -9,8 +9,6 @@ MEJORAS AL ASPECTO
 
  COSAS A IMPLEMENTAR
  - Implementar localhost
-   - Guardar y leer información de DATOS GENERALES.
-
    - Guardar y leer ORDENES 
    - Guardar y leer INTEGRANTES
     

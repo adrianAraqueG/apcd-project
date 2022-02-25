@@ -162,7 +162,6 @@ let escaleras = {
 
 // Ejecutando al cargar la página.
     obtenerLS();
-    console.log(escaleras);
     activarSelects();
 
 
@@ -526,21 +525,28 @@ function activarSelects(){
     const ciudadSelect = document.querySelector('#ciudad')
     const departamentoSelect = document.querySelector('#departamento');
 
+    departamentoSelect.addEventListener('change', e =>{
+        datosGenerales.departamento = e.target.value;
+        llenarCiudades(e.target.value);
+        actualizarLS('datosGenerales');
+    });
+
     // sincronizar los datos
     fechaInput.value = datosGenerales.fecha;
     if(datosGenerales.departamento !== ''){
         departamentoSelect.value = datosGenerales.departamento;
+        llenarCiudades(datosGenerales.departamento);
     }
 
     ciudadSelect.addEventListener('change', e =>{
         datosGenerales.ciudad = e.target.value;
-        //actualizarLS();
+        actualizarLS('datosGenerales');
     });
     
     // Guardar Fecha
     fechaInput.addEventListener('input', e =>{
         datosGenerales.fecha = e.target.value;
-        actualizarLS();
+        actualizarLS('datosGenerales');
     });
     
 }
@@ -625,6 +631,10 @@ function actualizarLS(objeto){
 function obtenerLS(){
     const LS = window.localStorage;
 
+    if(LS.getItem('datosGenerales')){
+        const datosLS = LS.getItem('datosGenerales');
+        datosGenerales = JSON.parse(datosLS);
+    }
     if(LS.getItem('condicionesGenerales')){
         const datosLS = LS.getItem('condicionesGenerales');
         condicionesGenerales = JSON.parse(datosLS);
@@ -643,5 +653,61 @@ function obtenerLS(){
     if(LS.getItem('escaleras')){
         const datosLS = LS.getItem('escaleras');
         escaleras = JSON.parse(datosLS);
+    }
+}
+
+// llenar options a ciudad
+function llenarCiudades(departamento){
+    const ciudadSelect = document.querySelector('#ciudad')
+    const departamentos = {
+        casanare:['yopal', 'aguazul', 'orocue'],
+        caldas: ['aranzazu', 'manizales']
+    }
+    switch (departamento){
+        case 'casanare': {
+            // limpiando options de ciudad
+            while(ciudadSelect.firstChild){
+                ciudadSelect.removeChild(ciudadSelect.firstChild);
+            }
+            if(ciudadSelect.hasAttribute('disabled')){
+                ciudadSelect.removeAttribute('disabled');
+            }
+
+            // llenando options de ciudad
+            departamentos.casanare.forEach( ciudad => {
+                const option = document.createElement('option');
+                option.value = ciudad;
+                option.textContent = ciudad.toUpperCase();
+                ciudadSelect.appendChild(option);
+            });
+
+            // guardar la primera ciudad por defecto
+            datosGenerales.ciudad = departamentos.casanare[0];
+
+            break;
+        }
+        case 'caldas': {
+            // limpiando options de ciudad
+            while(ciudadSelect.firstChild){
+                ciudadSelect.removeChild(ciudadSelect.firstChild);
+            }
+            if(ciudadSelect.hasAttribute('disabled')){
+                ciudadSelect.removeAttribute('disabled');
+            }
+
+            // llenando options de ciudad
+            departamentos.caldas.forEach( ciudad => {
+                const option = document.createElement('option');
+                option.value = ciudad;
+                option.textContent = ciudad.toUpperCase();
+                ciudadSelect.appendChild(option);
+            });
+
+            // guardar la primera ciudad por defecto
+            datosGenerales.ciudad = departamentos.caldas[0];
+
+            break;
+        }
+        
     }
 }
