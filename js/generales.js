@@ -4,12 +4,12 @@
 */
 
 export { datos };
-
+const datos = [];
 /**--------------------------------------------------------|
  * --------------------- ARRAYS GLOBALES ------------------|
  *  -------------------------------------------------------|
  * */
- let datosGenerales = {
+let datosGenerales = {
     fecha: '',
     ciudad: '',
     departamento: '',
@@ -108,6 +108,7 @@ let escaleras = {
        'e-f1-11': false,
        'e-f1-12': false,
        'e-f1-13': false,
+       'e-f1-14': false,
     },
     escF2: {
        'e-f2-1': false,
@@ -123,6 +124,7 @@ let escaleras = {
        'e-f2-11': false,
        'e-f2-12': false,
        'e-f2-13': false,
+       'e-f2-14': false,
     },
     escTA: {
        'e-ta-1': false,
@@ -138,6 +140,7 @@ let escaleras = {
        'e-ta-11': false,
        'e-ta-12': false,
        'e-ta-13': false,
+       'e-ta-14': false,
     },
     escAT: {
        'e-at-1': false,
@@ -153,23 +156,19 @@ let escaleras = {
        'e-at-11': false,
        'e-at-12': false,
        'e-at-13': false,
+       'e-at-14': false,
     }
 }
 
-
-
-
-/**--------------------------------------------------------| 
- * ------------------ DATOS GENERALES ---------------------|
- *  -------------------------------------------------------|
- * */
 // Ejecutando al cargar la página.
-document.addEventListener('DOMContentLoaded', e =>{
     obtenerLS();
+    console.log(escaleras);
     activarSelects();
-})
 
-const datos = [];
+
+
+
+
 
 
 
@@ -202,8 +201,8 @@ do{
                         
                     });
                 }
-
-                actualizarLS();
+                console.log('todas sí');
+                actualizarLS('condicionesGenerales');
 
             }else if(e.target.value === 'no'){
                 for(let value in condicionesGenerales.preguntas){
@@ -219,7 +218,7 @@ do{
                     });
                 }
 
-                actualizarLS();
+                actualizarLS('condicionesGenerales');
 
             }else if(e.target.value === 'na'){
                 for(let value in condicionesGenerales.preguntas){
@@ -234,8 +233,9 @@ do{
                         }
                     });
                 }
+                console.log('todas na');
 
-                actualizarLS();
+                actualizarLS('condicionesGenerales');
             }
         });
     });
@@ -246,19 +246,20 @@ do{
 do{
     // sincronizar datos
     if(window.localStorage.getItem('condicionesGenerales')){
+
+        // para las preguntas
         for(let value in condicionesGenerales.preguntas){
             const inputs = document.querySelectorAll(`input[name=${value}]`);
             inputs.forEach( input => {
-                //console.log(datosGenerales)
+                
                 if(input.value === condicionesGenerales.preguntas[value]){
-                    input.cheked = true;
+                    input.checked = true;
                 }
+
             });
         }
-    }else{
-        console.log('no hay datos en LS');
-    }
 
+    }
 
 
     let i = 1
@@ -268,7 +269,7 @@ do{
         input.forEach( elemento => {
             elemento.addEventListener('change', e =>{
                 condicionesGenerales.preguntas[value] = e.target.value;
-                actualizarLS();
+                actualizarLS('condicionesGenerales');
             });
         });
 
@@ -291,7 +292,6 @@ do{
             // Rellenar txt area con los datos guardados
             if(condicionesGenerales.observaciones[value] !== false){
                 txtArea.value = condicionesGenerales.observaciones[value];
-                console.log('distinto a false');
             }else{
                 txtArea.value = '';
             }
@@ -315,25 +315,28 @@ do{
 // Marcar Todas - Medidas de Control
 do{
     const markAll = document.querySelector('input[name="m-c-ma"]');
-    const npreguntas = 27
 
     markAll.addEventListener('input', e =>{
         if(e.target.checked === true){
             for(let value in medidasControl){
                 medidasControl[value] = true;
+                actualizarLS('medidasControl');
             }
-            for(let i = 1; i <= npreguntas; i++){
-                const input = document.querySelector(`input[name="m-c-${i}"]`);
+            for(let value in medidasControl){
+                const input = document.querySelector(`input[name=${value}]`);
                 input.checked = true;
+                actualizarLS('medidasControl');
             }
 
         } else if(e.target.checked === false){
             for(let value in medidasControl){
                 medidasControl[value] = false;
+                actualizarLS('medidasControl');
             }
-            for(let i = 1; i <= npreguntas; i++){
-                const input = document.querySelector(`input[name="m-c-${i}"]`);
+            for(let value in medidasControl){
+                const input = document.querySelector(`input[name=${value}]`);
                 input.checked = false;
+                actualizarLS('medidasControl');
             }
         }
     });
@@ -342,12 +345,27 @@ do{
 
 // Agregar listeners - Medidas de Control
 do{
+    // sincronizar datos
+    if(window.localStorage.getItem('medidasControl')){
+
+        // para las preguntas
+        for(let value in medidasControl){
+            const input = document.querySelector(`input[name=${value}]`);
+
+            input.checked = medidasControl[value];
+
+        }
+
+    }
+
+
     let i = 1;
     for(let value in medidasControl){
-        const input = document.querySelector(`input[name="m-c-${i}"]`);
+        const input = document.querySelector(`input[name=${value}]`);
         
         input.addEventListener('input', e =>{
             medidasControl[value] = input.checked;
+            actualizarLS('medidasControl');
         });
 
         i = i + 1;
@@ -366,26 +384,29 @@ do{
 // Marcar Todas - Herramientas y Equipos
 do{
     const markAll = document.querySelector('input[name="h-e-ma"]');
-    const npreguntas = 13
 
     markAll.addEventListener('input', e =>{
         if(e.target.checked === true){
             for(let value in herramientasEquipos){
                 herramientasEquipos[value] = true;
             }
-            for(let i = 1; i <= npreguntas; i++){
-                const input = document.querySelector(`input[name="h-e-${i}"]`);
+            for(let value in herramientasEquipos){
+                const input = document.querySelector(`input[name=${value}]`);
                 input.checked = true;
             }
+
+            actualizarLS('herramientasEquipos');
 
         } else if(e.target.checked === false){
             for(let value in herramientasEquipos){
                 herramientasEquipos[value] = false;
             }
-            for(let i = 1; i <= npreguntas; i++){
-                const input = document.querySelector(`input[name="h-e-${i}"]`);
+            for(let value in herramientasEquipos){
+                const input = document.querySelector(`input[name=${value}]`);
                 input.checked = false;
             }
+
+            actualizarLS('herramientasEquipos');
         }
     });
 
@@ -393,12 +414,26 @@ do{
 
 // Agregar listeners - Herramientas y Equipos 
 do{
+    // sincronizar datos
+    if(window.localStorage.getItem('herramientasEquipos')){
+
+        // para las preguntas
+        for(let value in herramientasEquipos){
+            const input = document.querySelector(`input[name=${value}]`);
+
+            input.checked = herramientasEquipos[value];
+
+        }
+
+    }
+
     let i = 1;
     for(let value in herramientasEquipos){
-        const input = document.querySelector(`input[name="h-e-${i}"]`);
+        const input = document.querySelector(`input[name=${value}]`);
         
         input.addEventListener('input', e =>{
             herramientasEquipos[value] = input.checked;
+            actualizarLS('herramientasEquipos');
         });
 
         i = i + 1;
@@ -419,12 +454,14 @@ do{
 for(let value in escaleras.escF1){
     const input = document.querySelector(`input[name=${value}]`);
 
-    input.checked = false;
-    escaleras.escF1[value] = false; 
+    // sincronizar datos
+    if(window.localStorage.getItem('escaleras')){
+        input.checked = escaleras.escF1[value];
+    } 
     
     input.addEventListener('input', e =>{
         escaleras.escF1[value] = e.target.checked;
-        console.log(escaleras.escF1[value])
+        actualizarLS('escaleras');
     }); 
 }
 
@@ -433,11 +470,14 @@ for(let value in escaleras.escF1){
 for(let value in escaleras.escF2){
     const input = document.querySelector(`input[name=${value}]`);
 
-    input.checked = false;
-    escaleras.escF2[value] = false; 
+    // sincronizar datos
+    if(window.localStorage.getItem('escaleras')){
+        input.checked = escaleras.escF2[value];
+    }
     
     input.addEventListener('input', e =>{
         escaleras.escF2[value] = e.target.checked;
+        actualizarLS('escaleras');
     }); 
 }
 
@@ -445,11 +485,14 @@ for(let value in escaleras.escF2){
 for(let value in escaleras.escTA){
     const input = document.querySelector(`input[name=${value}]`);
 
-    input.checked = false;
-    escaleras.escTA[value] = false; 
+    // sincronizar datos
+    if(window.localStorage.getItem('escaleras')){
+        input.checked = escaleras.escTA[value];
+    } 
     
     input.addEventListener('input', e =>{
         escaleras.escTA[value] = e.target.checked;
+        actualizarLS('escaleras');
     }); 
 }
 
@@ -457,12 +500,14 @@ for(let value in escaleras.escTA){
 for(let value in escaleras.escAT){
     const input = document.querySelector(`input[name=${value}]`);
 
-    input.checked = false;
-    escaleras.escAT[value] = false; 
+    // sincronizar datos
+    if(window.localStorage.getItem('escaleras')){
+        input.checked = escaleras.escAT[value];
+    }
     
     input.addEventListener('input', e =>{
         escaleras.escAT[value] = e.target.checked;
-        console.log(escaleras.escAT);
+        actualizarLS('escaleras');
     }); 
 }
 
@@ -512,6 +557,7 @@ function guardarObs(name){
         console.log(txtArea.value);
         if(confirm('¿Quieres guardar la Observación?')){
             condicionesGenerales.observaciones[name] = txtArea.value;
+            actualizarLS('condicionesGenerales');
 
             btnCerrar1.click();
             console.log('condGen:');
@@ -533,11 +579,69 @@ function guardarObs(name){
 
 
 // actualiza los datos en el localStorage
-function actualizarLS(){
-    // Variable para localStorage
-    console.log('acutalizando en el LS...');
+function actualizarLS(objeto){
+    const LS = window.localStorage;
+
+    switch(objeto){
+        case 'datosGenerales': {
+            if(LS.getItem('datosGenerales')){
+                LS.removeItem('datosGenerales');
+            }
+            LS.setItem('datosGenerales', JSON.stringify(datosGenerales));
+            break;
+        }
+        case 'condicionesGenerales': {
+            if(LS.getItem('condicionesGenerales')){
+                LS.removeItem('condicionesGenerales');
+            }
+            LS.setItem('condicionesGenerales', JSON.stringify(condicionesGenerales));
+            break;
+        }
+        case 'medidasControl': {
+            if(LS.getItem('medidasControl')){
+                LS.removeItem('medidasControl');
+            }
+            LS.setItem('medidasControl', JSON.stringify(medidasControl));
+            break;
+        }
+        case 'herramientasEquipos': {
+            if(LS.getItem('herramientasEquipos')){
+                LS.removeItem('herramientasEquipos');
+            }
+            LS.setItem('herramientasEquipos', JSON.stringify(herramientasEquipos));
+            break;
+        }
+        case 'escaleras': {
+            if(LS.getItem('escaleras')){
+                LS.removeItem('escaleras');
+            }
+            LS.setItem('escaleras', JSON.stringify(escaleras));
+            break;
+        }
+    }
 }
 
+// sincroniza los datos con LS
 function obtenerLS(){
-    console.log('obteniendo del LS...');
+    const LS = window.localStorage;
+
+    if(LS.getItem('condicionesGenerales')){
+        const datosLS = LS.getItem('condicionesGenerales');
+        condicionesGenerales = JSON.parse(datosLS);
+    }
+
+    if(LS.getItem('medidasControl')){
+        const datosLS = LS.getItem('medidasControl');
+        medidasControl = JSON.parse(datosLS);
+    }
+
+    if(LS.getItem('herramientasEquipos')){
+        const datosLS = LS.getItem('herramientasEquipos');
+        herramientasEquipos = JSON.parse(datosLS);
+    }
+
+    if(LS.getItem('escaleras')){
+        const datosLS = LS.getItem('escaleras');
+        escaleras = JSON.parse(datosLS);
+    }
 }

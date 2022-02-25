@@ -10,10 +10,10 @@ MEJORAS AL ASPECTO
  COSAS A IMPLEMENTAR
  - Implementar localhost
    - Guardar y leer información de DATOS GENERALES.
-   - Guardar y leer informacion de CONDICIONES ESPECÍFICAS.
-   - Guardar y leer informacion de MEDIDAS DE CONTROL.
-   - Guardar y leer informacion de HERRAMIENTAS Y EQUIPOS.
-   - Guardar y leer informacion de ESCALERAS.
+
+   - Guardar y leer ORDENES 
+   - Guardar y leer INTEGRANTES
+    
  - Funcionalidad Convertir a PDF
    - Implementar y hacer pruebas de las librerías.
    - Implementar Canvas para rellenar las cuadrillas.
