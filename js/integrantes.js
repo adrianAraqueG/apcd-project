@@ -18,7 +18,10 @@ const cargoInput = document.querySelector('#cargoInt');
 const integrantesDiv = document.querySelector('#integrantes');
 
 const btnGuardar = document.querySelector('#btnGuardarInt');
-const btnAbrirModal = document.querySelector('#abrirModalInt')
+const btnAbrirModal = document.querySelector('#abrirModalInt');
+
+obtenerLS();
+console.log(integrantes);
 
 btnAbrirModal.addEventListener('click', agregarInt);
 
@@ -73,8 +76,9 @@ function guardarInt(){
     
         // añadir nuevo integrante al objeto
         integrantes.push(nuevoIntegrante);
-        console.log(integrantes);
+        actualizarLS();
         btnCerrar1.click();
+        console.log(integrantes);
 
         // imprimir los integrantes
         imprimirIntegrantes();
@@ -141,6 +145,8 @@ function imprimirIntegrantes(){
     }
 }
 
+
+
 function eliminarIntegrante(id){
     if(confirm('¿Seguro quieres eliminar este integrante?')){
         integrantes = integrantes.filter(integrante => integrante.id !== id);
@@ -149,6 +155,8 @@ function eliminarIntegrante(id){
         imprimirIntegrantes();
     }
 }
+
+
 
 function editarIntegrante(id){
     console.log('editando...', id);
@@ -219,6 +227,8 @@ function limpiarDiv(){
     }
 }
 
+
+
 function inputAlerta(child){
     if(!child.classList.contains('is-invalid')){
         child.classList.add('is-invalid');
@@ -235,6 +245,8 @@ function inputAlerta(child){
     }
 }
 
+
+
 function imprimirPlaceholder(){
     const divIntegrantes = document.querySelector('#integrantes');
 
@@ -246,5 +258,25 @@ function imprimirPlaceholder(){
         divIntegrantes.removeChild(ph);
     }else if(integrantes.length <= 0 ){
         divIntegrantes.appendChild(ph);
+    }
+}
+
+function actualizarLS(){
+    const LS = window.localStorage;
+    if(LS.getItem('integrantes')){
+        LS.removeItem('integrantes');
+    }
+
+    LS.setItem('integrantes', JSON.stringify(integrantes));
+}
+
+function obtenerLS(){
+    const LS = window.localStorage;
+    if(LS.getItem('integrantes')){
+        const datosLS = LS.getItem('integrantes');
+        integrantes = JSON.parse(datosLS);
+        imprimirIntegrantes();
+    }else{
+        console.log('No hay datos en LS');
     }
 }
