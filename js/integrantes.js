@@ -21,7 +21,7 @@ const btnGuardar = document.querySelector('#btnGuardarInt');
 const btnAbrirModal = document.querySelector('#abrirModalInt');
 
 obtenerLS();
-console.log(integrantes);
+// console.log(integrantes);
 
 btnAbrirModal.addEventListener('click', agregarInt);
 

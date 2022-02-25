@@ -38,6 +38,25 @@ class Orden {
     eliminarOrden(id){
         this.ordenes = this.ordenes.filter( orden => orden.id !== id);
     }
+
+    obtenerLS(){
+        const LS = window.localStorage;
+        if(LS.getItem('ordenes')){
+            const datosLS = LS.getItem('ordenes');
+            this.ordenes = JSON.parse(datosLS);
+
+            UI.imprimirOrdenes();
+        }
+    }
+
+    actualizarLS(){
+        const LS = window.localStorage;
+        if(LS.getItem('ordenes')){
+            LS.removeItem('ordenes');
+        }
+    
+        LS.setItem('ordenes', JSON.stringify(this.ordenes));
+    }
 }
 
 
@@ -164,19 +183,8 @@ class UI{
  *  -------------------------------------------------------|
  * */
 export const ordenes = new Orden;
-
-
-
-/**--------------------------------------------------------|
- * --------------------- LISTENERS ------------------------|
- * --------------------------------------------------------|
- * */
-document.addEventListener('DOMContentLoaded', () =>{
-    // placeholder
-    UI.placeholder();
-    
-
-});
+ordenes.obtenerLS();
+UI.placeholder();
 
 
 
@@ -358,6 +366,7 @@ function crearOrden(){
     }
 
     ordenes.addOrden(ordenTrabajo);
+    ordenes.actualizarLS();
 
     // limpiar inputs
     nOrden.value = '';
@@ -383,6 +392,7 @@ function eliminarOrden(id){
     if(opcion === true){
         console.log('eliminando orden ', id);
         ordenes.eliminarOrden(id);
+        ordenes.actualizarLS();
 
         UI.imprimirOrdenes();
         UI.placeholder();
@@ -874,6 +884,7 @@ function editarOrden(id){
             }
             
             ordenes.editarOrden(ordenEditada);
+            ordenes.actualizarLS();
             btnCerrar1.click();
         } 
     }

@@ -8,9 +8,6 @@ MEJORAS AL ASPECTO
  - Arregar input de la fecha
 
  COSAS A IMPLEMENTAR
- - Implementar localhost
-   - Guardar y leer ORDENES 
-    
  - Funcionalidad Convertir a PDF
    - Implementar y hacer pruebas de las librerías.
    - Implementar Canvas para rellenar las cuadrillas.
