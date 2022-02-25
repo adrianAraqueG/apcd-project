@@ -439,6 +439,7 @@ const escaleras = {
       'e-f1-11': false,
       'e-f1-12': false,
       'e-f1-13': false,
+      'e-f1-14': false,
    },
    escF2: {
       'e-f2-1': false,
@@ -454,6 +455,7 @@ const escaleras = {
       'e-f2-11': false,
       'e-f2-12': false,
       'e-f2-13': false,
+      'e-f2-14': false,
    },
    escTA{
       'e-ta-1': false,
@@ -469,6 +471,7 @@ const escaleras = {
       'e-ta-11': false,
       'e-ta-12': false,
       'e-ta-13': false,
+      'e-ta-14': false,
    },
    escAT{
       'e-at-1': false,
@@ -484,5 +487,6 @@ const escaleras = {
       'e-at-11': false,
       'e-at-12': false,
       'e-at-13': false,
+      'e-at-14': false,
    }
 }   
