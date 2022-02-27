@@ -4,7 +4,11 @@
 */
 
 export { datos };
+import { actualizarBtn as actualizarBtn } from './app.js'
 const datos = [];
+
+
+
 /**--------------------------------------------------------|
  * --------------------- ARRAYS GLOBALES ------------------|
  *  -------------------------------------------------------|
@@ -163,7 +167,7 @@ let escaleras = {
 // Ejecutando al cargar la página.
     obtenerLS();
     activarSelects();
-
+    actualizarBtn();
 
 
 
@@ -202,6 +206,7 @@ do{
                 }
                 console.log('todas sí');
                 actualizarLS('condicionesGenerales');
+                
 
             }else if(e.target.value === 'no'){
                 for(let value in condicionesGenerales.preguntas){
@@ -218,6 +223,7 @@ do{
                 }
 
                 actualizarLS('condicionesGenerales');
+               
 
             }else if(e.target.value === 'na'){
                 for(let value in condicionesGenerales.preguntas){
@@ -235,7 +241,10 @@ do{
                 console.log('todas na');
 
                 actualizarLS('condicionesGenerales');
+                
             }
+
+            actualizarBtn();
         });
     });
 
@@ -269,6 +278,7 @@ do{
             elemento.addEventListener('change', e =>{
                 condicionesGenerales.preguntas[value] = e.target.value;
                 actualizarLS('condicionesGenerales');
+                actualizarBtn();
             });
         });
 
@@ -320,22 +330,26 @@ do{
             for(let value in medidasControl){
                 medidasControl[value] = true;
                 actualizarLS('medidasControl');
+                actualizarBtn();
             }
             for(let value in medidasControl){
                 const input = document.querySelector(`input[name=${value}]`);
                 input.checked = true;
                 actualizarLS('medidasControl');
+                actualizarBtn();
             }
 
         } else if(e.target.checked === false){
             for(let value in medidasControl){
                 medidasControl[value] = false;
                 actualizarLS('medidasControl');
+                actualizarBtn();
             }
             for(let value in medidasControl){
                 const input = document.querySelector(`input[name=${value}]`);
                 input.checked = false;
                 actualizarLS('medidasControl');
+                actualizarBtn();
             }
         }
     });
@@ -365,6 +379,7 @@ do{
         input.addEventListener('input', e =>{
             medidasControl[value] = input.checked;
             actualizarLS('medidasControl');
+            actualizarBtn();
         });
 
         i = i + 1;
@@ -395,6 +410,7 @@ do{
             }
 
             actualizarLS('herramientasEquipos');
+            actualizarBtn();
 
         } else if(e.target.checked === false){
             for(let value in herramientasEquipos){
@@ -406,6 +422,7 @@ do{
             }
 
             actualizarLS('herramientasEquipos');
+            actualizarBtn();
         }
     });
 
@@ -433,6 +450,7 @@ do{
         input.addEventListener('input', e =>{
             herramientasEquipos[value] = input.checked;
             actualizarLS('herramientasEquipos');
+            actualizarBtn();
         });
 
         i = i + 1;
@@ -461,6 +479,7 @@ for(let value in escaleras.escF1){
     input.addEventListener('input', e =>{
         escaleras.escF1[value] = e.target.checked;
         actualizarLS('escaleras');
+        actualizarBtn();
     }); 
 }
 
@@ -477,6 +496,7 @@ for(let value in escaleras.escF2){
     input.addEventListener('input', e =>{
         escaleras.escF2[value] = e.target.checked;
         actualizarLS('escaleras');
+        actualizarBtn();
     }); 
 }
 
@@ -492,6 +512,7 @@ for(let value in escaleras.escTA){
     input.addEventListener('input', e =>{
         escaleras.escTA[value] = e.target.checked;
         actualizarLS('escaleras');
+        actualizarBtn();
     }); 
 }
 
@@ -507,6 +528,7 @@ for(let value in escaleras.escAT){
     input.addEventListener('input', e =>{
         escaleras.escAT[value] = e.target.checked;
         actualizarLS('escaleras');
+        actualizarBtn();
     }); 
 }
 
@@ -529,6 +551,7 @@ function activarSelects(){
         datosGenerales.departamento = e.target.value;
         llenarCiudades(e.target.value);
         actualizarLS('datosGenerales');
+        actualizarBtn();
     });
 
     // sincronizar los datos
@@ -541,12 +564,14 @@ function activarSelects(){
     ciudadSelect.addEventListener('change', e =>{
         datosGenerales.ciudad = e.target.value;
         actualizarLS('datosGenerales');
+        actualizarBtn();
     });
     
     // Guardar Fecha
     fechaInput.addEventListener('input', e =>{
         datosGenerales.fecha = e.target.value;
         actualizarLS('datosGenerales');
+        actualizarBtn();
     });
     
 }
@@ -564,6 +589,7 @@ function guardarObs(name){
         if(confirm('¿Quieres guardar la Observación?')){
             condicionesGenerales.observaciones[name] = txtArea.value;
             actualizarLS('condicionesGenerales');
+            actualizarBtn();
 
             btnCerrar1.click();
             console.log('condGen:');

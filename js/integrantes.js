@@ -4,6 +4,8 @@
 */
 
 export { integrantes };
+import { actualizarBtn as actualizarBtn } from './app.js';
+//actualizarBtn();
 
 /**--------------------------------------------------------|
  * --------------------- ARRAYS GLOBALES ------------------|
@@ -21,7 +23,6 @@ const btnGuardar = document.querySelector('#btnGuardarInt');
 const btnAbrirModal = document.querySelector('#abrirModalInt');
 
 obtenerLS();
-// console.log(integrantes);
 
 btnAbrirModal.addEventListener('click', agregarInt);
 
@@ -77,6 +78,7 @@ function guardarInt(){
         // añadir nuevo integrante al objeto
         integrantes.push(nuevoIntegrante);
         actualizarLS();
+        actualizarBtn();
         btnCerrar1.click();
         console.log(integrantes);
 
@@ -151,7 +153,12 @@ function eliminarIntegrante(id){
     if(confirm('¿Seguro quieres eliminar este integrante?')){
         integrantes = integrantes.filter(integrante => integrante.id !== id);
         console.log('elimiando...', id);
-        console.log(integrantes);
+        actualizarLS();
+        if(integrantes.length <= 0){
+            console.log('eliminando de LS');
+            window.localStorage.removeItem('integrantes');
+        }
+        actualizarBtn();
         imprimirIntegrantes();
     }
 }
@@ -253,10 +260,11 @@ function imprimirPlaceholder(){
     const ph = document.createElement('p');
     ph.classList.add('fs-4', 'text-secondary');
     ph.textContent = 'Aún no hay integrantes';
+    ph.setAttribute('id', 'ph');
 
-    if(integrantes.length > 0 && divIntegrantes.contains(ph)){
+    if(integrantes.length > 0 && divIntegrantes.firstChild){
         divIntegrantes.removeChild(ph);
-    }else if(integrantes.length <= 0 ){
+    }else if(integrantes.length <= 0 && !divIntegrantes.firstChild){
         divIntegrantes.appendChild(ph);
     }
 }

@@ -3,6 +3,7 @@
  *  -------------------------------------------------------|
  * */
 
+
 /** ---------- Clase Orden --------- */
 class Orden {
     constructor(){
@@ -183,7 +184,9 @@ class UI{
  *  -------------------------------------------------------|
  * */
 export const ordenes = new Orden;
+import {actualizarBtn as actualizarBtn} from './app.js';
 ordenes.obtenerLS();
+actualizarBtn();
 UI.placeholder();
 
 
@@ -367,6 +370,7 @@ function crearOrden(){
 
     ordenes.addOrden(ordenTrabajo);
     ordenes.actualizarLS();
+    actualizarBtn();
 
     // limpiar inputs
     nOrden.value = '';
@@ -392,8 +396,14 @@ function eliminarOrden(id){
     if(opcion === true){
         console.log('eliminando orden ', id);
         ordenes.eliminarOrden(id);
+        console.log(ordenes.getOrdenes().length);
         ordenes.actualizarLS();
-
+        if(ordenes.getOrdenes().length === 0){
+            console.log('e');
+            window.localStorage.removeItem('ordenes');
+            actualizarBtn();
+        }
+        actualizarBtn();
         UI.imprimirOrdenes();
         UI.placeholder();
     
@@ -885,6 +895,7 @@ function editarOrden(id){
             
             ordenes.editarOrden(ordenEditada);
             ordenes.actualizarLS();
+            actualizarBtn();
             btnCerrar1.click();
         } 
     }
