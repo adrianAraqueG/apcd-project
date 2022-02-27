@@ -165,14 +165,9 @@ let escaleras = {
 }
 
 // Ejecutando al cargar la página.
-    obtenerLS();
-    activarSelects();
-    actualizarBtn();
-
-
-
-
-
+obtenerLS();
+activarSelects();
+actualizarBtn();
 
 
 
