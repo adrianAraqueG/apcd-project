@@ -15,7 +15,7 @@ export function actualizarBtn(){
     const divBtn = document.querySelector('#divBtnBT');
     const LS = window.localStorage;
     if(LS.getItem('ordenes') 
-    || LS.getItem('datosGegeneraes')
+    || LS.getItem('datosGenerales')
     || LS.getItem('condicionesGenerales')
     || LS.getItem('medidasControl')
     || LS.getItem('herramientasEquipos')
