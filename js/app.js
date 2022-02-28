@@ -24,7 +24,7 @@ btnDescargarPDF.addEventListener('click', convertirPDF);
 async function convertirPDF(){
     const pdf = new jsPDF('p', 'pt', 'legal');
     pdf.setFontSize(8);
-    pdf.setTextColor(255,0,0);
+    //pdf.setTextColor(255,0,0);
 
     const image = await loadImage('img/forms/apcd-form.jpg');
     pdf.addImage(image, 'PNG', -60, 10, 720, 1015);
@@ -44,7 +44,7 @@ async function convertirPDF(){
 
 
     // Integrantes - Relleno
-    /*if(obtenerLS('integrantes')){
+    if(obtenerLS('integrantes')){
         const integrantes = obtenerLS('integrantes');
 
         let counter = 1;
@@ -57,19 +57,19 @@ async function convertirPDF(){
 
             counter = counter + 1;
         });
-    }*/
+    }
 
     //pdf.text('AUXILIAR', 248, 112);
 
     // Condiciones Generales - Relleno
-    /*if(obtenerLS('condicionesGenerales')){
+    if(obtenerLS('condicionesGenerales')){
         const condicionesGenerales = obtenerLS('condicionesGenerales');
         
         for(let value in condicionesGenerales.preguntas){
             const coords = getCoordsCG(value, condicionesGenerales.preguntas[value]);
             pdf.text('x', coords[0], coords[1]);
         }   
-    }*/
+    }
 
 
     pdf.save('apcd.pdf');
