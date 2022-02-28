@@ -11,6 +11,47 @@ btnBorrarTodo.addEventListener('click', e => {
     }
 });
 
+const btnDescargarPDF = document.querySelector('#descargarPDF');
+btnDescargarPDF.addEventListener('click', convertirPDF);
+
+
+
+
+/**--------------------------------------------------------|
+ * --------------------- UTILIDADES -----------------------|
+ *  -------------------------------------------------------|
+ * */
+async function convertirPDF(){
+    const image = await loadImage('img/forms/apcd-form.jpg');
+    //console.log(image);
+    const pdf = new jsPDF('p', 'pt', 'legal');
+
+    pdf.addImage(image, 'PNG', -60, 10, 720, 1015);
+
+    pdf.save('apcd.pdf');
+    
+}
+
+function loadImage(url){
+    return new Promise( resolve =>{
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = 'blob';
+        xhr.onload = e =>{
+            const reader = new FileReader();
+            reader.onload = event =>{
+                const res = event.target.result;
+                resolve(res);
+            }
+            const file = xhr.response;
+            reader.readAsDataURL(file);
+        }
+        xhr.send();
+    });
+}
+
+
+
 export function actualizarBtn(){
     const divBtn = document.querySelector('#divBtnBT');
     const LS = window.localStorage;

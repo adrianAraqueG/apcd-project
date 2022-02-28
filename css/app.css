@@ -1,6 +1,12 @@
 /* APCD PWA - Adrián Araque */
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@font-face{
+    font-family: 'Roboto';
+    src: url('./fonts/Roboto-Light.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
 *{
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
