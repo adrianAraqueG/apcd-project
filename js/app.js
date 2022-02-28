@@ -16,11 +16,6 @@ btnDescargarPDF.addEventListener('click', convertirPDF);
 
 
 
-
-/**--------------------------------------------------------|
- * --------------------- UTILIDADES -----------------------|
- *  -------------------------------------------------------|
- * */
 async function convertirPDF(){
     const pdf = new jsPDF('p', 'pt', 'legal');
     pdf.setFontSize(8);
@@ -59,20 +54,112 @@ async function convertirPDF(){
         });
     }
 
-    //pdf.text('AUXILIAR', 248, 112);
+    
 
     // Condiciones Generales - Relleno
     if(obtenerLS('condicionesGenerales')){
         const condicionesGenerales = obtenerLS('condicionesGenerales');
         
         for(let value in condicionesGenerales.preguntas){
-            const coords = getCoordsCG(value, condicionesGenerales.preguntas[value]);
-            pdf.text('x', coords[0], coords[1]);
+            if(condicionesGenerales.preguntas[value] !== false){
+                const coords = getCoordsCG(value, condicionesGenerales.preguntas[value]);
+                pdf.text('x', coords[0], coords[1]);
+            }
         }   
     }
 
 
+    // Herramientas Equipos - Relleno
+    if(obtenerLS('herramientasEquipos')){
+        const herramientasEquipos = obtenerLS('herramientasEquipos');
+        for(let value in herramientasEquipos){
+            if(herramientasEquipos[value] !== false){
+                const coords = getCoordsHE(value);
+                pdf.text('x', coords[0], coords[1]);
+            }
+        }
+    }
+
+
+    // Medidas Control - Relleno
+    if(obtenerLS('medidasControl')){
+        const medidasControl = obtenerLS('medidasControl');
+        for(let value in medidasControl){
+            if(medidasControl[value] !== false){
+                const coords = getCoordsMC(value);
+                pdf.text('x', coords[0], coords[1]);
+            }
+        }
+    }
+
+    //pdf.text('x', 413, 617);
+
+
+    //return;
+
     pdf.save('apcd.pdf');
+}
+
+function getCoordsMC(nombre){
+    const coords = {
+        'm-c-1': [411, 488],
+        'm-c-2': [411, 496],
+        'm-c-3': [411, 503],
+        'm-c-4': [411, 510],
+        'm-c-5': [411, 517.5],
+        'm-c-6': [411, 525.5],
+        'm-c-7': [411, 534],
+        'm-c-8': [411, 541],
+        'm-c-9': [411, 548],
+        'm-c-10': [411, 555.5],
+        'm-c-11': [411, 563],
+        'm-c-12': [411, 572],
+        'm-c-13': [412, 581],
+        'm-c-14': [412, 593],
+        'm-c-15': [412, 602],
+        'm-c-16': [412, 609.5],
+        'm-c-17': [412, 617],
+        'm-c-18': [412, 624.5],
+        'm-c-19': [412, 633],
+        'm-c-20': [413, 641.5],
+        'm-c-21': [413, 650],
+        'm-c-22': [413, 657],
+        'm-c-23': [413, 664],
+        'm-c-24': [413, 672],
+        'm-c-25': [413, 681],
+        'm-c-26': [413, 688],
+        'm-c-27': [413, 696],
+    }
+
+    for(let value in coords){
+        if(value === nombre){
+            return coords[value];
+        }
+    }
+}
+
+function getCoordsHE(nombre){
+    const coords = {
+        'h-e-1': [397, 305],
+        'h-e-2': [397, 312], 
+        'h-e-3': [397, 319],
+        'h-e-4': [397, 326],
+        'h-e-5': [397, 333],
+        'h-e-6': [397, 340],
+        'h-e-7': [397, 347],
+        'h-e-8': [397, 354],
+        'h-e-9': [397, 361],
+        'h-e-10': [397, 368],
+        'h-e-11': [397, 376],
+        'h-e-12': [397, 383],
+        'h-e-13': [397, 390],
+    }
+
+    for(let value in coords){
+        if(value === nombre){
+            return coords[value];
+        }
+    }
 }
 
 function getCoordsInt(pos){
@@ -180,6 +267,11 @@ function getCoordsCG(nombre, valor){
 
 
 
+
+/**--------------------------------------------------------|
+ * --------------------- UTILIDADES -----------------------|
+ *  -------------------------------------------------------|
+ * */
 function loadImage(url){
     return new Promise( resolve =>{
         const xhr = new XMLHttpRequest();
@@ -221,20 +313,37 @@ function obtenerLS(datos){
             }
         }
         case 'medidasControl': {
-            
+            if(LS.getItem('medidasControl')){
+                const dt = JSON.parse(LS.getItem('medidasControl'));
+                return dt;
+            }else{
+                return false;
+            }
             break;
         }
         case 'herramientasEquipos': {
-            
-            break;
+            if(LS.getItem('herramientasEquipos')){
+                const dt = JSON.parse(LS.getItem('herramientasEquipos'));
+                return dt;
+            }else{
+                return false;
+            }
         }
         case 'escaleras': {
-            
-            break;
+            if(LS.getItem('escaleras')){
+                const dt = JSON.parse(LS.getItem('escaleras'));
+                return dt;
+            }else{
+                return false;
+            }
         }
         case 'ordenes': {
-            
-            break;
+            if(LS.getItem('ordenes')){
+                const dt = JSON.parse(LS.getItem('ordenes'));
+                return dt;
+            }else{
+                return false;
+            }
         }
         case 'integrantes': {
             if(LS.getItem('integrantes')){
@@ -243,7 +352,6 @@ function obtenerLS(datos){
             }else{
                 return false;
             }
-            break;
         }
     }
 }
