@@ -198,7 +198,8 @@ function editarIntegrante(id){
                     integrantes[index] = integranteEditado;
                 }
             });
-
+            actualizarLS();
+            actualizarBtn();
             imprimirIntegrantes();
 
             btnCerrar1.click();
