@@ -81,6 +81,7 @@ async function convertirPDF(){
     }
 
 
+
     // Medidas Control - Relleno
     if(obtenerLS('medidasControl')){
         const medidasControl = obtenerLS('medidasControl');
@@ -92,12 +93,157 @@ async function convertirPDF(){
         }
     }
 
-    //pdf.text('x', 413, 617);
 
 
+    // ESCALERA DOBLE F1- Relleno
+    if(obtenerLS('escaleras')){
+        const escF1 = obtenerLS('escaleras').escF1;
+        for(let value in escF1){
+            if(escF1[value] !== false){
+                const coords = getCoordsEsc(value, 'escF1');
+                pdf.text('x', coords[0], coords[1]);
+            }
+        }
+    }
+
+    // ESCALERA DOBLE F2- Relleno
+    if(obtenerLS('escaleras')){
+        const escF2 = obtenerLS('escaleras').escF2;
+        for(let value in escF2){
+            if(escF2[value] !== false){
+                const coords = getCoordsEsc(value, 'escF2');
+                pdf.text('x', coords[0], coords[1]);
+            }
+        }
+    }
+
+    // ESCALERA TA- Relleno
+    if(obtenerLS('escaleras')){
+        const escTA = obtenerLS('escaleras').escTA;
+        for(let value in escTA){
+            if(escTA[value] !== false){
+                const coords = getCoordsEsc(value, 'escTA');
+                pdf.text('x', coords[0], coords[1]);
+            }
+        }
+    }
+
+    // ESCALERA AT- Relleno
+    if(obtenerLS('escaleras')){
+        const escAT = obtenerLS('escaleras').escAT;
+        for(let value in escAT){
+            if(escAT[value] !== false){
+                const coords = getCoordsEsc(value, 'escAT');
+                pdf.text('x', coords[0], coords[1]);
+            }
+        }
+    }
+
+
+    //pdf.text('x', 377, 412);
     //return;
 
     pdf.save('apcd.pdf');
+}
+
+function getCoordsEsc(nombre, tipo){
+    const coords = {
+        escF1: {
+           'e-f1-1': [298, 313],
+           'e-f1-2': [298, 322],
+           'e-f1-3': [298, 334],
+           'e-f1-4': [298, 340],
+           'e-f1-5': [298, 348],
+           'e-f1-6': [298, 355],
+           'e-f1-7': [298, 362],
+           'e-f1-8': [298, 369],
+           'e-f1-9': [298, 377],
+           'e-f1-10': [298, 384],
+           'e-f1-11': [298, 391],
+           'e-f1-12': [298, 398],
+           'e-f1-13': [298, 405],
+           'e-f1-14': [298, 412],
+        },
+        escF2: {
+           'e-f2-1': [325, 312],
+           'e-f2-2': [325, 323],
+           'e-f2-3': [325, 334],
+           'e-f2-4': [325, 340],
+           'e-f2-5': [325, 348],
+           'e-f2-6': [325, 355],
+           'e-f2-7': [325, 362],
+           'e-f2-8': [325, 369],
+           'e-f2-9': [325, 377],
+           'e-f2-10': [325, 384],
+           'e-f2-11': [325, 391],
+           'e-f2-12': [325, 398],
+           'e-f2-13': [325, 405],
+           'e-f2-14': [325, 412],
+        },
+        escTA: {
+           'e-ta-1': [351, 312],
+           'e-ta-2': [351, 322],
+           'e-ta-3': [351, 333],
+           'e-ta-4': [351, 340],
+           'e-ta-5': [351, 348],
+           'e-ta-6': [351, 355],
+           'e-ta-7': [351, 362],
+           'e-ta-8': [351, 369],
+           'e-ta-9': [351, 377],
+           'e-ta-10': [351, 384],
+           'e-ta-11': [351, 391],
+           'e-ta-12': [351, 398],
+           'e-ta-13': [351, 405],
+           'e-ta-14': [351, 412],
+        },
+        escAT: {
+            'e-at-1': [377, 312],
+            'e-at-2': [377, 322],
+            'e-at-3': [377, 333],
+            'e-at-4': [377, 340],
+            'e-at-5': [377, 348],
+            'e-at-6': [377, 355],
+            'e-at-7': [377, 362],
+            'e-at-8': [377, 369],
+            'e-at-9': [377, 377],
+            'e-at-10': [377, 384],
+            'e-at-11': [377, 391],
+            'e-at-12': [377, 398],
+            'e-at-13': [377, 405],
+            'e-at-14': [377, 412],
+        }
+    }
+
+    switch(tipo){
+        case 'escF1': {
+            for(let value in coords.escF1){
+                if(nombre === value){
+                    return coords.escF1[value];
+                }
+            }
+        }
+        case 'escF2': {
+            for(let value in coords.escF2){
+                if(nombre === value){
+                    return coords.escF2[value];
+                }
+            }
+        }
+        case 'escTA': {
+            for(let value in coords.escTA){
+                if(nombre === value){
+                    return coords.escTA[value];
+                }
+            }
+        }
+        case 'escAT': {
+            for(let value in coords.escAT){
+                if(nombre === value){
+                    return coords.escAT[value];
+                }
+            }
+        }
+    }
 }
 
 function getCoordsMC(nombre){
