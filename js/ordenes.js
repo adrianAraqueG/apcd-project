@@ -393,27 +393,21 @@ function eliminarOrden(id){
     const opcion = confirm(`¿Quieres eliminar la orden ${id}?`);
 
     if(opcion === true){
-        console.log('eliminando orden ', id);
         ordenes.eliminarOrden(id);
-        console.log(ordenes.getOrdenes().length);
         ordenes.actualizarLS();
         if(ordenes.getOrdenes().length === 0){
-            console.log('e');
             window.localStorage.removeItem('ordenes');
             actualizarBtn();
         }
         actualizarBtn();
         UI.imprimirOrdenes();
         UI.placeholder();
-    
-        console.log(ordenes);
     }
 }
 
 
 
 function editarOrden(id){
-    console.log('editando: ', id);
 
     const orden = ordenes.getOrden(id);
     const {numero, horaFinal, horaInicial} = orden;
@@ -907,9 +901,6 @@ function editarOrden(id){
 
     function cerrar(){
         // Borrar listeners
-        console.log('Quitando listeners...');
-        console.log('Ordenes Generales: ');
-        console.log(ordenes.getOrdenes());
         btnGuardarCambios.removeEventListener('click', actualizar, false);
         btnCerrar1.removeEventListener('click', cerrar, false);
         btnCerrar2.removeEventListener('click', cerrar, false);

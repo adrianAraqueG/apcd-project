@@ -46,10 +46,12 @@ async function convertirPDF(){
         let counter = 1;
         integrantes.forEach( integrante => {
             const {nombre, cargo, cedula} = integrante;
-            //console.log(getCoordsInt(counter));
-            pdf.text(nombre.toUpperCase(), getCoordsInt(counter, 'top').nombre[0], getCoordsInt(counter, 'top').nombre[1]);
-            pdf.text(cedula.toUpperCase(), getCoordsInt(counter, 'top').cedula[0], getCoordsInt(counter, 'top').cedula[1]);
-            pdf.text(cargo.toUpperCase(), getCoordsInt(counter, 'top').cargo[0], getCoordsInt(counter, 'top').cargo[1]);
+            if(getCoordsInt(counter, 'top')){
+                const coords = getCoordsInt(counter, 'top');
+                pdf.text(nombre.toUpperCase(), coords.nombre[0], coords.nombre[1]);
+                pdf.text(cedula.toUpperCase(), coords.cedula[0], coords.cedula[1]);
+                pdf.text(cargo.toUpperCase(), coords.cargo[0], coords.cargo[1]);
+            }
 
             counter = counter + 1;
         });
@@ -139,7 +141,28 @@ async function convertirPDF(){
                 }
             }
         }
+    
+    
+    
+    // Firma - Relleno
+    if(obtenerLS('integrantes')){
+        const integrantes = obtenerLS('integrantes');
 
+        let counter = 1;
+        integrantes.forEach( integrante => {
+            const { nombre } = integrante;
+
+            if(getCoordsInt(counter, 'bottom')){
+                const coords = getCoordsInt(counter, 'bottom');
+                pdf.text(nombre.toUpperCase(), coords.nombre[0], coords.nombre[1]);
+                pdf.text(nombre.toUpperCase(), coords.firma[0], coords.firma[1]);
+            }
+
+            counter = counter + 1;
+        });
+    }
+
+    
 
     pdf.setFontSize(7);
     //pdf.setTextColor(0,0,0)
@@ -156,13 +179,11 @@ async function convertirPDF(){
                 const { tareasAltoRiesgo, fisicos, biomecanicos, riesgoPublico, psicosocial, electrico } = peligrosRiesgos;
                 const { biologicos, mecanico, locativo, accTransito, fenoNaturales, quimicos } = peligrosRiesgos;
                 const coords = getCoordsO(i);
-                console.log(coords);
-                console.log(i);
                 
-                /*
-                pdf.text(numero, coords.numero[0], coords.numero[1]);
-                pdf.text(horaFinal, coords.horaFinal[0], coords.horaFinal[1]);
-                pdf.text(horaInicial, coords.horaInicial[0], coords.horaInicial[1]);*/
+                
+                pdf.text(numero !== false ? numero : '', coords.numero[0], coords.numero[1]);
+                pdf.text(horaFinal !== false ? horaFinal : '', coords.horaFinal[0], coords.horaFinal[1]);
+                pdf.text(horaInicial !== false ? horaInicial : '', coords.horaInicial[0], coords.horaInicial[1]);
                 
                 for(let value in eleProtInd){
                     if(eleProtInd[value] !== false){
@@ -267,7 +288,144 @@ async function convertirPDF(){
                 i = i + 1;
 
                 if(i > 6){
-                    console.log('añadiendo segunda hoja');
+                    i = 0;
+                    pdf.addPage();
+                    pdf.addImage(image, 'PNG', -60, 10, 720, 1015);
+
+                    // Datos Generales - Relleno
+                        if(obtenerLS('datosGenerales')){
+                            const datosGenerales = obtenerLS('datosGenerales');
+                            const {fecha, ciudad, departamento} = datosGenerales;
+                            const fechaArr = fecha.split('-');
+
+                            pdf.text(ciudad.toUpperCase(), 240, 53);
+                            pdf.text(departamento.toUpperCase(), 450, 51);
+                            pdf.text(fechaArr[0], 125, 54);
+                            pdf.text(fechaArr[1], 105, 54);
+                            pdf.text(fechaArr[2], 83, 54);  
+                        }
+
+
+                        // Integrantes - Relleno
+                        if(obtenerLS('integrantes')){
+                            const integrantes = obtenerLS('integrantes');
+
+                            let counter = 1;
+                            integrantes.forEach( integrante => {
+                                const {nombre, cargo, cedula} = integrante;
+                                if(getCoordsInt(counter, 'top')){
+                                    const coords = getCoordsInt(counter, 'top');
+                                    pdf.text(nombre.toUpperCase(), coords.nombre[0], coords.nombre[1]);
+                                    pdf.text(cedula.toUpperCase(), coords.cedula[0], coords.cedula[1]);
+                                    pdf.text(cargo.toUpperCase(), coords.cargo[0], coords.cargo[1]);
+                                }
+
+                                counter = counter + 1;
+                            });
+                        }
+
+                        
+
+                        // Condiciones Generales - Relleno
+                        if(obtenerLS('condicionesGenerales')){
+                            const condicionesGenerales = obtenerLS('condicionesGenerales');
+                            
+                            for(let value in condicionesGenerales.preguntas){
+                                if(condicionesGenerales.preguntas[value] !== false){
+                                    const coords = getCoordsCG(value, condicionesGenerales.preguntas[value]);
+                                    pdf.circle(coords[0] + 2, coords[1] - 2, 1.6, 'FD');
+                                }
+                            }   
+                        }
+
+
+                        // Herramientas Equipos - Relleno
+                        if(obtenerLS('herramientasEquipos')){
+                            const herramientasEquipos = obtenerLS('herramientasEquipos');
+                            for(let value in herramientasEquipos){
+                                if(herramientasEquipos[value] !== false){
+                                    const coords = getCoordsHE(value);
+                                    pdf.circle(coords[0] + 2, coords[1] - 2, 1.6, 'FD');
+                                }
+                            }
+                        }
+
+
+
+                        // Medidas Control - Relleno
+                        if(obtenerLS('medidasControl')){
+                            const medidasControl = obtenerLS('medidasControl');
+                            for(let value in medidasControl){
+                                if(medidasControl[value] !== false){
+                                    const coords = getCoordsMC(value);
+                                    pdf.circle(coords[0] + 2, coords[1] - 2, 1.6, 'FD');
+                                }
+                            }
+                        }
+
+
+                        /** -------------------- Ordenes - Relleno -------------------- */
+                            // ESCALERA DOBLE F1- Relleno
+                            if(obtenerLS('escaleras')){
+                                const escF1 = obtenerLS('escaleras').escF1;
+                                for(let value in escF1){
+                                    if(escF1[value] !== false){
+                                        const coords = getCoordsEsc(value, 'escF1');
+                                        pdf.circle(coords[0], coords[1], 1.8,'FD');
+                                    }
+                                }
+                            }
+
+                            // ESCALERA DOBLE F2- Relleno
+                            if(obtenerLS('escaleras')){
+                                const escF2 = obtenerLS('escaleras').escF2;
+                                for(let value in escF2){
+                                    if(escF2[value] !== false){
+                                        const coords = getCoordsEsc(value, 'escF2');
+                                        pdf.circle(coords[0], coords[1], 1.8,'FD');
+                                    }
+                                }
+                            }
+
+                            // ESCALERA TA- Relleno
+                            if(obtenerLS('escaleras')){
+                                const escTA = obtenerLS('escaleras').escTA;
+                                for(let value in escTA){
+                                    if(escTA[value] !== false){
+                                        const coords = getCoordsEsc(value, 'escTA');
+                                        pdf.circle(coords[0] + 2, coords[1] - 2, 1.8,'FD');
+                                    }
+                                }
+                            }
+
+                            // ESCALERA AT- Relleno
+                            if(obtenerLS('escaleras')){
+                                const escAT = obtenerLS('escaleras').escAT;
+                                for(let value in escAT){
+                                    if(escAT[value] !== false){
+                                        const coords = getCoordsEsc(value, 'escAT');
+                                        pdf.circle(coords[0] + 2, coords[1] - 2, 1.8,'FD');
+                                    }
+                                }
+                            }
+
+                            // Firma - Relleno
+                            if(obtenerLS('integrantes')){
+                                const integrantes = obtenerLS('integrantes');
+
+                                let counter = 1;
+                                integrantes.forEach( integrante => {
+                                    const { nombre } = integrante;
+
+                                    if(getCoordsInt(counter, 'bottom')){
+                                        const coords = getCoordsInt(counter, 'bottom');
+                                        pdf.text(nombre.toUpperCase(), coords.nombre[0], coords.nombre[1]);
+                                        pdf.text(nombre.toUpperCase(), coords.firma[0], coords.firma[1]);
+                                    }
+
+                                    counter = counter + 1;
+                                });
+                            }
                 }
             });
         }
@@ -276,28 +434,11 @@ async function convertirPDF(){
 
 
 
-    // Firma - Relleno
-    if(obtenerLS('integrantes')){
-        const integrantes = obtenerLS('integrantes');
-
-        let counter = 1;
-        integrantes.forEach( integrante => {
-            const {nombre} = integrante;
-            const coords = getCoordsInt(counter, 'bottom')
-            pdf.text(nombre.toUpperCase(), coords.nombre[0], coords.nombre[1]);
-            pdf.text(nombre.toUpperCase(), coords.firma[0], coords.firma[1]);
-
-            counter = counter + 1;
-        });
-    }
-
-
-
     //** Guardar PDF */
-    /*if(confirm('¿Quieres guardar el PDF? Asegúrate de que llenaste TODOS los campos.')){
+    if(confirm('¿Quieres guardar el PDF? Asegúrate de que llenaste TODOS los campos.')){
         const nombrePDF = obtenerLS('datosGenerales').fecha !== undefined ? obtenerLS('datosGenerales').fecha : 'apcd-pdf';
         pdf.save(nombrePDF);
-    }*/
+    }
 }
 
 function getCoordsO(num){

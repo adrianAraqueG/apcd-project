@@ -199,7 +199,6 @@ do{
                         
                     });
                 }
-                console.log('todas sí');
                 actualizarLS('condicionesGenerales');
                 
 
@@ -233,7 +232,6 @@ do{
                         }
                     });
                 }
-                console.log('todas na');
 
                 actualizarLS('condicionesGenerales');
                 
@@ -580,15 +578,12 @@ function guardarObs(name){
     btnGuardar.addEventListener('click', actualizar);
 
     function actualizar(){
-        console.log(txtArea.value);
         if(confirm('¿Quieres guardar la Observación?')){
             condicionesGenerales.observaciones[name] = txtArea.value;
             actualizarLS('condicionesGenerales');
             actualizarBtn();
 
             btnCerrar1.click();
-            console.log('condGen:');
-            console.log(condicionesGenerales.observaciones);
         }
     }
 

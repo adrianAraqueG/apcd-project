@@ -80,7 +80,6 @@ function guardarInt(){
         actualizarLS();
         actualizarBtn();
         btnCerrar1.click();
-        console.log(integrantes);
 
         // imprimir los integrantes
         imprimirIntegrantes();
@@ -152,10 +151,8 @@ function imprimirIntegrantes(){
 function eliminarIntegrante(id){
     if(confirm('¿Seguro quieres eliminar este integrante?')){
         integrantes = integrantes.filter(integrante => integrante.id !== id);
-        console.log('elimiando...', id);
         actualizarLS();
         if(integrantes.length <= 0){
-            console.log('eliminando de LS');
             window.localStorage.removeItem('integrantes');
         }
         actualizarBtn();
@@ -166,7 +163,6 @@ function eliminarIntegrante(id){
 
 
 function editarIntegrante(id){
-    console.log('editando...', id);
 
     // Cambiando texto Modal
     const modalLabel = document.querySelector('#integrantesTitle');
@@ -203,7 +199,6 @@ function editarIntegrante(id){
             imprimirIntegrantes();
 
             btnCerrar1.click();
-            console.log(integrantes);
         }
     }
 
