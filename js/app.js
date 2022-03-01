@@ -1,4 +1,4 @@
-import { datos as link1 } from './generales.js';
+import { datos, datos as link1 } from './generales.js';
 import { ordenes as link2 } from './ordenes.js';
 import { integrantes as link3 } from './integrantes.js';
 
@@ -11,7 +11,7 @@ btnBorrarTodo.addEventListener('click', e => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', convertirPDF);
+//document.addEventListener('DOMContentLoaded', convertirPDF);
 
 const btnDescargarPDF = document.querySelector('#descargarPDF');
 btnDescargarPDF.addEventListener('click', convertirPDF);
@@ -21,13 +21,13 @@ btnDescargarPDF.addEventListener('click', convertirPDF);
 async function convertirPDF(){
     const pdf = new jsPDF('p', 'pt', 'legal');
     pdf.setFontSize(8);
-    pdf.setTextColor(255,0,0);
+    //pdf.setTextColor(255,0,0);
 
     const image = await loadImage('img/forms/apcd-form.jpg');
     pdf.addImage(image, 'PNG', -60, 10, 720, 1015);
 
     // Datos Generales - Relleno
-    /*if(obtenerLS('datosGenerales')){
+    if(obtenerLS('datosGenerales')){
         const datosGenerales = obtenerLS('datosGenerales');
         const {fecha, ciudad, departamento} = datosGenerales;
         const fechaArr = fecha.split('-');
@@ -139,32 +139,90 @@ async function convertirPDF(){
                 pdf.text('x', coords[0], coords[1]);
             }
         }
-    }*/
+    }
 
 
-    pdf.setFontSize(6);
+    pdf.setFontSize(7);
+    pdf.setTextColor(0,0,0)
     /** -------------------- Ordenes - Relleno -------------------- */
 
         // Datos Generales
-        /*if(obtenerLS('ordenes')){
+        if(obtenerLS('ordenes')){
             let i = 0;
             const ordenes = obtenerLS('ordenes');
-            console.log(ordenes);
 
             ordenes.forEach( orden =>{
                 const {numero, horaInicial, horaFinal, datosPropios} = orden;
+                const { eleProtInd, condEsp, peligrosRiesgos } = datosPropios;
+                const { tareasAltoRiesgo, fisicos, biomecanicos, riesgoPublico, psicosocial, electrico } = peligrosRiesgos;
                 const coords = getCoordsO(i);
                 
                 pdf.text(orden.numero, coords.numero[0], coords.numero[1]);
                 pdf.text(orden.horaFinal, coords.horaFinal[0], coords.horaFinal[1]);
                 pdf.text(orden.horaInicial, coords.horaInicial[0], coords.horaInicial[1]);
 
+                for(let value in eleProtInd){
+                    if(eleProtInd[value] !== false){
+                        const ce = coords.eleProtInd[value];
+                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                    }
+                }
+
+                for(let value in condEsp){
+                    if(condEsp[value] !== false){
+                        const ce = coords.condEsp[value];
+                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                    }
+                }
+
+                for(let value in tareasAltoRiesgo){
+                    if(tareasAltoRiesgo[value] !== false){
+                        const ce = coords.col1.tareasAltoRiesgo[value];
+                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                    }
+                }
+
+                for(let value in fisicos){
+                    if(fisicos[value] !== false){
+                        const ce = coords.col1.fisicos[value];
+                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                    }
+                }
+
+                for(let value in biomecanicos){
+                    if(biomecanicos[value] !== false){
+                        const ce = coords.col1.biomecanicos[value];
+                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                    }
+                }
+                
+                for(let value in riesgoPublico){
+                    if(riesgoPublico[value] !== false){
+                        const ce = coords.col1.riesgoPublico[value];
+                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                    }
+                }
+
+                for(let value in psicosocial){
+                    if(psicosocial[value] !== false){
+                        const ce = coords.col1.psicosocial[value];
+                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                    }
+                }
+
+                for(let value in electrico){
+                    if(electrico[value] !== false){
+                        const ce = coords.col1.electrico[value];
+                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                    }
+                }
+
                 i = i + 1;
             });
-        }*/
+        }
 
     //pdf.text('x', 134, 305);
-    pdf.circle(186, 304, 1.5, 'FD');
+    //pdf.circle(213, 738, 1.6, 'FD');
     //return;
 
     // 1.133 2.146.5 3.160 4.173 5.186 6.199
@@ -176,7 +234,7 @@ function getCoordsO(num){
     const coords = [
         {
             numero: [ 510, 296],
-            horaInicial: [ 505, 304],
+            horaInicial: [ 505, 303.5],
             horaFinal: [ 505, 310],
             eleProtInd: {
                 'e-p-i-1': [133, 304],
@@ -199,6 +257,65 @@ function getCoordsO(num){
                 'e-p-i-18': [133, 425],
                 'e-p-i-19': [133, 432],
             },
+            condEsp: {
+                'c-e-1': [487, 772],
+                'c-e-2': [487, 780],
+                'c-e-3': [487, 788],
+                'c-e-4': [487, 797],
+                'c-e-5': [487, 805],
+                'c-e-6': [487, 814],
+                'c-e-7': [487, 822],
+                'c-e-8': [487, 830],
+                'c-e-9': [487, 838],
+                'c-e-10': [487, 847],
+                'c-e-11': [487, 855],
+                'c-e-12': [487, 863],
+                'c-e-13': [487, 872],
+            },
+            col1: {
+                tareasAltoRiesgo: {
+                    't-a-r-1': [134, 473],
+                    't-a-r-2': [134, 480],
+                    't-a-r-3': [134, 487],
+                    't-a-r-4': [134, 494],
+                    't-a-r-5': [134, 502],
+                    't-a-r-6': [134, 509],
+                    't-a-r-7': [134, 517],
+                },
+                fisicos: {
+                    'p-f-1': [134, 532.5],
+                    'p-f-2': [134, 540],
+                    'p-f-3': [134, 547],
+                    'p-f-4': [134, 555],
+                    'p-f-5': [134, 563],
+                    'p-f-6': [134, 570],
+                },
+                biomecanicos: {
+                    'p-bm-1': [134, 591.5],
+                    'p-bm-2': [134, 601],
+                    'p-bm-3': [134, 608.5],
+                    'p-bm-4': [134, 615.5],
+                    'p-bm-5': [134, 623],
+                    'p-bm-6': [134, 632.5],
+                },
+                riesgoPublico: {
+                    'r-p-1': [134, 649],
+                },
+                electrico: {
+                    'p-e-1': [134, 664],
+                    'p-e-2': [134, 671.5],
+                    'p-e-3': [134, 679],
+                    'p-e-4': [134, 687],
+                    'p-e-5': [134, 695],
+                },
+                psicosocial: {
+                    'p-p-1': [134, 709],
+                    'p-p-2': [134, 716.5],
+                    'p-p-3': [134, 722.5],
+                    'p-p-4': [134, 731],
+                    'p-p-5': [134, 738],
+                },
+            }
         },
         {
             numero: [ 510, 318],
@@ -225,11 +342,70 @@ function getCoordsO(num){
                 'e-p-i-18': [146.5, 425],
                 'e-p-i-19': [146.5, 432],
             },
+            condEsp: {
+                'c-e-1': [507, 772],
+                'c-e-2': [507, 780],
+                'c-e-3': [507, 788],
+                'c-e-4': [507, 797],
+                'c-e-5': [507, 805],
+                'c-e-6': [507, 814],
+                'c-e-7': [507, 822],
+                'c-e-8': [507, 830],
+                'c-e-9': [507, 838],
+                'c-e-10': [507, 847],
+                'c-e-11': [507, 855],
+                'c-e-12': [507, 863],
+                'c-e-13': [507, 872],
+            },
+            col1: {
+                tareasAltoRiesgo: {
+                    't-a-r-1': [147, 473],
+                    't-a-r-2': [147, 480],
+                    't-a-r-3': [147, 487],
+                    't-a-r-4': [147, 494],
+                    't-a-r-5': [147, 502],
+                    't-a-r-6': [147, 509],
+                    't-a-r-7': [147, 517],
+                },
+                fisicos: {
+                    'p-f-1': [147, 532.5],
+                    'p-f-2': [147, 540],
+                    'p-f-3': [147, 547],
+                    'p-f-4': [147, 555],
+                    'p-f-5': [147, 563],
+                    'p-f-6': [147, 570],
+                },
+                biomecanicos: {
+                    'p-bm-1': [147, 591.5],
+                    'p-bm-2': [147, 601],
+                    'p-bm-3': [147, 608.5],
+                    'p-bm-4': [147, 615.5],
+                    'p-bm-5': [147, 623],
+                    'p-bm-6': [147, 632.5],
+                },
+                riesgoPublico: {
+                    'r-p-1': [147, 649],
+                },
+                electrico: {
+                    'p-e-1': [147, 664],
+                    'p-e-2': [147, 671.5],
+                    'p-e-3': [147, 679],
+                    'p-e-4': [147, 687],
+                    'p-e-5': [147, 695],
+                },
+                psicosocial: {
+                    'p-p-1': [147, 709],
+                    'p-p-2': [147, 716.5],
+                    'p-p-3': [147, 722.5],
+                    'p-p-4': [147, 731],
+                    'p-p-5': [147, 738],
+                },
+            }
         },
         {
             numero: [ 510, 339],
             horaInicial: [ 505, 346],
-            horaFinal: [ 505, 352],
+            horaFinal: [ 505, 353],
             eleProtInd: {
                 'e-p-i-1': [160, 304],
                 'e-p-i-2': [160, 311],
@@ -251,6 +427,65 @@ function getCoordsO(num){
                 'e-p-i-18': [160, 425],
                 'e-p-i-19': [160, 432],
             },
+            condEsp: {
+                'c-e-1': [524, 772],
+                'c-e-2': [524, 780],
+                'c-e-3': [524, 788],
+                'c-e-4': [524, 797],
+                'c-e-5': [524, 805],
+                'c-e-6': [524, 814],
+                'c-e-7': [524, 822],
+                'c-e-8': [524, 830],
+                'c-e-9': [524, 838],
+                'c-e-10': [524, 847],
+                'c-e-11': [524, 855],
+                'c-e-12': [524, 863],
+                'c-e-13': [524, 872],
+            },
+            col1: {
+                tareasAltoRiesgo: {
+                    't-a-r-1': [160.5, 473],
+                    't-a-r-2': [160.5, 480],
+                    't-a-r-3': [160.5, 487],
+                    't-a-r-4': [160.5, 494],
+                    't-a-r-5': [160.5, 502],
+                    't-a-r-6': [160.5, 509],
+                    't-a-r-7': [160.5, 517],
+                },
+                fisicos: {
+                    'p-f-1': [160.5, 532.5],
+                    'p-f-2': [160.5, 540],
+                    'p-f-3': [160.5, 547],
+                    'p-f-4': [160.5, 555],
+                    'p-f-5': [160.5, 563],
+                    'p-f-6': [160.5, 570],
+                },
+                biomecanicos: {
+                    'p-bm-1': [160.5, 591.5],
+                    'p-bm-2': [160.5, 601],
+                    'p-bm-3': [160.5, 608.5],
+                    'p-bm-4': [160.5, 615.5],
+                    'p-bm-5': [160.5, 623],
+                    'p-bm-6': [160.5, 632.5],
+                },
+                riesgoPublico: {
+                    'r-p-1': [160.5, 649],
+                },
+                electrico: {
+                    'p-e-1': [160.5, 664],
+                    'p-e-2': [160.5, 671.5],
+                    'p-e-3': [160.5, 679],
+                    'p-e-4': [160.5, 687],
+                    'p-e-5': [160.5, 695],
+                },
+                psicosocial: {
+                    'p-p-1': [160.5, 709],
+                    'p-p-2': [160.5, 716.5],
+                    'p-p-3': [160.5, 722.5],
+                    'p-p-4': [160.5, 731],
+                    'p-p-5': [160.5, 738],
+                },
+            }
         },
         {
             numero: [ 510, 360],
@@ -277,6 +512,65 @@ function getCoordsO(num){
                 'e-p-i-18': [173, 425],
                 'e-p-i-19': [173, 432],
             },
+            condEsp: {
+                'c-e-1': [540, 772],
+                'c-e-2': [540, 780],
+                'c-e-3': [540, 788],
+                'c-e-4': [540, 797],
+                'c-e-5': [540, 805],
+                'c-e-6': [540, 814],
+                'c-e-7': [540, 822],
+                'c-e-8': [540, 830],
+                'c-e-9': [540, 838],
+                'c-e-10': [540, 847],
+                'c-e-11': [540, 855],
+                'c-e-12': [540, 863],
+                'c-e-13': [540, 872],
+            },
+            col1: {
+                tareasAltoRiesgo: {
+                    't-a-r-1': [174, 473],
+                    't-a-r-2': [174, 480],
+                    't-a-r-3': [174, 487],
+                    't-a-r-4': [174, 494],
+                    't-a-r-5': [174, 502],
+                    't-a-r-6': [174, 509],
+                    't-a-r-7': [174, 517],
+                },
+                fisicos: {
+                    'p-f-1': [174, 532.5],
+                    'p-f-2': [174, 540],
+                    'p-f-3': [174, 547],
+                    'p-f-4': [174, 555],
+                    'p-f-5': [174, 563],
+                    'p-f-6': [174, 570],
+                },
+                biomecanicos: {
+                    'p-bm-1': [174, 591.5],
+                    'p-bm-2': [174, 601],
+                    'p-bm-3': [174, 608.5],
+                    'p-bm-4': [174, 615.5],
+                    'p-bm-5': [174, 623],
+                    'p-bm-6': [174, 632.5],
+                },
+                riesgoPublico: {
+                    'r-p-1': [174, 649],
+                },
+                electrico: {
+                    'p-e-1': [174, 664],
+                    'p-e-2': [174, 671.5],
+                    'p-e-3': [174, 679],
+                    'p-e-4': [174, 687],
+                    'p-e-5': [174, 695],
+                },
+                psicosocial: {
+                    'p-p-1': [174, 709],
+                    'p-p-2': [174, 716.5],
+                    'p-p-3': [174, 722.5],
+                    'p-p-4': [174, 731],
+                    'p-p-5': [174, 738],
+                },
+            }
         },
         {
             numero: [ 510, 381.5],
@@ -303,6 +597,65 @@ function getCoordsO(num){
                 'e-p-i-18': [186, 425],
                 'e-p-i-19': [186, 432],
             },
+            condEsp: {
+                'c-e-1': [557, 772],
+                'c-e-2': [557, 780],
+                'c-e-3': [557, 788],
+                'c-e-4': [557, 797],
+                'c-e-5': [557, 805],
+                'c-e-6': [557, 814],
+                'c-e-7': [557, 822],
+                'c-e-8': [557, 830],
+                'c-e-9': [557, 838],
+                'c-e-10': [557, 847],
+                'c-e-11': [557, 855],
+                'c-e-12': [557, 863],
+                'c-e-13': [557, 872],
+            },
+            col1: {
+                tareasAltoRiesgo: {
+                    't-a-r-1': [187, 473],
+                    't-a-r-2': [187, 480],
+                    't-a-r-3': [187, 487],
+                    't-a-r-4': [187, 494],
+                    't-a-r-5': [187, 502],
+                    't-a-r-6': [187, 509],
+                    't-a-r-7': [187, 517],
+                },
+                fisicos: {
+                    'p-f-1': [187, 532.5],
+                    'p-f-2': [187, 540],
+                    'p-f-3': [187, 547],
+                    'p-f-4': [187, 555],
+                    'p-f-5': [187, 563],
+                    'p-f-6': [187, 570],
+                },
+                biomecanicos: {
+                    'p-bm-1': [187, 591.5],
+                    'p-bm-2': [187, 601],
+                    'p-bm-3': [187, 608.5],
+                    'p-bm-4': [187, 615.5],
+                    'p-bm-5': [187, 623],
+                    'p-bm-6': [187, 632.5],
+                },
+                riesgoPublico: {
+                    'r-p-1': [187, 649],
+                },
+                electrico: {
+                    'p-e-1': [187, 664],
+                    'p-e-2': [187, 671.5],
+                    'p-e-3': [187, 679],
+                    'p-e-4': [187, 687],
+                    'p-e-5': [187, 695],
+                },
+                psicosocial: {
+                    'p-p-1': [187, 709],
+                    'p-p-2': [187, 716.5],
+                    'p-p-3': [187, 722.5],
+                    'p-p-4': [187, 731],
+                    'p-p-5': [187, 738],
+                },
+            }
         },
         {
             numero: [ 510, 404],
@@ -329,6 +682,65 @@ function getCoordsO(num){
                 'e-p-i-18': [199, 425],
                 'e-p-i-19': [199, 432],
             },
+            condEsp: {
+                'c-e-1': [574, 772],
+                'c-e-2': [574, 780],
+                'c-e-3': [574, 788],
+                'c-e-4': [574, 797],
+                'c-e-5': [574, 805],
+                'c-e-6': [574, 814],
+                'c-e-7': [574, 822],
+                'c-e-8': [574, 830],
+                'c-e-9': [574, 838],
+                'c-e-10': [574, 847],
+                'c-e-11': [574, 855],
+                'c-e-12': [574, 863],
+                'c-e-13': [574, 872],
+            },
+            col1: {
+                tareasAltoRiesgo: {
+                    't-a-r-1': [200, 473],
+                    't-a-r-2': [200, 480],
+                    't-a-r-3': [200, 487],
+                    't-a-r-4': [200, 494],
+                    't-a-r-5': [200, 502],
+                    't-a-r-6': [200, 509],
+                    't-a-r-7': [200, 517],
+                },
+                fisicos: {
+                    'p-f-1': [200, 532.5],
+                    'p-f-2': [200, 540],
+                    'p-f-3': [200, 547],
+                    'p-f-4': [200, 555],
+                    'p-f-5': [200, 563],
+                    'p-f-6': [200, 570],
+                },
+                biomecanicos: {
+                    'p-bm-1': [200, 591.5],
+                    'p-bm-2': [200, 601],
+                    'p-bm-3': [200, 608.5],
+                    'p-bm-4': [200, 615.5],
+                    'p-bm-5': [200, 623],
+                    'p-bm-6': [200, 632.5],
+                },
+                riesgoPublico: {
+                    'r-p-1': [200, 649],
+                },
+                electrico: {
+                    'p-e-1': [200, 664],
+                    'p-e-2': [200, 671.5],
+                    'p-e-3': [200, 679],
+                    'p-e-4': [200, 687],
+                    'p-e-5': [200, 695],
+                },
+                psicosocial: {
+                    'p-p-1': [200, 709],
+                    'p-p-2': [200, 716.5],
+                    'p-p-3': [200, 722.5],
+                    'p-p-4': [200, 731],
+                    'p-p-5': [200, 738],
+                },
+            }
         },
         {
             numero: [ 510, 425],
@@ -355,6 +767,65 @@ function getCoordsO(num){
                 'e-p-i-18': false,
                 'e-p-i-19': false,
             },
+            condEsp: {
+                'c-e-1': [591, 772],
+                'c-e-2': [591, 780],
+                'c-e-3': [591, 788],
+                'c-e-4': [591, 797],
+                'c-e-5': [591, 805],
+                'c-e-6': [591, 814],
+                'c-e-7': [591, 822],
+                'c-e-8': [591, 830],
+                'c-e-9': [591, 838],
+                'c-e-10': [591, 847],
+                'c-e-11': [591, 855],
+                'c-e-12': [591, 863],
+                'c-e-13': [591, 872],
+            },
+            col1: {
+                tareasAltoRiesgo: {
+                    't-a-r-1': [213, 473],
+                    't-a-r-2': [213, 480],
+                    't-a-r-3': [213, 487],
+                    't-a-r-4': [213, 494],
+                    't-a-r-5': [213, 502],
+                    't-a-r-6': [213, 509],
+                    't-a-r-7': [213, 517],
+                },
+                fisicos: {
+                    'p-f-1': [213, 532.5],
+                    'p-f-2': [213, 540],
+                    'p-f-3': [213, 547],
+                    'p-f-4': [213, 555],
+                    'p-f-5': [213, 563],
+                    'p-f-6': [213, 570],
+                },
+                biomecanicos: {
+                    'p-bm-1': [213, 591.5],
+                    'p-bm-2': [213, 601],
+                    'p-bm-3': [213, 608.5],
+                    'p-bm-4': [213, 615.5],
+                    'p-bm-5': [213, 623],
+                    'p-bm-6': [213, 632.5],
+                },
+                riesgoPublico: {
+                    'r-p-1': [213, 649],
+                },
+                electrico: {
+                    'p-e-1': [213, 664],
+                    'p-e-2': [213, 671.5],
+                    'p-e-3': [213, 679],
+                    'p-e-4': [213, 687],
+                    'p-e-5': [213, 695],
+                },
+                psicosocial: {
+                    'p-p-1': [213, 709],
+                    'p-p-2': [213, 716.5],
+                    'p-p-3': [213, 722.5],
+                    'p-p-4': [213, 731],
+                    'p-p-5': [213, 738],
+                },
+            }
         },
     ]
 
