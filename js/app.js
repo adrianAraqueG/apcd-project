@@ -96,50 +96,50 @@ async function convertirPDF(){
     }
 
 
-
-    // ESCALERA DOBLE F1- Relleno
-    if(obtenerLS('escaleras')){
-        const escF1 = obtenerLS('escaleras').escF1;
-        for(let value in escF1){
-            if(escF1[value] !== false){
-                const coords = getCoordsEsc(value, 'escF1');
-                pdf.text('x', coords[0], coords[1]);
+    /** -------------------- Ordenes - Relleno -------------------- */
+        // ESCALERA DOBLE F1- Relleno
+        if(obtenerLS('escaleras')){
+            const escF1 = obtenerLS('escaleras').escF1;
+            for(let value in escF1){
+                if(escF1[value] !== false){
+                    const coords = getCoordsEsc(value, 'escF1');
+                    pdf.text('x', coords[0], coords[1]);
+                }
             }
         }
-    }
 
-    // ESCALERA DOBLE F2- Relleno
-    if(obtenerLS('escaleras')){
-        const escF2 = obtenerLS('escaleras').escF2;
-        for(let value in escF2){
-            if(escF2[value] !== false){
-                const coords = getCoordsEsc(value, 'escF2');
-                pdf.text('x', coords[0], coords[1]);
+        // ESCALERA DOBLE F2- Relleno
+        if(obtenerLS('escaleras')){
+            const escF2 = obtenerLS('escaleras').escF2;
+            for(let value in escF2){
+                if(escF2[value] !== false){
+                    const coords = getCoordsEsc(value, 'escF2');
+                    pdf.text('x', coords[0], coords[1]);
+                }
             }
         }
-    }
 
-    // ESCALERA TA- Relleno
-    if(obtenerLS('escaleras')){
-        const escTA = obtenerLS('escaleras').escTA;
-        for(let value in escTA){
-            if(escTA[value] !== false){
-                const coords = getCoordsEsc(value, 'escTA');
-                pdf.text('x', coords[0], coords[1]);
+        // ESCALERA TA- Relleno
+        if(obtenerLS('escaleras')){
+            const escTA = obtenerLS('escaleras').escTA;
+            for(let value in escTA){
+                if(escTA[value] !== false){
+                    const coords = getCoordsEsc(value, 'escTA');
+                    pdf.text('x', coords[0], coords[1]);
+                }
             }
         }
-    }
 
-    // ESCALERA AT- Relleno
-    if(obtenerLS('escaleras')){
-        const escAT = obtenerLS('escaleras').escAT;
-        for(let value in escAT){
-            if(escAT[value] !== false){
-                const coords = getCoordsEsc(value, 'escAT');
-                pdf.text('x', coords[0], coords[1]);
+        // ESCALERA AT- Relleno
+        if(obtenerLS('escaleras')){
+            const escAT = obtenerLS('escaleras').escAT;
+            for(let value in escAT){
+                if(escAT[value] !== false){
+                    const coords = getCoordsEsc(value, 'escAT');
+                    pdf.text('x', coords[0], coords[1]);
+                }
             }
         }
-    }
 
 
     pdf.setFontSize(7);
@@ -265,6 +265,9 @@ async function convertirPDF(){
                 i = i + 1;
             });
         }
+    
+    /** ---------------------------------------------------------- */
+
 
     //pdf.text('x', 134, 305);
     //pdf.circle(322, 737, 1.6, 'FD');
