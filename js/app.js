@@ -11,6 +11,8 @@ btnBorrarTodo.addEventListener('click', e => {
     }
 });
 
+document.addEventListener('DOMContentLoaded', convertirPDF);
+
 const btnDescargarPDF = document.querySelector('#descargarPDF');
 btnDescargarPDF.addEventListener('click', convertirPDF);
 
@@ -19,13 +21,13 @@ btnDescargarPDF.addEventListener('click', convertirPDF);
 async function convertirPDF(){
     const pdf = new jsPDF('p', 'pt', 'legal');
     pdf.setFontSize(8);
-    //pdf.setTextColor(255,0,0);
+    pdf.setTextColor(255,0,0);
 
     const image = await loadImage('img/forms/apcd-form.jpg');
     pdf.addImage(image, 'PNG', -60, 10, 720, 1015);
 
     // Datos Generales - Relleno
-    if(obtenerLS('datosGenerales')){
+    /*if(obtenerLS('datosGenerales')){
         const datosGenerales = obtenerLS('datosGenerales');
         const {fecha, ciudad, departamento} = datosGenerales;
         const fechaArr = fecha.split('-');
@@ -137,13 +139,226 @@ async function convertirPDF(){
                 pdf.text('x', coords[0], coords[1]);
             }
         }
-    }
+    }*/
 
 
-    //pdf.text('x', 377, 412);
+    pdf.setFontSize(6);
+    /** -------------------- Ordenes - Relleno -------------------- */
+
+        // Datos Generales
+        /*if(obtenerLS('ordenes')){
+            let i = 0;
+            const ordenes = obtenerLS('ordenes');
+            console.log(ordenes);
+
+            ordenes.forEach( orden =>{
+                const {numero, horaInicial, horaFinal, datosPropios} = orden;
+                const coords = getCoordsO(i);
+                
+                pdf.text(orden.numero, coords.numero[0], coords.numero[1]);
+                pdf.text(orden.horaFinal, coords.horaFinal[0], coords.horaFinal[1]);
+                pdf.text(orden.horaInicial, coords.horaInicial[0], coords.horaInicial[1]);
+
+                i = i + 1;
+            });
+        }*/
+
+    //pdf.text('x', 134, 305);
+    pdf.circle(186, 304, 1.5, 'FD');
     //return;
 
+    // 1.133 2.146.5 3.160 4.173 5.186 6.199
+
     pdf.save('apcd.pdf');
+}
+
+function getCoordsO(num){
+    const coords = [
+        {
+            numero: [ 510, 296],
+            horaInicial: [ 505, 304],
+            horaFinal: [ 505, 310],
+            eleProtInd: {
+                'e-p-i-1': [133, 304],
+                'e-p-i-2': [133, 311],
+                'e-p-i-3': [133, 318],
+                'e-p-i-4': [133, 325],
+                'e-p-i-5': [133, 332],
+                'e-p-i-6': [133, 339],
+                'e-p-i-7': [133, 347],
+                'e-p-i-8': [133, 354],
+                'e-p-i-9': [133, 361],
+                'e-p-i-10': [133, 368],
+                'e-p-i-11': [133, 375],
+                'e-p-i-12': [133, 382],
+                'e-p-i-13': [133, 389],
+                'e-p-i-14': [133, 396],
+                'e-p-i-15': [133, 403],
+                'e-p-i-16': [133, 410],
+                'e-p-i-17': [133, 418],
+                'e-p-i-18': [133, 425],
+                'e-p-i-19': [133, 432],
+            },
+        },
+        {
+            numero: [ 510, 318],
+            horaInicial: [ 505, 324],
+            horaFinal: [ 505, 331],
+            eleProtInd: {
+                'e-p-i-1': [146.5, 304],
+                'e-p-i-2': [146.5, 311],
+                'e-p-i-3': [146.5, 318],
+                'e-p-i-4': [146.5, 325],
+                'e-p-i-5': [146.5, 332],
+                'e-p-i-6': [146.5, 339],
+                'e-p-i-7': [146.5, 347],
+                'e-p-i-8': [146.5, 354],
+                'e-p-i-9': [146.5, 361],
+                'e-p-i-10': [146.5, 368],
+                'e-p-i-11': [146.5, 375],
+                'e-p-i-12': [146.5, 382],
+                'e-p-i-13': [146.5, 389],
+                'e-p-i-14': [146.5, 396],
+                'e-p-i-15': [146.5, 403],
+                'e-p-i-16': [146.5, 410],
+                'e-p-i-17': [146.5, 418],
+                'e-p-i-18': [146.5, 425],
+                'e-p-i-19': [146.5, 432],
+            },
+        },
+        {
+            numero: [ 510, 339],
+            horaInicial: [ 505, 346],
+            horaFinal: [ 505, 352],
+            eleProtInd: {
+                'e-p-i-1': [160, 304],
+                'e-p-i-2': [160, 311],
+                'e-p-i-3': [160, 318],
+                'e-p-i-4': [160, 325],
+                'e-p-i-5': [160, 332],
+                'e-p-i-6': [160, 339],
+                'e-p-i-7': [160, 347],
+                'e-p-i-8': [160, 354],
+                'e-p-i-9': [160, 361],
+                'e-p-i-10': [160, 368],
+                'e-p-i-11': [160, 375],
+                'e-p-i-12': [160, 382],
+                'e-p-i-13': [160, 389],
+                'e-p-i-14': [160, 396],
+                'e-p-i-15': [160, 403],
+                'e-p-i-16': [160, 410],
+                'e-p-i-17': [160, 418],
+                'e-p-i-18': [160, 425],
+                'e-p-i-19': [160, 432],
+            },
+        },
+        {
+            numero: [ 510, 360],
+            horaInicial: [ 505, 368],
+            horaFinal: [ 505, 375],
+            eleProtInd: {
+                'e-p-i-1': [173, 304],
+                'e-p-i-2': [173, 311],
+                'e-p-i-3': [173, 318],
+                'e-p-i-4': [173, 325],
+                'e-p-i-5': [173, 332],
+                'e-p-i-6': [173, 339],
+                'e-p-i-7': [173, 347],
+                'e-p-i-8': [173, 354],
+                'e-p-i-9': [173, 361],
+                'e-p-i-10': [173, 368],
+                'e-p-i-11': [173, 375],
+                'e-p-i-12': [173, 382],
+                'e-p-i-13': [173, 389],
+                'e-p-i-14': [173, 396],
+                'e-p-i-15': [173, 403],
+                'e-p-i-16': [173, 410],
+                'e-p-i-17': [173, 418],
+                'e-p-i-18': [173, 425],
+                'e-p-i-19': [173, 432],
+            },
+        },
+        {
+            numero: [ 510, 381.5],
+            horaInicial: [ 505, 389],
+            horaFinal: [ 505, 397],
+            eleProtInd: {
+                'e-p-i-1': [186, 304],
+                'e-p-i-2': [186, 311],
+                'e-p-i-3': [186, 318],
+                'e-p-i-4': [186, 325],
+                'e-p-i-5': [186, 332],
+                'e-p-i-6': [186, 339],
+                'e-p-i-7': [186, 347],
+                'e-p-i-8': [186, 354],
+                'e-p-i-9': [186, 361],
+                'e-p-i-10': [186, 368],
+                'e-p-i-11': [186, 375],
+                'e-p-i-12': [186, 382],
+                'e-p-i-13': [186, 389],
+                'e-p-i-14': [186, 396],
+                'e-p-i-15': [186, 403],
+                'e-p-i-16': [186, 410],
+                'e-p-i-17': [186, 418],
+                'e-p-i-18': [186, 425],
+                'e-p-i-19': [186, 432],
+            },
+        },
+        {
+            numero: [ 510, 404],
+            horaInicial: [ 505, 410.5],
+            horaFinal: [ 505, 417],
+            eleProtInd: {
+                'e-p-i-1': [199, 304],
+                'e-p-i-2': [199, 311],
+                'e-p-i-3': [199, 318],
+                'e-p-i-4': [199, 325],
+                'e-p-i-5': [199, 332],
+                'e-p-i-6': [199, 339],
+                'e-p-i-7': [199, 347],
+                'e-p-i-8': [199, 354],
+                'e-p-i-9': [199, 361],
+                'e-p-i-10': [199, 368],
+                'e-p-i-11': [199, 375],
+                'e-p-i-12': [199, 382],
+                'e-p-i-13': [199, 389],
+                'e-p-i-14': [199, 396],
+                'e-p-i-15': [199, 403],
+                'e-p-i-16': [199, 410],
+                'e-p-i-17': [199, 418],
+                'e-p-i-18': [199, 425],
+                'e-p-i-19': [199, 432],
+            },
+        },
+        {
+            numero: [ 510, 425],
+            horaInicial: [ 505, 432],
+            horaFinal: [ 505, 439],
+            eleProtInd: {
+                'e-p-i-1': false,
+                'e-p-i-2': false,
+                'e-p-i-3': false,
+                'e-p-i-4': false,
+                'e-p-i-5': false,
+                'e-p-i-6': false,
+                'e-p-i-7': false,
+                'e-p-i-8': false,
+                'e-p-i-9': false,
+                'e-p-i-10': false,
+                'e-p-i-11': false,
+                'e-p-i-12': false,
+                'e-p-i-13': false,
+                'e-p-i-14': false,
+                'e-p-i-15': false,
+                'e-p-i-16': false,
+                'e-p-i-17': false,
+                'e-p-i-18': false,
+                'e-p-i-19': false,
+            },
+        },
+    ]
+
+    return coords[num];
 }
 
 function getCoordsEsc(nombre, tipo){
