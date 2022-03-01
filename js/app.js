@@ -155,11 +155,12 @@ async function convertirPDF(){
                 const {numero, horaInicial, horaFinal, datosPropios} = orden;
                 const { eleProtInd, condEsp, peligrosRiesgos } = datosPropios;
                 const { tareasAltoRiesgo, fisicos, biomecanicos, riesgoPublico, psicosocial, electrico } = peligrosRiesgos;
+                const { biologicos, mecanico, locativo, accTransito, fenoNaturales, quimicos } = peligrosRiesgos;
                 const coords = getCoordsO(i);
                 
-                pdf.text(orden.numero, coords.numero[0], coords.numero[1]);
-                pdf.text(orden.horaFinal, coords.horaFinal[0], coords.horaFinal[1]);
-                pdf.text(orden.horaInicial, coords.horaInicial[0], coords.horaInicial[1]);
+                pdf.text(numero, coords.numero[0], coords.numero[1]);
+                pdf.text(horaFinal, coords.horaFinal[0], coords.horaFinal[1]);
+                pdf.text(horaInicial, coords.horaInicial[0], coords.horaInicial[1]);
 
                 for(let value in eleProtInd){
                     if(eleProtInd[value] !== false){
@@ -175,6 +176,7 @@ async function convertirPDF(){
                     }
                 }
 
+                /** COL 1 */
                 for(let value in tareasAltoRiesgo){
                     if(tareasAltoRiesgo[value] !== false){
                         const ce = coords.col1.tareasAltoRiesgo[value];
@@ -217,12 +219,55 @@ async function convertirPDF(){
                     }
                 }
 
+                /** COL 2 */
+                for(let value in biologicos){
+                    if(biologicos[value] !== false){
+                        const ce = coords.col2.biologicos[value];
+                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                    }
+                }
+
+                for(let value in mecanico){
+                    if(mecanico[value] !== false){
+                        const ce = coords.col2.mecanico[value];
+                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                    }
+                }
+
+                for(let value in locativo){
+                    if(locativo[value] !== false){
+                        const ce = coords.col2.locativo[value];
+                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                    }
+                }
+
+                for(let value in accTransito){
+                    if(accTransito[value] !== false){
+                        const ce = coords.col2.accTransito[value];
+                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                    }
+                }
+
+                for(let value in fenoNaturales){
+                    if(fenoNaturales[value] !== false){
+                        const ce = coords.col2.fenoNaturales[value];
+                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                    }
+                }
+
+                for(let value in quimicos){
+                    if(quimicos[value] !== false){
+                        const ce = coords.col2.quimicos[value];
+                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                    }
+                }
+
                 i = i + 1;
             });
         }
 
     //pdf.text('x', 134, 305);
-    //pdf.circle(213, 738, 1.6, 'FD');
+    //pdf.circle(322, 737, 1.6, 'FD');
     //return;
 
     // 1.133 2.146.5 3.160 4.173 5.186 6.199
@@ -315,6 +360,50 @@ function getCoordsO(num){
                     'p-p-4': [134, 731],
                     'p-p-5': [134, 738],
                 },
+            },
+            col2: {
+                biologicos: {
+                    'p-b-1': [321, 472],
+                    'p-b-2': [321, 479],
+                    'p-b-3': [321, 486],
+                    'p-b-4': [321, 493],
+                    'p-b-5': [321, 501],
+                    'p-b-6': [321, 508],
+                    'p-b-7': [321, 516],
+                },
+                mecanico: {
+                    'p-m-1': [321, 532],
+                    'p-m-2': [321, 539],
+                    'p-m-3': [321, 546],
+                    'p-m-4': [321, 553.5],
+                },
+                locativo: {
+                    'p-l-1': [321, 569],
+                    'p-l-2': [321, 579],
+                    'p-l-3': [321, 590],
+                    'p-l-4': [321, 600],
+                },
+                accTransito: {
+                    'p-a-t-1': [322, 614],
+                    'p-a-t-2': [322, 622],
+                    'p-a-t-3': [322, 631],
+                },
+                fenoNaturales: {
+                    'p-f-n-1': [322, 647],
+                    'p-f-n-2': [322, 655],
+                    'p-f-n-3': [322, 663],
+                    'p-f-n-4': [322, 671],
+                },
+                quimicos: {
+                    'p-q-1': [322, 686],
+                    'p-q-2': [322, 693.5],
+                    'p-q-3': [322, 701],
+                    'p-q-4': [322, 708],
+                    'p-q-5': [322, 715.5],
+                    'p-q-6': [322, 723],
+                    'p-q-7': [322, 730],
+                    'p-q-8': [322, 737],
+                },
             }
         },
         {
@@ -399,6 +488,50 @@ function getCoordsO(num){
                     'p-p-3': [147, 722.5],
                     'p-p-4': [147, 731],
                     'p-p-5': [147, 738],
+                },
+            },
+            col2: {
+                biologicos: {
+                    'p-b-1': [334, 472],
+                    'p-b-2': [334, 479],
+                    'p-b-3': [334, 486],
+                    'p-b-4': [334, 493],
+                    'p-b-5': [334, 501],
+                    'p-b-6': [334, 508],
+                    'p-b-7': [334, 516],
+                },
+                mecanico: {
+                    'p-m-1': [334, 532],
+                    'p-m-2': [334, 539],
+                    'p-m-3': [334, 546],
+                    'p-m-4': [334, 553.5],
+                },
+                locativo: {
+                    'p-l-1': [334, 569],
+                    'p-l-2': [334, 579],
+                    'p-l-3': [334, 590],
+                    'p-l-4': [334, 600],
+                },
+                accTransito: {
+                    'p-a-t-1': [335, 614],
+                    'p-a-t-2': [335, 622],
+                    'p-a-t-3': [335, 631],
+                },
+                fenoNaturales: {
+                    'p-f-n-1': [335, 647],
+                    'p-f-n-2': [335, 655],
+                    'p-f-n-3': [335, 663],
+                    'p-f-n-4': [335, 671],
+                },
+                quimicos: {
+                    'p-q-1': [335, 686],
+                    'p-q-2': [335, 693.5],
+                    'p-q-3': [335, 701],
+                    'p-q-4': [335, 708],
+                    'p-q-5': [335, 715.5],
+                    'p-q-6': [335, 723],
+                    'p-q-7': [335, 730],
+                    'p-q-8': [335, 737],
                 },
             }
         },
@@ -485,6 +618,50 @@ function getCoordsO(num){
                     'p-p-4': [160.5, 731],
                     'p-p-5': [160.5, 738],
                 },
+            },
+            col2: {
+                biologicos: {
+                    'p-b-1': [347, 472],
+                    'p-b-2': [347, 479],
+                    'p-b-3': [347, 486],
+                    'p-b-4': [347, 493],
+                    'p-b-5': [347, 501],
+                    'p-b-6': [347, 508],
+                    'p-b-7': [347, 516],
+                },
+                mecanico: {
+                    'p-m-1': [347, 532],
+                    'p-m-2': [347, 539],
+                    'p-m-3': [347, 546],
+                    'p-m-4': [347, 553.5],
+                },
+                locativo: {
+                    'p-l-1': [347, 569],
+                    'p-l-2': [347, 579],
+                    'p-l-3': [347, 590],
+                    'p-l-4': [347, 600],
+                },
+                accTransito: {
+                    'p-a-t-1': [347, 614],
+                    'p-a-t-2': [347, 622],
+                    'p-a-t-3': [347, 631],
+                },
+                fenoNaturales: {
+                    'p-f-n-1': [347, 647],
+                    'p-f-n-2': [347, 655],
+                    'p-f-n-3': [347, 663],
+                    'p-f-n-4': [347, 671],
+                },
+                quimicos: {
+                    'p-q-1': [347, 686],
+                    'p-q-2': [347, 693.5],
+                    'p-q-3': [347, 701],
+                    'p-q-4': [347, 708],
+                    'p-q-5': [347, 715.5],
+                    'p-q-6': [347, 723],
+                    'p-q-7': [347, 730],
+                    'p-q-8': [347, 737],
+                },
             }
         },
         {
@@ -569,6 +746,50 @@ function getCoordsO(num){
                     'p-p-3': [174, 722.5],
                     'p-p-4': [174, 731],
                     'p-p-5': [174, 738],
+                },
+            },
+            col2: {
+                biologicos: {
+                    'p-b-1': [360, 472],
+                    'p-b-2': [360, 479],
+                    'p-b-3': [360, 486],
+                    'p-b-4': [360, 493],
+                    'p-b-5': [360, 501],
+                    'p-b-6': [360, 508],
+                    'p-b-7': [360, 516],
+                },
+                mecanico: {
+                    'p-m-1': [360, 532],
+                    'p-m-2': [360, 539],
+                    'p-m-3': [360, 546],
+                    'p-m-4': [360, 553.5],
+                },
+                locativo: {
+                    'p-l-1': [360, 569],
+                    'p-l-2': [360, 579],
+                    'p-l-3': [360, 590],
+                    'p-l-4': [360, 600],
+                },
+                accTransito: {
+                    'p-a-t-1': [361, 614],
+                    'p-a-t-2': [361, 622],
+                    'p-a-t-3': [361, 631],
+                },
+                fenoNaturales: {
+                    'p-f-n-1': [361, 647],
+                    'p-f-n-2': [361, 655],
+                    'p-f-n-3': [361, 663],
+                    'p-f-n-4': [361, 671],
+                },
+                quimicos: {
+                    'p-q-1': [361, 686],
+                    'p-q-2': [361, 693.5],
+                    'p-q-3': [361, 701],
+                    'p-q-4': [361, 708],
+                    'p-q-5': [361, 715.5],
+                    'p-q-6': [361, 723],
+                    'p-q-7': [361, 730],
+                    'p-q-8': [361, 737],
                 },
             }
         },
@@ -655,6 +876,50 @@ function getCoordsO(num){
                     'p-p-4': [187, 731],
                     'p-p-5': [187, 738],
                 },
+            },
+            col2: {
+                biologicos: {
+                    'p-b-1': [373, 472],
+                    'p-b-2': [373, 479],
+                    'p-b-3': [373, 486],
+                    'p-b-4': [373, 493],
+                    'p-b-5': [373, 501],
+                    'p-b-6': [373, 508],
+                    'p-b-7': [373, 516],
+                },
+                mecanico: {
+                    'p-m-1': [373, 532],
+                    'p-m-2': [373, 539],
+                    'p-m-3': [373, 546],
+                    'p-m-4': [373, 553.5],
+                },
+                locativo: {
+                    'p-l-1': [373, 569],
+                    'p-l-2': [373, 579],
+                    'p-l-3': [373, 590],
+                    'p-l-4': [373, 600],
+                },
+                accTransito: {
+                    'p-a-t-1': [374, 614],
+                    'p-a-t-2': [374, 622],
+                    'p-a-t-3': [374, 631],
+                },
+                fenoNaturales: {
+                    'p-f-n-1': [374, 647],
+                    'p-f-n-2': [374, 655],
+                    'p-f-n-3': [374, 663],
+                    'p-f-n-4': [374, 671],
+                },
+                quimicos: {
+                    'p-q-1': [374, 686],
+                    'p-q-2': [374, 693.5],
+                    'p-q-3': [374, 701],
+                    'p-q-4': [374, 708],
+                    'p-q-5': [374, 715.5],
+                    'p-q-6': [374, 723],
+                    'p-q-7': [374, 730],
+                    'p-q-8': [374, 737],
+                },
             }
         },
         {
@@ -740,6 +1005,50 @@ function getCoordsO(num){
                     'p-p-4': [200, 731],
                     'p-p-5': [200, 738],
                 },
+            },
+            col2: {
+                biologicos: {
+                    'p-b-1': [386, 472],
+                    'p-b-2': [386, 479],
+                    'p-b-3': [386, 486],
+                    'p-b-4': [386, 493],
+                    'p-b-5': [386, 501],
+                    'p-b-6': [386, 508],
+                    'p-b-7': [386, 516],
+                },
+                mecanico: {
+                    'p-m-1': [386, 532],
+                    'p-m-2': [386, 539],
+                    'p-m-3': [386, 546],
+                    'p-m-4': [386, 553.5],
+                },
+                locativo: {
+                    'p-l-1': [386, 569],
+                    'p-l-2': [386, 579],
+                    'p-l-3': [386, 590],
+                    'p-l-4': [386, 600],
+                },
+                accTransito: {
+                    'p-a-t-1': [387, 614],
+                    'p-a-t-2': [387, 622],
+                    'p-a-t-3': [387, 631],
+                },
+                fenoNaturales: {
+                    'p-f-n-1': [387, 647],
+                    'p-f-n-2': [387, 655],
+                    'p-f-n-3': [387, 663],
+                    'p-f-n-4': [387, 671],
+                },
+                quimicos: {
+                    'p-q-1': [387, 686],
+                    'p-q-2': [387, 693.5],
+                    'p-q-3': [387, 701],
+                    'p-q-4': [387, 708],
+                    'p-q-5': [387, 715.5],
+                    'p-q-6': [387, 723],
+                    'p-q-7': [387, 730],
+                    'p-q-8': [387, 737],
+                },
             }
         },
         {
@@ -824,6 +1133,50 @@ function getCoordsO(num){
                     'p-p-3': [213, 722.5],
                     'p-p-4': [213, 731],
                     'p-p-5': [213, 738],
+                },
+            },
+            col2: {
+                biologicos: {
+                    'p-b-1': [399, 472],
+                    'p-b-2': [399, 479],
+                    'p-b-3': [399, 486],
+                    'p-b-4': [399, 493],
+                    'p-b-5': [399, 501],
+                    'p-b-6': [399, 508],
+                    'p-b-7': [399, 516],
+                },
+                mecanico: {
+                    'p-m-1': [399, 532],
+                    'p-m-2': [399, 539],
+                    'p-m-3': [399, 546],
+                    'p-m-4': [399, 553.5],
+                },
+                locativo: {
+                    'p-l-1': [399, 569],
+                    'p-l-2': [399, 579],
+                    'p-l-3': [399, 590],
+                    'p-l-4': [399, 600],
+                },
+                accTransito: {
+                    'p-a-t-1': [400, 614],
+                    'p-a-t-2': [400, 622],
+                    'p-a-t-3': [400, 631],
+                },
+                fenoNaturales: {
+                    'p-f-n-1': [400, 647],
+                    'p-f-n-2': [400, 655],
+                    'p-f-n-3': [400, 663],
+                    'p-f-n-4': [400, 671],
+                },
+                quimicos: {
+                    'p-q-1': [400, 686],
+                    'p-q-2': [400, 693.5],
+                    'p-q-3': [400, 701],
+                    'p-q-4': [400, 708],
+                    'p-q-5': [400, 715.5],
+                    'p-q-6': [400, 723],
+                    'p-q-7': [400, 730],
+                    'p-q-8': [400, 737],
                 },
             }
         },
