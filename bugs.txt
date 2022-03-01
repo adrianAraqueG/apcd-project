@@ -8,10 +8,6 @@ MEJORAS AL ASPECTO
  - Arregar input de la fecha
 
  COSAS A IMPLEMENTAR
- - Funcionalidad Convertir a PDF
-   - Implementar y hacer pruebas de las librerías.
-   - Implementar Canvas para rellenar las cuadrillas.
-   - Llenar la cuadrilla.
   - Hacer PWA
    - Modelas íconos
    - Hacer Manifest

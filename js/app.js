@@ -21,7 +21,6 @@ btnDescargarPDF.addEventListener('click', convertirPDF);
 async function convertirPDF(){
     const pdf = new jsPDF('p', 'pt', 'legal');
     pdf.setFontSize(8);
-    //pdf.setTextColor(255,0,0);
 
     const image = await loadImage('img/forms/apcd-form.jpg');
     pdf.addImage(image, 'PNG', -60, 10, 720, 1015);
@@ -48,9 +47,9 @@ async function convertirPDF(){
         integrantes.forEach( integrante => {
             const {nombre, cargo, cedula} = integrante;
             //console.log(getCoordsInt(counter));
-            pdf.text(nombre.toUpperCase(), getCoordsInt(counter).nombre[0], getCoordsInt(counter).nombre[1]);
-            pdf.text(cedula.toUpperCase(), getCoordsInt(counter).cedula[0], getCoordsInt(counter).cedula[1]);
-            pdf.text(cargo.toUpperCase(), getCoordsInt(counter).cargo[0], getCoordsInt(counter).cargo[1]);
+            pdf.text(nombre.toUpperCase(), getCoordsInt(counter, 'top').nombre[0], getCoordsInt(counter, 'top').nombre[1]);
+            pdf.text(cedula.toUpperCase(), getCoordsInt(counter, 'top').cedula[0], getCoordsInt(counter, 'top').cedula[1]);
+            pdf.text(cargo.toUpperCase(), getCoordsInt(counter, 'top').cargo[0], getCoordsInt(counter, 'top').cargo[1]);
 
             counter = counter + 1;
         });
@@ -65,7 +64,7 @@ async function convertirPDF(){
         for(let value in condicionesGenerales.preguntas){
             if(condicionesGenerales.preguntas[value] !== false){
                 const coords = getCoordsCG(value, condicionesGenerales.preguntas[value]);
-                pdf.text('x', coords[0], coords[1]);
+                pdf.circle(coords[0] + 2, coords[1] - 2, 1.6, 'FD');
             }
         }   
     }
@@ -77,7 +76,7 @@ async function convertirPDF(){
         for(let value in herramientasEquipos){
             if(herramientasEquipos[value] !== false){
                 const coords = getCoordsHE(value);
-                pdf.text('x', coords[0], coords[1]);
+                pdf.circle(coords[0] + 2, coords[1] - 2, 1.6, 'FD');
             }
         }
     }
@@ -90,7 +89,7 @@ async function convertirPDF(){
         for(let value in medidasControl){
             if(medidasControl[value] !== false){
                 const coords = getCoordsMC(value);
-                pdf.text('x', coords[0], coords[1]);
+                pdf.circle(coords[0] + 2, coords[1] - 2, 1.6, 'FD');
             }
         }
     }
@@ -103,7 +102,7 @@ async function convertirPDF(){
             for(let value in escF1){
                 if(escF1[value] !== false){
                     const coords = getCoordsEsc(value, 'escF1');
-                    pdf.text('x', coords[0], coords[1]);
+                    pdf.circle(coords[0], coords[1], 1.8,'FD');
                 }
             }
         }
@@ -114,7 +113,7 @@ async function convertirPDF(){
             for(let value in escF2){
                 if(escF2[value] !== false){
                     const coords = getCoordsEsc(value, 'escF2');
-                    pdf.text('x', coords[0], coords[1]);
+                    pdf.circle(coords[0], coords[1], 1.8,'FD');
                 }
             }
         }
@@ -125,7 +124,7 @@ async function convertirPDF(){
             for(let value in escTA){
                 if(escTA[value] !== false){
                     const coords = getCoordsEsc(value, 'escTA');
-                    pdf.text('x', coords[0], coords[1]);
+                    pdf.circle(coords[0] + 2, coords[1] - 2, 1.8,'FD');
                 }
             }
         }
@@ -136,14 +135,14 @@ async function convertirPDF(){
             for(let value in escAT){
                 if(escAT[value] !== false){
                     const coords = getCoordsEsc(value, 'escAT');
-                    pdf.text('x', coords[0], coords[1]);
+                    pdf.circle(coords[0] + 2, coords[1] - 2, 1.8,'FD');
                 }
             }
         }
 
 
     pdf.setFontSize(7);
-    pdf.setTextColor(0,0,0)
+    //pdf.setTextColor(0,0,0)
     /** -------------------- Ordenes - Relleno -------------------- */
 
         // Datos Generales
@@ -157,11 +156,14 @@ async function convertirPDF(){
                 const { tareasAltoRiesgo, fisicos, biomecanicos, riesgoPublico, psicosocial, electrico } = peligrosRiesgos;
                 const { biologicos, mecanico, locativo, accTransito, fenoNaturales, quimicos } = peligrosRiesgos;
                 const coords = getCoordsO(i);
+                console.log(coords);
+                console.log(i);
                 
+                /*
                 pdf.text(numero, coords.numero[0], coords.numero[1]);
                 pdf.text(horaFinal, coords.horaFinal[0], coords.horaFinal[1]);
-                pdf.text(horaInicial, coords.horaInicial[0], coords.horaInicial[1]);
-
+                pdf.text(horaInicial, coords.horaInicial[0], coords.horaInicial[1]);*/
+                
                 for(let value in eleProtInd){
                     if(eleProtInd[value] !== false){
                         const ce = coords.eleProtInd[value];
@@ -263,19 +265,39 @@ async function convertirPDF(){
                 }
 
                 i = i + 1;
+
+                if(i > 6){
+                    console.log('añadiendo segunda hoja');
+                }
             });
         }
     
     /** ---------------------------------------------------------- */
 
 
-    //pdf.text('x', 134, 305);
-    //pdf.circle(322, 737, 1.6, 'FD');
-    //return;
 
-    // 1.133 2.146.5 3.160 4.173 5.186 6.199
+    // Firma - Relleno
+    if(obtenerLS('integrantes')){
+        const integrantes = obtenerLS('integrantes');
 
-    pdf.save('apcd.pdf');
+        let counter = 1;
+        integrantes.forEach( integrante => {
+            const {nombre} = integrante;
+            const coords = getCoordsInt(counter, 'bottom')
+            pdf.text(nombre.toUpperCase(), coords.nombre[0], coords.nombre[1]);
+            pdf.text(nombre.toUpperCase(), coords.firma[0], coords.firma[1]);
+
+            counter = counter + 1;
+        });
+    }
+
+
+
+    //** Guardar PDF */
+    /*if(confirm('¿Quieres guardar el PDF? Asegúrate de que llenaste TODOS los campos.')){
+        const nombrePDF = obtenerLS('datosGenerales').fecha !== undefined ? obtenerLS('datosGenerales').fecha : 'apcd-pdf';
+        pdf.save(nombrePDF);
+    }*/
 }
 
 function getCoordsO(num){
@@ -1184,43 +1206,42 @@ function getCoordsO(num){
             }
         },
     ]
-
     return coords[num];
 }
 
 function getCoordsEsc(nombre, tipo){
     const coords = {
         escF1: {
-           'e-f1-1': [298, 313],
-           'e-f1-2': [298, 322],
-           'e-f1-3': [298, 334],
-           'e-f1-4': [298, 340],
-           'e-f1-5': [298, 348],
-           'e-f1-6': [298, 355],
-           'e-f1-7': [298, 362],
-           'e-f1-8': [298, 369],
-           'e-f1-9': [298, 377],
-           'e-f1-10': [298, 384],
-           'e-f1-11': [298, 391],
-           'e-f1-12': [298, 398],
-           'e-f1-13': [298, 405],
-           'e-f1-14': [298, 412],
+           'e-f1-1': [300, 311],
+           'e-f1-2': [300, 320],
+           'e-f1-3': [300, 332],
+           'e-f1-4': [300, 338],
+           'e-f1-5': [300, 346],
+           'e-f1-6': [300, 353],
+           'e-f1-7': [300, 360],
+           'e-f1-8': [300, 367],
+           'e-f1-9': [300, 375],
+           'e-f1-10': [300, 382],
+           'e-f1-11': [300, 389],
+           'e-f1-12': [300, 396],
+           'e-f1-13': [300, 403],
+           'e-f1-14': [300, 410],
         },
         escF2: {
-           'e-f2-1': [325, 312],
-           'e-f2-2': [325, 323],
-           'e-f2-3': [325, 334],
-           'e-f2-4': [325, 340],
-           'e-f2-5': [325, 348],
-           'e-f2-6': [325, 355],
-           'e-f2-7': [325, 362],
-           'e-f2-8': [325, 369],
-           'e-f2-9': [325, 377],
-           'e-f2-10': [325, 384],
-           'e-f2-11': [325, 391],
-           'e-f2-12': [325, 398],
-           'e-f2-13': [325, 405],
-           'e-f2-14': [325, 412],
+           'e-f2-1': [327, 310],
+           'e-f2-2': [327, 321],
+           'e-f2-3': [327, 332],
+           'e-f2-4': [327, 338],
+           'e-f2-5': [327, 346],
+           'e-f2-6': [327, 353],
+           'e-f2-7': [327, 360],
+           'e-f2-8': [327, 367],
+           'e-f2-9': [327, 375],
+           'e-f2-10': [327, 382],
+           'e-f2-11': [327, 389],
+           'e-f2-12': [327, 396],
+           'e-f2-13': [327, 403],
+           'e-f2-14': [327, 410],
         },
         escTA: {
            'e-ta-1': [351, 312],
@@ -1350,8 +1371,8 @@ function getCoordsHE(nombre){
     }
 }
 
-function getCoordsInt(pos){
-    const intPost = [
+function getCoordsInt(pos, lugar){
+    const coords1 = [
         {
             nombre: [42, 89],
             cedula: [172, 86],
@@ -1369,15 +1390,44 @@ function getCoordsInt(pos){
         }
     ]
 
-    switch(pos){
-        case 1:{
-            return intPost[0];
+    const coords2 = [
+        {
+            nombre: [135, 905],
+            firma: [135, 916],
+        },
+        {
+            nombre: [135, 926],
+            firma: [135, 936],
+        },
+        {
+            nombre: [135, 947],
+            firma: [135, 958],
         }
-        case 2:{
-            return intPost[1];
+    ]
+
+    if(lugar === 'top'){
+        switch(pos){
+            case 1:{
+                return coords1[0];
+            }
+            case 2:{
+                return coords1[1];
+            }
+            case 3:{
+                return coords1[2];
+            }
         }
-        case 3:{
-            return intPost[2];
+    }else if(lugar === 'bottom'){
+        switch(pos){
+            case 1:{
+                return coords2[0];
+            }
+            case 2:{
+                return coords2[1];
+            }
+            case 3:{
+                return coords2[2];
+            }
         }
     }
 }
