@@ -3,16 +3,16 @@ bCONDICIONES GENERALES DE LA TAREA Y DEL PERSONAL (c-g-)
     2 ¿Se han lavado y/o desinfectado los EPPs, equipos de alturas, herramientas y materiales a utilizar?
     3 ¿El personal que va desarrollar los trabajos, antes de iniciar cada una de las actividades, ha realizado el respectivo lavado de manos con agua y jabón o gel antibacterial?
     4 ¿Cada trabajador a realizado el reporte de condiciones de salud en productividad?
-    5 ¿El personal que va a desarrollar los trabajos ha recibido el entrenamiento y se encuentra certificado para realizar la actividad?
-    6 ¿Cada trabajador tiene Certificado de examen médico ocupacional vigente y se encuentra apto para realizar la labor?
-    7 ¿Tienen la EPS, ARL, AFP al día?
-    8 ¿El personal cuenta con el equipo de protección definido para la tarea y para acceder al sitio?
-    9 ¿El personal que va a realizar la labor conoce el procedimiento de emergencia y rescate?
-    10 ¿Se cuenta con las hojas de seguridad del producto a usar?
-    ¿Son óptimas las condiciones de salud de la cuadrilla para realizar la actividad?
-    ¿El tiempo de sueño ha sido el suficiente para realizar la labor?
-    ¿Han consumido bebidas alcohólicas o sustancias alucinógenas en las últimas 24 horas?
-    ¿Se le ha tomado al trabajador la toma de temperatura diaria?
+    5 ¿Se le ha tomado al trabajador la toma de temperatura diaria?
+    6 ¿El personal que va a desarrollar los trabajos ha recibido el entrenamiento y se encuentra certificado para realizar la actividad?
+    7 ¿Cada trabajador tiene Certificado de examen médico ocupacional vigente y se encuentra apto para realizar la labor?
+    8 ¿Tienen la EPS, ARL, AFP al día?
+    9 ¿El personal cuenta con el equipo de protección definido para la tarea y para acceder al sitio?
+    10 ¿El personal que va a realizar la labor conoce el procedimiento de emergencia y rescate?
+    11 ¿Se cuenta con las hojas de seguridad del producto a usar?
+    12 ¿Son óptimas las condiciones de salud de la cuadrilla para realizar la actividad?
+    13 ¿El tiempo de sueño ha sido el suficiente para realizar la labor?
+    14 ¿Han consumido bebidas alcohólicas o sustancias alucinógenas en las últimas 24 horas?
 HERRAMIENTAS Y EQUPOS (h-e-)
     1 Pinzas
     2 Pelacables
