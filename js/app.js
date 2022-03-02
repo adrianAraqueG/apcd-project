@@ -12,9 +12,11 @@ btnBorrarTodo.addEventListener('click', e => {
 });
 
 document.addEventListener('DOMContentLoaded', () =>{
-    const dLoader = document.querySelector('.d-loader');
-    const body = document.querySelector('body');
-    body.removeChild(dLoader);
+    setTimeout(() =>{
+        const dLoader = document.querySelector('.d-loader');
+        const body = document.querySelector('body');
+        body.removeChild(dLoader);
+    }, 2000);
 });
 
 const btnDescargarPDF = document.querySelector('#descargarPDF');
