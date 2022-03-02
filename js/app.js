@@ -11,7 +11,11 @@ btnBorrarTodo.addEventListener('click', e => {
     }
 });
 
-//document.addEventListener('DOMContentLoaded', convertirPDF);
+document.addEventListener('DOMContentLoaded', () =>{
+    const dLoader = document.querySelector('.d-loader');
+    const body = document.querySelector('body');
+    body.removeChild(dLoader);
+});
 
 const btnDescargarPDF = document.querySelector('#descargarPDF');
 btnDescargarPDF.addEventListener('click', convertirPDF);
