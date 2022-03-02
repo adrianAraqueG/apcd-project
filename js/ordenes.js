@@ -626,7 +626,7 @@ function editarOrden(id){
     const btnGuardarCambios = document.querySelector('#guardarCambios');
     btnGuardarCambios.addEventListener('click', actualizar);
     function actualizar(e){
-        if(confirm('está por guardar')){
+        if(confirm('¿Guardar cambios realizados en la Orden?')){
 
             const ordenEditada = {
                 id,

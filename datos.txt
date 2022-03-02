@@ -40,8 +40,8 @@ MEDIDAS DE CONTROL (m-c-)
     9 Realizar medición de la concentración de gases
     10 Mantenimiento preventido y correctivo de equipos
     11 Realización de pausas activas
-    12 Medidas de prevención y/o contención de gases
-    13 Medidas higiénicas y atmosféricas
+    12 Medidas de prevención y/o contención de derrames
+    13 Mediciones higiénicas Atmosféricas
     14 Aplicación de procedimientos de trabajo seguro
     15 Ventilación natural permanente
     16 Separar y disponer residuos
@@ -52,9 +52,9 @@ MEDIDAS DE CONTROL (m-c-)
     21 Notificar a entidades de socorro retiro de panales
     22 Autocuidado
     23 Inspección vehicular o de moto
-    24 Reporte de Actos y Consecuencias inseguros
+    24 Reporte de Actos y Condiciones inseguras
     25 Detener actividad
-    26 Alinear cámaras telefónicas
+    26 Airear cámaras telefónicas
     27 Solicitar apoyo de área HSEQ
     28 [OTRO]
 ESCALERAS

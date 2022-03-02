@@ -21,6 +21,7 @@ btnDescargarPDF.addEventListener('click', convertirPDF);
 async function convertirPDF(){
     const pdf = new jsPDF('p', 'pt', 'legal');
     pdf.setFontSize(8);
+    pdf.setFont('Helvetica', 'BoldOblique');
 
     const image = await loadImage('img/forms/apcd-form.jpg');
     pdf.addImage(image, 'PNG', -60, 10, 720, 1015);
@@ -162,10 +163,8 @@ async function convertirPDF(){
         });
     }
 
-    
 
-    pdf.setFontSize(7);
-    //pdf.setTextColor(0,0,0)
+
     /** -------------------- Ordenes - Relleno -------------------- */
 
         // Datos Generales
@@ -174,6 +173,7 @@ async function convertirPDF(){
             const ordenes = obtenerLS('ordenes');
 
             ordenes.forEach( orden =>{
+                pdf.setFontSize(7);
                 const {numero, horaInicial, horaFinal, datosPropios} = orden;
                 const { eleProtInd, condEsp, peligrosRiesgos } = datosPropios;
                 const { tareasAltoRiesgo, fisicos, biomecanicos, riesgoPublico, psicosocial, electrico } = peligrosRiesgos;
@@ -291,6 +291,7 @@ async function convertirPDF(){
                     i = 0;
                     pdf.addPage();
                     pdf.addImage(image, 'PNG', -60, 10, 720, 1015);
+                    pdf.setFontSize(8);
 
                     // Datos Generales - Relleno
                         if(obtenerLS('datosGenerales')){

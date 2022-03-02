@@ -119,7 +119,7 @@ function imprimirIntegrantes(){
 
             const casillaBtn = document.createElement('td');
             const btnEditar = document.createElement('button');
-            btnEditar.classList.add('btn', 'btn-primary', 'text-light', 'p-2', 'me-2');
+            btnEditar.classList.add('btn', 'btn-primary', 'text-light', 'p-2', 'me-2', 'mb-2');
             btnEditar.innerHTML = `<i class="bi bi-pencil-square"></i>`;
             btnEditar.onclick = () =>{ editarIntegrante(id) }
             btnEditar.setAttribute('data-bs-toggle', 'modal');
