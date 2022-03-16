@@ -447,12 +447,12 @@ async function convertirPDF(){
     
     
     //** Guardar PDF */
-    console.log('cargando 2 ...');
     if(confirm('¿Quieres guardar el PDF? Asegúrate de que llenaste TODOS los campos.')){
         btnDescargarPDF.textContent = 'Descargando...';
         const nombrePDF = obtenerLS('datosGenerales').fecha !== undefined ? obtenerLS('datosGenerales').fecha : 'apcd-pdf';
         pdf.save(nombrePDF);
     }
+    
     btnDescargarPDF.textContent = 'DESCARGAR COMO PDF';
 }
 
