@@ -97,7 +97,11 @@ async function convertirPDF(){
     if(obtenerLS('herramientasEquipos')){
         const herramientasEquipos = obtenerLS('herramientasEquipos');
         for(let value in herramientasEquipos){
-            if(herramientasEquipos[value] !== false){
+            if(herramientasEquipos[value] === 'si'){
+                const coords = getCoordsHE(value);
+                pdf.text('</', coords[0] - 2, coords[1]);
+            }
+            if(herramientasEquipos[value] === 'no'){
                 const coords = getCoordsHE(value);
                 pdf.text('x', coords[0], coords[1]);
             }
@@ -251,7 +255,10 @@ async function convertirPDF(){
                 
 
                 for(let value in condEsp){
-                    if(condEsp[value] !== false){
+                    if(condEsp[value] === 'c'){
+                        const ce = coords.condEsp[value];
+                        pdf.text('</', ce[0] - 3, ce[1] + 2);
+                    } else if (condEsp[value] === 'nc'){
                         const ce = coords.condEsp[value];
                         pdf.text('x', ce[0] - 2, ce[1] + 2);
                     }

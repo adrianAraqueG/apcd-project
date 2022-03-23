@@ -438,10 +438,15 @@ function editarOrden(id){
     // Llenar valores - Condiciones Específicas
     let c = 1
     for(let valor in datosPropios.condEsp){
-        const input = document.querySelector(`input[name="c-e-${c}"]`);
-        input.checked = datosPropios.condEsp[`c-e-${c}`];
-
-        c = c + 1;
+        const inputs = document.querySelectorAll(`input[name=${valor}]`);
+        
+        inputs.forEach(input =>{
+            if(input.value === datosPropios.condEsp[`${valor}`]){
+                input.checked = true;
+            }else{
+                input.checked = false;
+            }
+        });
     }
     
 
@@ -675,10 +680,13 @@ function editarOrden(id){
             // Guardar - Condiciones Específicas
             let c = 1;
             for(let valor in datosPropios.condEsp){
-                const input = document.querySelector(`input[name="c-e-${c}"]`);
-                ordenEditada.datosPropios.condEsp[`c-e-${c}`] = input.checked;
+                const inputs = document.querySelectorAll(`input[name=${valor}]`);
 
-                c = c + 1;
+                inputs.forEach(input =>{
+                    if(input.checked === true){
+                        ordenEditada.datosPropios.condEsp[valor] = input.value;
+                    }
+                });
             }
 
             // Guardar - Tareas Alto Riesgo
