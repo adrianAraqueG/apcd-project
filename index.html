@@ -13,9 +13,9 @@
 </head>
 <body>
         <!-- LOADER -->
-        <div class="d-loader">
+        <!--<div class="d-loader">
             <div class="loader">Loading...</div>
-        </div>
+        </div> -->
         
         <h1 class="text-wrap text-light pb-5 pt-5 fw-bold text-center">ANÁLISIS PREOPERACIONAL DE CUMPLIMIENTO DIARIO</h1>
 
@@ -46,33 +46,33 @@
                 <h3 class="text-wrap fs-5 fw-bold">INTEGRANTES DE CUADRILLA</h3>
                 <div class="table-responsive" id="integrantes"></div>
 
-                <button class="btn btn-primary" id="abrirModalInt" data-bs-toggle="modal" data-bs-target="#modalIntegrantes">
+                <button class="btn btn-primary" id="abrirModalIntAdd" data-bs-toggle="modal" data-bs-target="#modalIntAdd">
                     Agregar Integrante
                 </button>
             </div>
 
-            <!-- MODAL INTEGRANTES -->
-            <div class="modal fade" id="modalIntegrantes" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <!-- MODAL INTEGRANTES ADD -->
+            <div class="modal fade" id="modalIntAdd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="integrantesTitle">Agregar Nuevo Integrante</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCerrarInt2"></button>
+                      <h5 class="modal-title" id="intTitleAdd">Agregar Nuevo Integrante</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseInt2Add"></button>
                     </div>
                     <div class="modal-body">
 
                         <!-- INPUTS -->
                         <div class="form-floating mb-3">
-                            <input type="text" name="nombreInt" class="form-control" id="nombreInt">
+                            <input type="text" name="nombreInt" class="form-control" id="nombreIntAdd">
                             <label for="nombreInt">Nombre completo</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="number" name="cedulaInt" class="form-control" id="cedulaInt">
+                            <input type="number" name="cedulaInt" class="form-control" id="cedulaIntAdd">
                             <label for="cedulaInt">Cédula C.C</label>
                         </div>
 
                         <label for="cargoInt" class="form-text">Cargo</label>
-                        <select name="cargoInt" id="cargoInt" class="form-select" >
+                        <select name="cargoInt" id="cargoIntAdd" class="form-select" >
                             <option value="" selected disabled>SELECCIONA UN CARGO--</option>
                             <option value="tecnico">TÉCNICO</option>
                             <option value="auxiliar">AUXILIAR</option>
@@ -80,15 +80,188 @@
 
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCerrarInt1">Cerrar</button>
-                      <button type="button" class="btn btn-primary" id="btnGuardarInt">Guardar</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCloseInt1Add">Cerrar</button>
+                      <button type="button" class="btn btn-primary" id="btnSaveInt">Guardar</button>
                     </div>
                   </div>
                 </div>
-              </div>
+            </div>
+            <!-- FIN MODAL ADD -->
+
+            <!-- MODAL INT EDITAR -->
+            <div class="modal fade" id="modalIntEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="intTitleEdit">Editar Integrante</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnCloseInt2Edit"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- INPUTS -->
+                        <div class="form-floating mb-3">
+                            <input type="text" name="nombreInt" class="form-control" id="nombreInt-edit">
+                            <label for="nombreInt">Nombre completo</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="number" name="cedulaInt" class="form-control" id="cedulaInt-edit">
+                            <label for="cedulaInt">Cédula C.C</label>
+                        </div>
+
+                        <label for="cargoInt" class="form-text">Cargo</label>
+                        <select name="cargoInt" id="cargoInt-edit" class="form-select" >
+                            <option value="" selected disabled>SELECCIONA UN CARGO--</option>
+                            <option value="tecnico">TÉCNICO</option>
+                            <option value="auxiliar">AUXILIAR</option>
+                        </select>
+
+                        <hr>
+
+                        <!-- ELEMENTOS DE PROTECCIÓN INDIVIDUAL -->
+                        <h3 class="text-wrap fs-5 fw-bold">ELEMENTOS DE PROTECCIÓN INDIVIDUAL</h3>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered mb-5">
+                                <thead>
+                                    <tr>
+                                        <th class="no">No.</th>
+                                        <th>Condición</th>
+                                        <th>C</th>
+                                        <th>NC</th>
+                                    </tr>
+                                </thead>
+                
+                                <tr>
+                                    <td>1</td>
+                                    <td>Casco</td>
+                                    <td><input type="radio" name="e-p-i-1" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-1" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Barbuquejo</td>
+                                    <td><input type="radio" name="e-p-i-2" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-2" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Overol</td>
+                                    <td><input type="radio" name="e-p-i-3" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-3" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Gafas</td>
+                                    <td><input type="radio" name="e-p-i-4" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-4" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Botas de Caucho</td>
+                                    <td><input type="radio" name="e-p-i-5" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-5" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Botas Dieléctricas de Seguridad</td>
+                                    <td><input type="radio" name="e-p-i-6" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-6" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Casco tipo II con Barbuquejo</td>
+                                    <td><input type="radio" name="e-p-i-7" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-7" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Guantes Power Flex</td>
+                                    <td><input type="radio" name="e-p-i-8" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-8" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Guantes de Vaqueta</td>
+                                    <td><input type="radio" name="e-p-i-9" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-9" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>Protección Auditiva Inserción</td>
+                                    <td><input type="radio" name="e-p-i-10" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-10" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>Protección Auditiva Copa</td>
+                                    <td><input type="radio" name="e-p-i-11" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-11" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>Chaleco Reflectivo</td>
+                                    <td><input type="radio" name="e-p-i-12" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-12" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>Arnés</td>
+                                    <td><input type="radio" name="e-p-i-13" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-13" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>Tie off</td>
+                                    <td><input type="radio" name="e-p-i-14" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-14" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>Eslinga de Posicionamiento</td>
+                                    <td><input type="radio" name="e-p-i-15" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-15" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>Eslinga en y</td>
+                                    <td><input type="radio" name="e-p-i-16" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-16" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>17</td>
+                                    <td>Mosquetón</td>
+                                    <td><input type="radio" name="e-p-i-17" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-17" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td>Arrestador</td>
+                                    <td><input type="radio" name="e-p-i-18" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-18" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                <tr>
+                                    <td>19</td>
+                                    <td>Linea de vida</td>
+                                    <td><input type="radio" name="e-p-i-19" value="c" class="form-check-input mt-1 ms-1"></td>
+                                    <td><input type="radio" name="e-p-i-19" value="nc" class="form-check-input mt-1 ms-1"></td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCloseInt1Edit">Cerrar</button>
+                      <button type="button" class="btn btn-primary" id="btnSaveIntEdit">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+
+
 
             <hr>
-
 
 
             <h3 class="text-wrap fw-bold fs-5">CONDICIONES GENERALES DE LA TAREA Y DEL PERSONAL</h3>
@@ -551,93 +724,98 @@
             </div>
 
             <h3 class="text-wrap fs-5 fw-bold">HERRAMIENTAS Y EQUIPOS</h3>
-            <div class="d-flex mb-0">
-                <div class="d-flex flex-row p-2">
-                    <h4 class="fs-6">Marcar todas</h4>
-                    <input type="checkbox" name="h-e-ma" class="form-check-input mt-1 ms-1">
-                </div>  
-            </div>
             <div class="table-responsive">
                 <table class="table table-striped table-bordered mb-5">
                     <tr>
                         <th class="no">No.</th>
-                        <th>Herramienta o Equipo</th>
-                        <th class="agregar">X</th>
+                        <th>Herramientas</th>
+                        <th class="agregar">C</th>
+                        <th class="agregar">NC</th>
                     </tr>
     
                     <tr>
                         <td>1</td>
                         <td>Pinzas</td>
-                        <td><input type="checkbox" name="h-e-1" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-1" value="si" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-1" value="no" class="form-check-input mt-1 ms-1"></td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Pelacables</td>
-                        <td><input type="checkbox" name="h-e-2" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-2" value="si" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-2" value="no" class="form-check-input mt-1 ms-1"></td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>Alicates</td>
-                        <td><input type="checkbox" name="h-e-3" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-3" value="si" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-3" value="no" class="form-check-input mt-1 ms-1"></td>
                     </tr>
                     <tr>
                         <td>4</td>
                         <td>Corta Frio</td>
-                        <td><input type="checkbox" name="h-e-4" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-4" value="si" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-4" value="no" class="form-check-input mt-1 ms-1"></td>
                     </tr>
                     <tr>
                         <td>5</td>
                         <td>Destornillador</td>
-                        <td><input type="checkbox" name="h-e-5" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-5" value="si" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-5" value="no" class="form-check-input mt-1 ms-1"></td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td>Martillo</td>
-                        <td><input type="checkbox" name="h-e-6" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-6" value="si" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-6" value="no" class="form-check-input mt-1 ms-1"></td>
                     </tr>
                     <tr>
                         <td>7</td>
                         <td>Ponchadora</td>
-                        <td><input type="checkbox" name="h-e-7" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-7" value="si" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-7" value="no" class="form-check-input mt-1 ms-1"></td>
                     </tr>
                     <tr>
                         <td>8</td>
                         <td>Taladro</td>
-                        <td><input type="checkbox" name="h-e-8" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-8" value="si" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-8" value="no" class="form-check-input mt-1 ms-1"></td>
                     </tr>
                     <tr>
                         <td>9</td>
                         <td>Dynatel</td>
-                        <td><input type="checkbox" name="h-e-9" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-9" value="si" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-9" value="no" class="form-check-input mt-1 ms-1"></td>
                     </tr>
                     <tr>
                         <td>10</td>
                         <td>Geómetro</td>
-                        <td><input type="checkbox" name="h-e-10" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-10" value="si" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-10" value="no" class="form-check-input mt-1 ms-1"></td>
                     </tr>
                     <tr>
                         <td>11</td>
                         <td>Megger</td>
-                        <td><input type="checkbox" name="h-e-11" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-11" value="si" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-11" value="no" class="form-check-input mt-1 ms-1"></td>
                     </tr>
                     <tr>
                         <td>12</td>
                         <td>Fusionadora</td>
-                        <td><input type="checkbox" name="h-e-12" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-12" value="si" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-12" value="no" class="form-check-input mt-1 ms-1"></td>
                     </tr>
                     <tr>
                         <td>13</td>
                         <td>Bocina</td>
-                        <td><input type="checkbox" name="h-e-13" class="form-check-input mt-1 ms-1"></td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td>[ OTRO ]</td>
-                        <td><input type="text" name="" placeholder="Agregar..." class="form-control"></td>
+                        <td><input type="radio" name="h-e-13" value="si" class="form-check-input mt-1 ms-1"></td>
+                        <td><input type="radio" name="h-e-13" value="no" class="form-check-input mt-1 ms-1"></td>
                     </tr>
                 </table>
             </div>
 
+
+            
             <h3 class="text-wrap fs-5 fw-bold">ESCALERAS</h3>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
@@ -773,7 +951,6 @@
             <div class="container-fluid p-3" id="ordenes">
 
                 <!-- AQUÍ VAN LAS ORDENES -->
-                
 
             </div>
 
@@ -938,123 +1115,6 @@
                                                 <td>13</td>
                                                 <td>¿Se cuenta con un medio de comunicación?</td>
                                                 <td><input type="checkbox" name="c-e-13" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            
-                                        </table>
-                                    </div>
-
-
-
-                                    <!-- ELEMENTOS DE PROTECCIÓN INDIVIDUAL -->
-                                    <h3 class="text-wrap fs-5 fw-bold">ELEMENTOS DE PROTECCIÓN INDIVIDUAL</h3>
-                                    <div class="d-flex mb-0">
-                                        <div class="d-flex flex-row p-2">
-                                            <h4 class="fs-6">Marcar todas</h4>
-                                            <input class="form-check-input mt-1 ms-1" type="checkbox" name="e-p-i-ma">
-                                        </div>
-                                    </div>
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered mb-5">
-                                            <tr>
-                                                <th class="no">No.</th>
-                                                <th>Condición</th>
-                                                <th class="input">X</th>
-                                            </tr>
-                            
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Casco</td>
-                                                <td><input type="checkbox" name="e-p-i-1" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Barbuquejo</td>
-                                                <td><input type="checkbox" name="e-p-i-2" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Overol</td>
-                                                <td><input type="checkbox" name="e-p-i-3" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Gafas</td>
-                                                <td><input type="checkbox" name="e-p-i-4" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Botas de Caucho</td>
-                                                <td><input type="checkbox" name="e-p-i-5" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Botas Dieléctricas de Seguridad</td>
-                                                <td><input type="checkbox" name="e-p-i-6" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>7</td>
-                                                <td>Casco tipo II con Barbuquejo</td>
-                                                <td><input type="checkbox" name="e-p-i-7" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>8</td>
-                                                <td>Guantes Power Flex</td>
-                                                <td><input type="checkbox" name="e-p-i-8" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>9</td>
-                                                <td>Guantes de Vaqueta</td>
-                                                <td><input type="checkbox" name="e-p-i-9" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>10</td>
-                                                <td>Protección Auditiva Inserción</td>
-                                                <td><input type="checkbox" name="e-p-i-10" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>11</td>
-                                                <td>Protección Auditiva Copa</td>
-                                                <td><input type="checkbox" name="e-p-i-11" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>12</td>
-                                                <td>Chaleco Reflectivo</td>
-                                                <td><input type="checkbox" name="e-p-i-12" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>13</td>
-                                                <td>Arnés</td>
-                                                <td><input type="checkbox" name="e-p-i-13" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>14</td>
-                                                <td>Tie off</td>
-                                                <td><input type="checkbox" name="e-p-i-14" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>15</td>
-                                                <td>Eslinga de Posicionamiento</td>
-                                                <td><input type="checkbox" name="e-p-i-15" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>16</td>
-                                                <td>Eslinga en y</td>
-                                                <td><input type="checkbox" name="e-p-i-16" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>17</td>
-                                                <td>Mosquetón</td>
-                                                <td><input type="checkbox" name="e-p-i-17" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>18</td>
-                                                <td>Arrestador</td>
-                                                <td><input type="checkbox" name="e-p-i-18" class="form-check-input mt-1 ms-1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>19</td>
-                                                <td>Linea de vida</td>
-                                                <td><input type="checkbox" name="e-p-i-19" class="form-check-input mt-1 ms-1"></td>
                                             </tr>
                                             
                                         </table>

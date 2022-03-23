@@ -14,13 +14,13 @@ import { actualizarBtn as actualizarBtn } from './app.js';
 
 let integrantes = [];
 
-const nombreInput = document.querySelector('#nombreInt');
-const cedulaInput = document.querySelector('#cedulaInt');
-const cargoInput = document.querySelector('#cargoInt');
+const nombreInput = document.querySelector('#nombreIntAdd');
+const cedulaInput = document.querySelector('#cedulaIntAdd');
+const cargoInput = document.querySelector('#cargoIntAdd');
 const integrantesDiv = document.querySelector('#integrantes');
 
-const btnGuardar = document.querySelector('#btnGuardarInt');
-const btnAbrirModal = document.querySelector('#abrirModalInt');
+const btnGuardar = document.querySelector('#btnSaveInt');
+const btnAbrirModal = document.querySelector('#abrirModalIntAdd');
 
 obtenerLS();
 
@@ -52,8 +52,8 @@ function guardarInt(){
     }
 
     // cerrando todo...
-    const btnCerrar1 = document.querySelector('#btnCerrarInt1');
-    const btnCerrar2 = document.querySelector('#btnCerrarInt2');
+    const btnCerrar1 = document.querySelector('#btnCloseInt1Add');
+    const btnCerrar2 = document.querySelector('#btnCloseInt2Add');
     btnCerrar1.addEventListener('click', cerrar);
     btnCerrar2.addEventListener('click', cerrar);
 
@@ -72,7 +72,28 @@ function guardarInt(){
             id: Date.now(),
             nombre: nombreInput.value.toUpperCase(),
             cedula: cedulaInput.value,
-            cargo: cargoInput.value
+            cargo: cargoInput.value,
+            eleProtInd: {
+                'e-p-i-1': false,
+                'e-p-i-2': false,
+                'e-p-i-3': false,
+                'e-p-i-4': false,
+                'e-p-i-5': false,
+                'e-p-i-6': false,
+                'e-p-i-7': false,
+                'e-p-i-8': false,
+                'e-p-i-9': false,
+                'e-p-i-10': false,
+                'e-p-i-11': false,
+                'e-p-i-12': false,
+                'e-p-i-13': false,
+                'e-p-i-14': false,
+                'e-p-i-15': false,
+                'e-p-i-16': false,
+                'e-p-i-17': false,
+                'e-p-i-18': false,
+                'e-p-i-19': false,
+            },
         }
     
         // añadir nuevo integrante al objeto
@@ -123,7 +144,7 @@ function imprimirIntegrantes(){
             btnEditar.innerHTML = `<i class="bi bi-pencil-square"></i>`;
             btnEditar.onclick = () =>{ editarIntegrante(id) }
             btnEditar.setAttribute('data-bs-toggle', 'modal');
-            btnEditar.setAttribute('data-bs-target', '#modalIntegrantes');
+            btnEditar.setAttribute('data-bs-target', '#modalIntEdit');
 
             const btnEliminar = document.createElement('button');
             btnEliminar.classList.add('btn', 'btn-danger', 'text-light', 'p-2');
@@ -162,62 +183,109 @@ function eliminarIntegrante(id){
 
 
 
-function editarIntegrante(id){
+function getInt(id){
+    let result;
+    integrantes.forEach( (int, index) => {
+        if(int.id === id){
+            result = int;
+        }        
+    });
+    return result;
+}
 
-    // Cambiando texto Modal
-    const modalLabel = document.querySelector('#integrantesTitle');
-    modalLabel.textContent = 'Editando Integrante';
-    btnGuardar.textContent = 'Guardar Cambios';
 
-    // Llenando inputs
-    integrantes.forEach(integrante =>{ 
-        if(integrante.id === id){
-            nombreInput.value = integrante.nombre;
-            cedulaInput.value = integrante.cedula;
-            cargoInput.value = integrante.cargo;
+
+function editInt(newInt){
+    integrantes.forEach((int, index) =>{
+        if(newInt.id === int.id){
+            integrantes[index] = newInt;
+            console.log(integrantes);
         }
     });
+}
 
-    // Agregar listener al botón guardar cambios
-    btnGuardar.addEventListener('click', guardarEdicion);
-    function guardarEdicion(){
-        if(confirm('¿Quieres guardar los cambios?')){
-            const integranteEditado = {
-                id: id,
-                nombre: nombreInput.value,
-                cedula: cedulaInput.value,
-                cargo: cargoInput.value,
+
+
+function editarIntegrante(id){
+    console.log('editando: ' + id);
+    let intActual = getInt(id);
+    const { nombre, cedula, cargo, eleProtInd } = intActual;
+
+    // Rellenar Datos
+    document.querySelector('#nombreInt-edit').value = nombre;
+    document.querySelector('#cedulaInt-edit').value = cedula;
+    document.querySelector('#cargoInt-edit').value = cargo;
+
+    for(let value in eleProtInd){
+        const inputs = document.querySelectorAll(`input[name=${value}]`);
+        inputs.forEach( input =>{
+            if(input.value === eleProtInd[value]){
+                input.checked = true;
+            }else {
+                input.checked = false;
             }
-
-            integrantes.forEach((integrante, index) =>{
-                if(integrante.id === integranteEditado.id){
-                    integrantes[index] = integranteEditado;
-                }
-            });
-            actualizarLS();
-            actualizarBtn();
-            imprimirIntegrantes();
-
-            btnCerrar1.click();
-        }
+        });
     }
 
-    // resetear todo
-    const btnCerrar1 = document.querySelector('#btnCerrarInt1');
-    const btnCerrar2 = document.querySelector('#btnCerrarInt2');
-    btnCerrar1.addEventListener('click', cerrar);
-    btnCerrar2.addEventListener('click', cerrar);
+
+    // Guardar Datos
+    const btnGuardarCambios = document.querySelector('#btnSaveIntEdit');
+    btnGuardarCambios.addEventListener('click', guardar);
+    function guardar(){
+        let intEditando  = {
+            id,
+            nombre: document.querySelector('#nombreInt-edit').value,
+            cedula: document.querySelector('#cedulaInt-edit').value,
+            cargo: document.querySelector('#cargoInt-edit').value,
+            eleProtInd: {
+                'e-p-i-1': false,
+                'e-p-i-2': false,
+                'e-p-i-3': false,
+                'e-p-i-4': false,
+                'e-p-i-5': false,
+                'e-p-i-6': false,
+                'e-p-i-7': false,
+                'e-p-i-8': false,
+                'e-p-i-9': false,
+                'e-p-i-10': false,
+                'e-p-i-11': false,
+                'e-p-i-12': false,
+                'e-p-i-13': false,
+                'e-p-i-14': false,
+                'e-p-i-15': false,
+                'e-p-i-16': false,
+                'e-p-i-17': false,
+                'e-p-i-18': false,
+                'e-p-i-19': false,
+            }
+        }
+
+        // Guardar datos - EleProtInd
+        for(let value in intEditando.eleProtInd){
+            const inputs = document.querySelectorAll(`input[name=${value}]`);
+            inputs.forEach( input =>{
+                if(input.checked === true){
+                    intEditando.eleProtInd[value] = input.value;
+                }
+            }); 
+        }
+
+        editInt(intEditando);
+        actualizarLS();
+        imprimirIntegrantes();
+        btnClose1.click();
+
+    }
+
+    const btnClose1 = document.querySelector('#btnCloseInt1Edit');
+    const btnClose2 = document.querySelector('#btnCloseInt2Edit');
+    btnClose1.addEventListener('click', cerrar);
+    btnClose2.addEventListener('click', cerrar);
 
     function cerrar(){
-        btnGuardar.removeEventListener('click', guardarEdicion, false);
-        btnCerrar1.removeEventListener('click', cerrar, false);
-        btnCerrar2.removeEventListener('click', cerrar, false);
-
-        nombreInput.value = '';
-        cedulaInput.value = '';
-        cargoInput.value = '';
-        modalLabel.textContent = 'Agregar Nuevo Integrante';
-        btnGuardar.textContent = 'Guardar';
+        btnGuardarCambios.removeEventListener('click', guardar, false);
+        btnClose1.removeEventListener('click', cerrar, false);
+        btnClose2.removeEventListener('click', cerrar, false);
     }
 
 }

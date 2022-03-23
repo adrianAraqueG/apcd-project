@@ -31,6 +31,7 @@ async function convertirPDF(){
 
     const pdf = new jsPDF('p', 'pt', 'legal');
     pdf.setFontSize(8);
+    //console.log(pdf.getFontList());
     pdf.setFont('Helvetica', 'BoldOblique');
 
     const image = await loadImage('img/forms/apcd-form.jpg');
@@ -47,21 +48,30 @@ async function convertirPDF(){
         pdf.text(fechaArr[0], 125, 54);
         pdf.text(fechaArr[1], 105, 54);
         pdf.text(fechaArr[2], 83, 54);  
+        
     }
 
-
+    pdf.text('✓', 125, 54);
     // Integrantes - Relleno
     if(obtenerLS('integrantes')){
         const integrantes = obtenerLS('integrantes');
 
         let counter = 1;
         integrantes.forEach( integrante => {
-            const {nombre, cargo, cedula} = integrante;
+            const {nombre, cargo, cedula, eleProtInd} = integrante;
             if(getCoordsInt(counter, 'top')){
                 const coords = getCoordsInt(counter, 'top');
                 pdf.text(nombre.toUpperCase(), coords.nombre[0], coords.nombre[1]);
                 pdf.text(cedula.toUpperCase(), coords.cedula[0], coords.cedula[1]);
                 pdf.text(cargo.toUpperCase(), coords.cargo[0], coords.cargo[1]);
+
+                for(let value in eleProtInd){
+                    if(eleProtInd[value] === 'c'){
+                        pdf.text('</', coords.eleProtInd[value][0] - 2, coords.eleProtInd[value][1] + 2);
+                    } else if ( eleProtInd[value] === 'nc'){
+                        pdf.text('x', coords.eleProtInd[value][0] - 2, coords.eleProtInd[value][1] + 2);
+                    }
+                }
             }
 
             counter = counter + 1;
@@ -77,7 +87,7 @@ async function convertirPDF(){
         for(let value in condicionesGenerales.preguntas){
             if(condicionesGenerales.preguntas[value] !== false){
                 const coords = getCoordsCG(value, condicionesGenerales.preguntas[value]);
-                pdf.circle(coords[0] + 2, coords[1] - 2, 1.6, 'FD');
+                pdf.text('x', coords[0], coords[1]);
             }
         }   
     }
@@ -89,7 +99,7 @@ async function convertirPDF(){
         for(let value in herramientasEquipos){
             if(herramientasEquipos[value] !== false){
                 const coords = getCoordsHE(value);
-                pdf.circle(coords[0] + 2, coords[1] - 2, 1.6, 'FD');
+                pdf.text('x', coords[0], coords[1]);
             }
         }
     }
@@ -102,20 +112,31 @@ async function convertirPDF(){
         for(let value in medidasControl){
             if(medidasControl[value] !== false){
                 const coords = getCoordsMC(value);
-                pdf.circle(coords[0] + 2, coords[1] - 2, 1.6, 'FD');
+                pdf.text('x', coords[0], coords[1]);
             }
         }
     }
 
 
-    /** -------------------- Ordenes - Relleno -------------------- */
+    /** -------------------- Escaleras - Relleno -------------------- */
         // ESCALERA DOBLE F1- Relleno
         if(obtenerLS('escaleras')){
             const escF1 = obtenerLS('escaleras').escF1;
+            let started = false;
             for(let value in escF1){
                 if(escF1[value] !== false){
-                    const coords = getCoordsEsc(value, 'escF1');
-                    pdf.circle(coords[0], coords[1], 1.8,'FD');
+                    started = true;
+                }
+            }
+            for(let value in escF1){
+                if(started){
+                    if(escF1[value] !== false){
+                        const coords = getCoordsEsc(value, 'escF1');
+                        pdf.text('</', coords[0] -2 , coords[1] + 2);
+                    } else{
+                        const coords = getCoordsEsc(value, 'escF1');
+                        pdf.text('x', coords[0] -2 , coords[1] + 2);
+                    }
                 }
             }
         }
@@ -123,10 +144,21 @@ async function convertirPDF(){
         // ESCALERA DOBLE F2- Relleno
         if(obtenerLS('escaleras')){
             const escF2 = obtenerLS('escaleras').escF2;
+            let started = false;
             for(let value in escF2){
                 if(escF2[value] !== false){
-                    const coords = getCoordsEsc(value, 'escF2');
-                    pdf.circle(coords[0], coords[1], 1.8,'FD');
+                    started = true;
+                }
+            }
+            for(let value in escF2){
+                if(started){
+                    if(escF2[value] !== false){
+                        const coords = getCoordsEsc(value, 'escF2');
+                        pdf.text('</', coords[0] -2 , coords[1] + 2);
+                    } else{
+                        const coords = getCoordsEsc(value, 'escF2');
+                        pdf.text('x', coords[0] -2 , coords[1] + 2);
+                    }
                 }
             }
         }
@@ -134,10 +166,21 @@ async function convertirPDF(){
         // ESCALERA TA- Relleno
         if(obtenerLS('escaleras')){
             const escTA = obtenerLS('escaleras').escTA;
+            let started = false;
             for(let value in escTA){
                 if(escTA[value] !== false){
-                    const coords = getCoordsEsc(value, 'escTA');
-                    pdf.circle(coords[0] + 2, coords[1] - 2, 1.8,'FD');
+                    started = true;
+                }
+            }
+            for(let value in escTA){
+                if(started){
+                    if(escTA[value] !== false){
+                        const coords = getCoordsEsc(value, 'escTA');
+                        pdf.text('</', coords[0], coords[1]);
+                    } else{
+                        const coords = getCoordsEsc(value, 'escTA');
+                        pdf.text('x', coords[0], coords[1]);
+                    }
                 }
             }
         }
@@ -145,10 +188,21 @@ async function convertirPDF(){
         // ESCALERA AT- Relleno
         if(obtenerLS('escaleras')){
             const escAT = obtenerLS('escaleras').escAT;
+            let started = false;
             for(let value in escAT){
                 if(escAT[value] !== false){
-                    const coords = getCoordsEsc(value, 'escAT');
-                    pdf.circle(coords[0] + 2, coords[1] - 2, 1.8,'FD');
+                    started = true;
+                }
+            }
+            for(let value in escAT){
+                if(started){
+                    if(escAT[value] !== false){
+                        const coords = getCoordsEsc(value, 'escAT');
+                        pdf.text('</', coords[0], coords[1]);
+                    } else{
+                        const coords = getCoordsEsc(value, 'escAT');
+                        pdf.text('x', coords[0], coords[1]);
+                    }
                 }
             }
         }
@@ -185,7 +239,7 @@ async function convertirPDF(){
             ordenes.forEach( orden =>{
                 pdf.setFontSize(7);
                 const {numero, horaInicial, horaFinal, datosPropios} = orden;
-                const { eleProtInd, condEsp, peligrosRiesgos } = datosPropios;
+                const { condEsp, peligrosRiesgos } = datosPropios;
                 const { tareasAltoRiesgo, fisicos, biomecanicos, riesgoPublico, psicosocial, electrico } = peligrosRiesgos;
                 const { biologicos, mecanico, locativo, accTransito, fenoNaturales, quimicos } = peligrosRiesgos;
                 const coords = getCoordsO(i);
@@ -195,17 +249,11 @@ async function convertirPDF(){
                 pdf.text(horaFinal !== false ? horaFinal : '', coords.horaFinal[0], coords.horaFinal[1]);
                 pdf.text(horaInicial !== false ? horaInicial : '', coords.horaInicial[0], coords.horaInicial[1]);
                 
-                for(let value in eleProtInd){
-                    if(eleProtInd[value] !== false){
-                        const ce = coords.eleProtInd[value];
-                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
-                    }
-                }
 
                 for(let value in condEsp){
                     if(condEsp[value] !== false){
                         const ce = coords.condEsp[value];
-                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                        pdf.text('x', ce[0] - 2, ce[1] + 2);
                     }
                 }
 
@@ -213,42 +261,42 @@ async function convertirPDF(){
                 for(let value in tareasAltoRiesgo){
                     if(tareasAltoRiesgo[value] !== false){
                         const ce = coords.col1.tareasAltoRiesgo[value];
-                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                        pdf.text('x', ce[0] - 2, ce[1] + 2);
                     }
                 }
 
                 for(let value in fisicos){
                     if(fisicos[value] !== false){
                         const ce = coords.col1.fisicos[value];
-                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                        pdf.text('x', ce[0] - 2, ce[1] + 2);
                     }
                 }
 
                 for(let value in biomecanicos){
                     if(biomecanicos[value] !== false){
                         const ce = coords.col1.biomecanicos[value];
-                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                        pdf.text('x', ce[0] - 2, ce[1] + 2);
                     }
                 }
                 
                 for(let value in riesgoPublico){
                     if(riesgoPublico[value] !== false){
                         const ce = coords.col1.riesgoPublico[value];
-                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                        pdf.text('x', ce[0] - 2, ce[1] + 2);
                     }
                 }
 
                 for(let value in psicosocial){
                     if(psicosocial[value] !== false){
                         const ce = coords.col1.psicosocial[value];
-                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                        pdf.text('x', ce[0] - 2, ce[1] + 2);
                     }
                 }
 
                 for(let value in electrico){
                     if(electrico[value] !== false){
                         const ce = coords.col1.electrico[value];
-                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                        pdf.text('x', ce[0] - 2, ce[1] + 2);
                     }
                 }
 
@@ -256,42 +304,42 @@ async function convertirPDF(){
                 for(let value in biologicos){
                     if(biologicos[value] !== false){
                         const ce = coords.col2.biologicos[value];
-                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                        pdf.text('x', ce[0] - 2, ce[1] + 2);
                     }
                 }
 
                 for(let value in mecanico){
                     if(mecanico[value] !== false){
                         const ce = coords.col2.mecanico[value];
-                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                        pdf.text('x', ce[0] - 2, ce[1] + 2);
                     }
                 }
 
                 for(let value in locativo){
                     if(locativo[value] !== false){
                         const ce = coords.col2.locativo[value];
-                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                        pdf.text('x', ce[0] - 2, ce[1] + 2);
                     }
                 }
 
                 for(let value in accTransito){
                     if(accTransito[value] !== false){
                         const ce = coords.col2.accTransito[value];
-                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                        pdf.text('x', ce[0] - 2, ce[1] + 2);
                     }
                 }
 
                 for(let value in fenoNaturales){
                     if(fenoNaturales[value] !== false){
                         const ce = coords.col2.fenoNaturales[value];
-                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                        pdf.text('x', ce[0] - 2, ce[1] + 2);
                     }
                 }
 
                 for(let value in quimicos){
                     if(quimicos[value] !== false){
                         const ce = coords.col2.quimicos[value];
-                        pdf.circle(ce[0], ce[1], 1.8, 'FD');
+                        pdf.text('x', ce[0] - 2, ce[1] + 2);
                     }
                 }
 
@@ -1532,17 +1580,80 @@ function getCoordsInt(pos, lugar){
         {
             nombre: [42, 89],
             cedula: [172, 86],
-            cargo: [248, 86]
+            cargo: [248, 86],
+            eleProtInd: {
+                'e-p-i-1': [133, 304],
+                'e-p-i-2': [133, 311],
+                'e-p-i-3': [133, 318],
+                'e-p-i-4': [133, 325],
+                'e-p-i-5': [133, 332],
+                'e-p-i-6': [133, 339],
+                'e-p-i-7': [133, 347],
+                'e-p-i-8': [133, 354],
+                'e-p-i-9': [133, 361],
+                'e-p-i-10': [133, 368],
+                'e-p-i-11': [133, 375],
+                'e-p-i-12': [133, 382],
+                'e-p-i-13': [133, 389],
+                'e-p-i-14': [133, 396],
+                'e-p-i-15': [133, 403],
+                'e-p-i-16': [133, 410],
+                'e-p-i-17': [133, 418],
+                'e-p-i-18': [133, 425],
+                'e-p-i-19': [133, 432],
+            },
         },
         {
             nombre: [42, 101],
             cedula: [172, 99],
-            cargo: [248, 98]
+            cargo: [248, 98],
+            eleProtInd: {
+                'e-p-i-1': [146.5, 304],
+                'e-p-i-2': [146.5, 311],
+                'e-p-i-3': [146.5, 318],
+                'e-p-i-4': [146.5, 325],
+                'e-p-i-5': [146.5, 332],
+                'e-p-i-6': [146.5, 339],
+                'e-p-i-7': [146.5, 347],
+                'e-p-i-8': [146.5, 354],
+                'e-p-i-9': [146.5, 361],
+                'e-p-i-10': [146.5, 368],
+                'e-p-i-11': [146.5, 375],
+                'e-p-i-12': [146.5, 382],
+                'e-p-i-13': [146.5, 389],
+                'e-p-i-14': [146.5, 396],
+                'e-p-i-15': [146.5, 403],
+                'e-p-i-16': [146.5, 410],
+                'e-p-i-17': [146.5, 418],
+                'e-p-i-18': [146.5, 425],
+                'e-p-i-19': [146.5, 432],
+            },
         },
         {
             nombre: [42, 115],
             cedula: [172, 112],
-            cargo: [248, 112]
+            cargo: [248, 112],
+            eleProtInd: {
+                'e-p-i-1': [160, 304],
+                'e-p-i-2': [160, 311],
+                'e-p-i-3': [160, 318],
+                'e-p-i-4': [160, 325],
+                'e-p-i-5': [160, 332],
+                'e-p-i-6': [160, 339],
+                'e-p-i-7': [160, 347],
+                'e-p-i-8': [160, 354],
+                'e-p-i-9': [160, 361],
+                'e-p-i-10': [160, 368],
+                'e-p-i-11': [160, 375],
+                'e-p-i-12': [160, 382],
+                'e-p-i-13': [160, 389],
+                'e-p-i-14': [160, 396],
+                'e-p-i-15': [160, 403],
+                'e-p-i-16': [160, 410],
+                'e-p-i-17': [160, 418],
+                'e-p-i-18': [160, 425],
+                'e-p-i-19': [160, 432],
+            },
         }
     ]
 

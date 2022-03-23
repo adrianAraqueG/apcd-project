@@ -242,27 +242,6 @@ function crearOrden(){
         horaInicial: hiOrden.value,
         horaFinal: hfOrden.value.length <= 0 ? false: hfOrden.value,
         datosPropios: {
-            eleProtInd: {
-                'e-p-i-1': false,
-                'e-p-i-2': false,
-                'e-p-i-3': false,
-                'e-p-i-4': false,
-                'e-p-i-5': false,
-                'e-p-i-6': false,
-                'e-p-i-7': false,
-                'e-p-i-8': false,
-                'e-p-i-9': false,
-                'e-p-i-10': false,
-                'e-p-i-11': false,
-                'e-p-i-12': false,
-                'e-p-i-13': false,
-                'e-p-i-14': false,
-                'e-p-i-15': false,
-                'e-p-i-16': false,
-                'e-p-i-17': false,
-                'e-p-i-18': false,
-                'e-p-i-19': false,
-            },
             condEsp: {
                 'c-e-1': false,
                 'c-e-2': false,
@@ -464,54 +443,7 @@ function editarOrden(id){
 
         c = c + 1;
     }
-
-
-    // Marcar Todas - Elementos Protección Individual
-    do{
-        const markAll = document.querySelector('input[name="e-p-i-ma"]');
-        const npreguntas = 19
-
-
-        // Settear el check de 'Marcar Todas'
-        let counter = 0
-        for(let value in datosPropios.eleProtInd){
-            if(datosPropios.eleProtInd[value] === true){
-                counter = counter + 1;
-            }
-        }
-
-        if(counter === npreguntas){
-            markAll.checked = true;
-        }else{
-            markAll.checked = false;
-        }
-
-
-        markAll.addEventListener('input', e =>{
-            if(e.target.checked === true){
-                for(let i = 1; i <= npreguntas; i++){
-                    const input = document.querySelector(`input[name="e-p-i-${i}"]`);
-                    input.checked = true;
-                }
-
-            } else if(e.target.checked === false){
-                for(let i = 1; i <= npreguntas; i++){
-                    const input = document.querySelector(`input[name="e-p-i-${i}"]`);
-                    input.checked = false;
-                }
-            }
-        });
-
-    }while(false);
-
-    // Llenar valores - Elementos Protección Individual
-    c = 1
-    for(let valor in datosPropios.eleProtInd){
-        const input = document.querySelector(`input[name="e-p-i-${c}"]`);
-        input.checked = datosPropios.eleProtInd[`e-p-i-${c}`];
-
-        c = c + 1;
-    }
+    
 
 
     // Llenar valores - Tareas Alto Riesgo
@@ -634,27 +566,6 @@ function editarOrden(id){
                 horaInicial: document.querySelector('#edit-hiOrden').value,
                 horaFinal: document.querySelector('#edit-hfOrden').value,
                 datosPropios: {
-                    eleProtInd: {
-                        'e-p-i-1': false,
-                        'e-p-i-2': false,
-                        'e-p-i-3': false,
-                        'e-p-i-4': false,
-                        'e-p-i-5': false,
-                        'e-p-i-6': false,
-                        'e-p-i-7': false,
-                        'e-p-i-8': false,
-                        'e-p-i-9': false,
-                        'e-p-i-10': false,
-                        'e-p-i-11': false,
-                        'e-p-i-12': false,
-                        'e-p-i-13': false,
-                        'e-p-i-14': false,
-                        'e-p-i-15': false,
-                        'e-p-i-16': false,
-                        'e-p-i-17': false,
-                        'e-p-i-18': false,
-                        'e-p-i-19': false,
-                    },
                     condEsp: {
                         'c-e-1': false,
                         'c-e-2': false,
@@ -770,15 +681,6 @@ function editarOrden(id){
                 c = c + 1;
             }
 
-            // Guardar - Condiciones Elementos Protección Individual
-            c = 1;
-            for(let valor in datosPropios.eleProtInd){
-                const input = document.querySelector(`input[name="e-p-i-${c}"]`);
-                ordenEditada.datosPropios.eleProtInd[`e-p-i-${c}`] = input.checked;
-
-                c = c + 1;
-            }
-
             // Guardar - Tareas Alto Riesgo
             c = 1;
             for(let valor in datosPropios.peligrosRiesgos.tareasAltoRiesgo){
@@ -788,7 +690,7 @@ function editarOrden(id){
                 c = c + 1;
             }
 
-            // Llenar valores - Peligros físicos
+            // Guardar valores - Peligros físicos
             c = 1
             for(let valor in datosPropios.peligrosRiesgos.fisicos){
                 const input = document.querySelector(`input[name="p-f-${c}"]`);
@@ -797,7 +699,7 @@ function editarOrden(id){
                 c = c + 1;
             }
 
-            // Llenar valores - Peligros biomecánicos
+            // Guardar valores - Peligros biomecánicos
             c = 1
             for(let valor in datosPropios.peligrosRiesgos.biomecanicos){
                 const input = document.querySelector(`input[name="p-bm-${c}"]`);
@@ -806,7 +708,7 @@ function editarOrden(id){
                 c = c + 1;
             }
 
-            // Llenar valores - Riesgo público
+            // Guardar valores - Riesgo público
             c = 1
             for(let valor in datosPropios.peligrosRiesgos.riesgoPublico){
                 const input = document.querySelector(`input[name="r-p-${c}"]`);
@@ -814,7 +716,7 @@ function editarOrden(id){
 
                 c = c + 1;
             }
-            // Llenar valores - Peligro eléctrico
+            // Guardar valores - Peligro eléctrico
             c = 1
             for(let valor in datosPropios.peligrosRiesgos.electrico){
                 const input = document.querySelector(`input[name="p-e-${c}"]`);
@@ -823,7 +725,7 @@ function editarOrden(id){
                 c = c + 1;
             }
 
-            // Llenar valores - Psicosocial
+            // Guardar valores - Psicosocial
             c = 1
             for(let valor in datosPropios.peligrosRiesgos.psicosocial){
                 const input = document.querySelector(`input[name="p-p-${c}"]`);
@@ -832,7 +734,7 @@ function editarOrden(id){
                 c = c + 1;
             }
 
-            // Llenar valores - Biológicos
+            // Guardar valores - Biológicos
             c = 1
             for(let valor in datosPropios.peligrosRiesgos.biologicos){
                 const input = document.querySelector(`input[name="p-b-${c}"]`);
@@ -841,7 +743,7 @@ function editarOrden(id){
                 c = c + 1;
             }
 
-            // Llenar valores - Mecánico
+            // Guardar valores - Mecánico
             c = 1
             for(let valor in datosPropios.peligrosRiesgos.mecanico){
                 const input = document.querySelector(`input[name="p-m-${c}"]`);
@@ -850,7 +752,7 @@ function editarOrden(id){
                 c = c + 1;
             }
 
-            // Llenar valores - Locativo
+            // Guardar valores - Locativo
             c = 1
             for(let valor in datosPropios.peligrosRiesgos.locativo){
                 const input = document.querySelector(`input[name="p-l-${c}"]`);
@@ -859,7 +761,7 @@ function editarOrden(id){
                 c = c + 1;
             }
 
-            // Llenar valores - Accidente de Tránsito
+            // Guardar valores - Accidente de Tránsito
             c = 1
             for(let valor in datosPropios.peligrosRiesgos.accTransito){
                 const input = document.querySelector(`input[name="p-a-t-${c}"]`);
@@ -868,7 +770,7 @@ function editarOrden(id){
                 c = c + 1;
             }
 
-            // Llenar valores - Fenómenos Naturales
+            // Guardar valores - Fenómenos Naturales
             c = 1
             for(let valor in datosPropios.peligrosRiesgos.fenoNaturales){
                 const input = document.querySelector(`input[name="p-f-n-${c}"]`);
@@ -877,7 +779,7 @@ function editarOrden(id){
                 c = c + 1;
             }
 
-            // Llenar valores - Químicos
+            // Guardar valores - Químicos
             c = 1
             for(let valor in datosPropios.peligrosRiesgos.quimicos){
                 const input = document.querySelector(`input[name="p-q-${c}"]`);

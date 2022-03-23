@@ -388,65 +388,25 @@ do{
  * ---------------- HERRAMIENTAS Y EQUIPOS ----------------|
  *  -------------------------------------------------------|
  * */
-// Marcar Todas - Herramientas y Equipos
 do{
-    const markAll = document.querySelector('input[name="h-e-ma"]');
+    // Sincronizar Datos
 
-    markAll.addEventListener('input', e =>{
-        if(e.target.checked === true){
-            for(let value in herramientasEquipos){
-                herramientasEquipos[value] = true;
-            }
-            for(let value in herramientasEquipos){
-                const input = document.querySelector(`input[name=${value}]`);
+    for(let value in herramientasEquipos){
+        let inputs = document.querySelectorAll(`input[name=${value}]`);
+        
+
+        inputs.forEach(input =>{
+
+            if(input.value === herramientasEquipos[value]){
                 input.checked = true;
             }
 
-            actualizarLS('herramientasEquipos');
-            actualizarBtn();
-
-        } else if(e.target.checked === false){
-            for(let value in herramientasEquipos){
-                herramientasEquipos[value] = false;
-            }
-            for(let value in herramientasEquipos){
-                const input = document.querySelector(`input[name=${value}]`);
-                input.checked = false;
-            }
-
-            actualizarLS('herramientasEquipos');
-            actualizarBtn();
-        }
-    });
-
-}while(false);
-
-// Agregar listeners - Herramientas y Equipos 
-do{
-    // sincronizar datos
-    if(window.localStorage.getItem('herramientasEquipos')){
-
-        // para las preguntas
-        for(let value in herramientasEquipos){
-            const input = document.querySelector(`input[name=${value}]`);
-
-            input.checked = herramientasEquipos[value];
-
-        }
-
-    }
-
-    let i = 1;
-    for(let value in herramientasEquipos){
-        const input = document.querySelector(`input[name=${value}]`);
-        
-        input.addEventListener('input', e =>{
-            herramientasEquipos[value] = input.checked;
-            actualizarLS('herramientasEquipos');
-            actualizarBtn();
+            input.addEventListener('input', e =>{
+                herramientasEquipos[value] = e.target.value;
+                actualizarLS('herramientasEquipos');
+                actualizarBtn();
+            });
         });
-
-        i = i + 1;
     }
 }while(false);
 
@@ -631,6 +591,7 @@ function actualizarLS(objeto){
                 LS.removeItem('herramientasEquipos');
             }
             LS.setItem('herramientasEquipos', JSON.stringify(herramientasEquipos));
+            console.log('seteado');
             break;
         }
         case 'escaleras': {
