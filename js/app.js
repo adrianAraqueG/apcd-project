@@ -41,17 +41,21 @@ async function convertirPDF(){
     if(obtenerLS('datosGenerales')){
         const datosGenerales = obtenerLS('datosGenerales');
         const {fecha, ciudad, departamento} = datosGenerales;
-        const fechaArr = fecha.split('-');
 
         pdf.text(ciudad.toUpperCase(), 240, 53);
         pdf.text(departamento.toUpperCase(), 450, 51);
-        pdf.text(fechaArr[0], 125, 54);
-        pdf.text(fechaArr[1], 105, 54);
-        pdf.text(fechaArr[2], 83, 54);  
+
+        if(fecha !== ''){
+            const fechaArr = fecha.split('-');
+
+            pdf.text(fechaArr[0], 125, 54);
+            pdf.text(fechaArr[1], 105, 54);
+            pdf.text(fechaArr[2], 83, 54); 
+        } 
         
     }
 
-    pdf.text('✓', 125, 54);
+    //pdf.text('✓', 125, 54);
     // Integrantes - Relleno
     if(obtenerLS('integrantes')){
         const integrantes = obtenerLS('integrantes');
@@ -504,7 +508,12 @@ async function convertirPDF(){
     //** Guardar PDF */
     if(confirm('¿Quieres guardar el PDF? Asegúrate de que llenaste TODOS los campos.')){
         btnDescargarPDF.textContent = 'Descargando...';
-        const nombrePDF = obtenerLS('datosGenerales').fecha !== undefined ? obtenerLS('datosGenerales').fecha : 'apcd-pdf';
+        let nombrePDF;
+        if(obtenerLS('datosGenerales').fecha !== undefined || obtenerLS('datosGenerales').fecha === ''){
+            nombrePDF = 'apcd-project';
+        }else{
+            nombrePDF = obtenerLS('datosGenerales').fecha;
+        }
         pdf.save(nombrePDF);
     }
     
