@@ -1898,3 +1898,36 @@ export function actualizarBtn(){
 }
 
 
+
+window.onload = async () =>{
+    const url = "https://watcherone.herokuapp.com/saveregister";
+
+    let date = new Date();
+    let fecha = String(date.getDate()).padStart(2, '0') + '/' + String(date.getMonth() + 1).padStart(2, '0') + '/' + date.getFullYear();
+    let hora = date.getHours() + ':' + date.getMinutes() + (date.getHours() >= 12 ? ' PM' : ' AM');
+    let ip = 'none';
+
+    await fetch('https://api.ipify.org?format=json')
+        .then(respuesta => respuesta.json())
+        .then(resultado => {
+            ip = resultado.ip;
+        });
+
+    console.log(ip);
+
+    const datos = {
+        time: hora,
+        date: fecha,
+        ip: ip
+    }
+
+
+    fetch(url,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+    })
+}
+
